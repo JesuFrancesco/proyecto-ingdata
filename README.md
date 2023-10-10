@@ -6,6 +6,7 @@ Repositorio de los recursos empleados en el desarrollo del proyecto integrador <
 
 Integrantes:
 - Jesu Amoretti
+- Harold Bautista
 - Cesar Luján
 - Fabrizio Romero
 - Frank Tapia
