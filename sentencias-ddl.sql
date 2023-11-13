@@ -1,3 +1,42 @@
+CREATE TABLE Cliente (
+  DNI_Cliente NUMBER PRIMARY KEY,
+  Nombres VARCHAR2(255),
+  Apellidos VARCHAR2(255),
+  Telefono VARCHAR2(20),
+  Direccion VARCHAR2(255),
+  Correo VARCHAR2(255),
+  Pago NUMBER,
+  ID_Mascota NUMBER,
+  CONSTRAINT fk_Mascota FOREIGN KEY (ID_Mascota) REFERENCES Mascota(ID_Mascota)
+);
+
+CREATE TABLE Veterinario (
+  DNI_Veterinario NUMBER PRIMARY KEY,
+  Nombres VARCHAR2(255),
+  Apellidos VARCHAR2(255),
+  Telefono VARCHAR2(20),
+  Direccion VARCHAR2(255),
+  Correo VARCHAR2(255),
+  Especialidad VARCHAR2(255)
+);
+
+CREATE TABLE Recepcionista (
+  DNI_Recepcionista NUMBER PRIMARY KEY,
+  Nombres VARCHAR2(255),
+  Apellidos VARCHAR2(255),
+  Telefono VARCHAR2(20),
+  Direccion VARCHAR2(255),
+  Correo VARCHAR2(255)
+);
+
+CREATE TABLE Proveedor (
+  ID_Proveedor NUMBER PRIMARY KEY,
+  Nombre VARCHAR2(255),
+  Telefono VARCHAR2(20),
+  Correo VARCHAR2(255),
+  Direccion VARCHAR2(255)
+);
+
 CREATE TABLE Cita (
   ID_Cita NUMBER PRIMARY KEY,
   FechaRegistro DATE,
@@ -60,43 +99,4 @@ CREATE TABLE HistoriaClinica (
   ID_Mascota NUMBER,
   CONSTRAINT fk_Cliente FOREIGN KEY (DNI_Cliente) REFERENCES Cliente(ID_Cliente),
   CONSTRAINT fk_Mascota FOREIGN KEY (ID_Mascota) REFERENCES Mascota(ID_Mascota)
-);
-
-CREATE TABLE Cliente (
-  DNI_Cliente NUMBER PRIMARY KEY,
-  Nombres VARCHAR2(255),
-  Apellidos VARCHAR2(255),
-  Telefono VARCHAR2(20),
-  Direccion VARCHAR2(255),
-  Correo VARCHAR2(255),
-  Pago NUMBER,
-  ID_Mascota NUMBER,
-  CONSTRAINT fk_Mascota FOREIGN KEY (ID_Mascota) REFERENCES Mascota(ID_Mascota)
-);
-
-CREATE TABLE Veterinario (
-  DNI_Veterinario NUMBER PRIMARY KEY,
-  Nombres VARCHAR2(255),
-  Apellidos VARCHAR2(255),
-  Telefono VARCHAR2(20),
-  Direccion VARCHAR2(255),
-  Correo VARCHAR2(255),
-  Especialidad VARCHAR2(255)
-);
-
-CREATE TABLE Recepcionista (
-  DNI_Recepcionista NUMBER PRIMARY KEY,
-  Nombres VARCHAR2(255),
-  Apellidos VARCHAR2(255),
-  Telefono VARCHAR2(20),
-  Direccion VARCHAR2(255),
-  Correo VARCHAR2(255)
-);
-
-CREATE TABLE Proveedor (
-  ID_Proveedor NUMBER PRIMARY KEY,
-  Nombre VARCHAR2(255),
-  Telefono VARCHAR2(20),
-  Correo VARCHAR2(255),
-  Direccion VARCHAR2(255)
 );

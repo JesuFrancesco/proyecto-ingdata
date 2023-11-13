@@ -1,3 +1,28 @@
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, Pago, ID_Mascota) VALUES (12345678, 'Juan', 'Perez', '3456789', 'Calle 123', 'correo@example.com', 500, 1);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, Pago, ID_Mascota) VALUES (9876543, 'María', 'Gutiérrez', '2345678', 'Calle 456', 'maria@example.com', 400, 2);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, Pago, ID_Mascota) VALUES (3456789, 'Carlos', 'Rodríguez', '12345678', 'Calle 789', 'correo@example.com', 300, 3);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, Pago, ID_Mascota) VALUES (2345678, 'Ana', 'López', '567890', 'Calle 123', 'ana@example.com', 200, 4);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, Pago, ID_Mascota) VALUES (6789012, 'Fernando', 'García', '9876543', 'Calle 345', 'fernando@example.com', 450, 5);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, Pago, ID_Mascota) VALUES (5678901, 'Marta', 'Hernández', '789012', 'Calle 567', 'marta@example.com', 350, 6);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, Pago, ID_Mascota) VALUES (4567890, 'Isabel', 'Ramos', '2345678', 'Calle 987', 'isabel@example.com', 250, 7);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, Pago, ID_Mascota) VALUES (12345678, 'Juan', 'Perez', '3456789', 'Calle 123', 'correo@example.com', 500, 1);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, Pago, ID_Mascota) VALUES (9876543, 'María', 'Gutiérrez', '2345678', 'Calle 456', 'maria@example.com', 400, 2);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, Pago, ID_Mascota) VALUES (3456789, 'Carlos', 'Rodríguez', '12345678', 'Calle 789', 'correo@example.com', 300, 3);
+
+-- Values para la tabla Veterinario
+INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (12345678, 'Pedro', 'García', '3456789', 'Calle 123', 'correo1@example.com', 'Cirugía');
+INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (9876543, 'Laura', 'Martínez', '2345678', 'Calle 456', 'correo2@example.com', 'Dermatología');
+INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (3456789, 'Carlos', 'Rodríguez', '12345678', 'Calle 789', 'correo3@example.com', 'Oftalmología');
+INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (2345678, 'Ana', 'López', '567890', 'Calle 123', 'correo4@example.com', 'Cardiología');
+INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (6789012, 'Fernando', 'García', '9876543', 'Calle 345', 'correo5@example.com', 'Neurología');
+INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (5678901, 'Marta', 'Hernández', '789012', 'Calle 567', 'correo6@example.com', 'Oncología');
+INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (4567890, 'Isabel', 'Ramos', '2345678', 'Calle 987', 'correo7@example.com', 'Endocrinología');
+INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (12345678, 'Juan', 'Pérez', '3456789', 'Calle 123', 'correo8@example.com', 'Cirugía');
+INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (9876543, 'María', 'Gutiérrez', '2345678', 'Calle 456', 'correo9@example.com', 'Dermatología');
+INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (3456789, 'Carlos', 'Rodríguez', '12345678', 'Calle 789', 'correo10@example.com', 'Oftalmología');
+
+-- Value para la tabla recepcionista
+INSERT INTO Recepcionista (DNI_Recepcionista, Nombres, Apellidos, Telefono, Direccion, Correo) VALUES (0, 'Jose', 'Cardenas', '12345678', 'Calle 789', 'correo10@example.com')
 -- Values para tabla Cita
 INSERT INTO Cita (ID_Cita, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_Veterinario) 
 VALUES (1, '2023-11-13', 'Chequeo', 12345, 67890, 54321);
@@ -22,38 +47,19 @@ INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, I
 VALUES (1, 'Shampoo', 'Shampoo para mascotas', 10.99, 100, 12345);
 
 INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor) 
-VALUES (2, 'Collar', 'Collar Ajustable de nylon', 7.50, 200, 54321);
+VALUES (2, 'Collar', 'Collar ajustable de nylon', 7.50, 200, 54321);
 
 INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor) 
-VALUES (3, 'Comida para perros', 'Premium dry dog food', 29.99, 50, 67890);
+VALUES (3, 'Comida para perros', 'Comida premium', 29.99, 50, 67890);
 
 INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor) 
 VALUES (4, 'Arena para gatos', 'Clumping cat litter', 15.75, 75, 24680);
 
 INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor) 
-VALUES (5, 'Correa', 'Retractable dog leash', 12.99, 120, 13579);
+VALUES (5, 'Correa', 'Correa retraíble', 12.99, 120, 13579);
 
 INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor) 
-VALUES (6, 'Comida para peces', 'Tropical fish flakes', 5.99, 200, 98765);
-
--- Values para la tabla transaccion
-INSERT INTO Transaccion (ID_Transaccion, Fecha, Hora, Tipo, ID_Cliente, ID_Proveedor) 
-VALUES (1, '2023-11-13', '10:00:00', 'Venta', 12345, 54321);
-
-INSERT INTO Transaccion (ID_Transaccion, Fecha, Hora, Tipo, ID_Cliente, ID_Proveedor) 
-VALUES (2, '2023-11-14', '11:30:00', 'Compra', 54321, 67890);
-
-INSERT INTO Transaccion (ID_Transaccion, Fecha, Hora, Tipo, ID_Cliente, ID_Proveedor) 
-VALUES (3, '2023-11-15', '09:45:00', 'Venta', 13579, 24680);
-
-INSERT INTO Transaccion (ID_Transaccion, Fecha, Hora, Tipo, ID_Cliente, ID_Proveedor) 
-VALUES (4, '2023-11-16', '14:20:00', 'Compra', 98765, 12345);
-
-INSERT INTO Transaccion (ID_Transaccion, Fecha, Hora, Tipo, ID_Cliente, ID_Proveedor) 
-VALUES (5, '2023-11-17', '13:15:00', 'Venta', 24680, 54321);
-
-INSERT INTO Transaccion (ID_Transaccion, Fecha, Hora, Tipo, ID_Cliente, ID_Proveedor) 
-VALUES (6, '2023-11-18', '16:00:00', 'Compra', 67890, 98765);
+VALUES (6, 'Comida para peces', 'Hojitas para peces tropicales', 5.99, 200, 98765);
 
 -- Values para la tabla de mascota 
 INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) 
@@ -73,22 +79,3 @@ VALUES (5, 'Buddy', 'Golden Retriever', '2020-01-05', 'Perro');
 
 INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) 
 VALUES (6, 'Milo', 'Maine Coon', '2019-09-22', 'Gato');
-
--- 
-INSERT INTO InstrumentoMedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, PrecioVenta, ID_Proveedor) 
-VALUES (1, 'Stethoscope', 'For auscultation', 50.99, 75.99, 12345);
-
-INSERT INTO InstrumentoMedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, PrecioVenta, ID_Proveedor) 
-VALUES (2, 'Surgical Scissors', 'For cutting sutures', 20.50, 35.99, 54321);
-
-INSERT INTO InstrumentoMedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, PrecioVenta, ID_Proveedor) 
-VALUES (3, 'Surgical Gloves', 'Sterile gloves for surgery', 10.99, 20.99, 67890);
-
-INSERT INTO InstrumentoMedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, PrecioVenta, ID_Proveedor) 
-VALUES (4, 'Surgical Masks', 'Disposable masks for surgery', 5.75, 10.99, 24680);
-
-INSERT INTO InstrumentoMedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, PrecioVenta, ID_Proveedor) 
-VALUES (5, 'Surgical Gowns', 'Sterile gowns for surgery', 25.99, 40.99, 13579);
-
-INSERT INTO InstrumentoMedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, PrecioVenta, ID_Proveedor) 
-VALUES (6, 'Surgical Drapes', 'Sterile drapes for surgery', 15.99, 30.99, 98765);
