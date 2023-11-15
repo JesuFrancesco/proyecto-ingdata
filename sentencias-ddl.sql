@@ -1,3 +1,11 @@
+CREATE TABLE Mascota (
+  ID_Mascota NUMBER PRIMARY KEY,
+  Nombre VARCHAR2(255),
+  Raza VARCHAR2(255),
+  FechaNacimiento DATE,
+  Especie VARCHAR2(255)
+);
+
 CREATE TABLE Cliente (
   DNI_Cliente NUMBER PRIMARY KEY,
   Nombres VARCHAR2(255),
@@ -7,7 +15,7 @@ CREATE TABLE Cliente (
   Correo VARCHAR2(255),
   Pago NUMBER,
   ID_Mascota NUMBER,
-  CONSTRAINT fk_Mascota FOREIGN KEY (ID_Mascota) REFERENCES Mascota(ID_Mascota)
+  CONSTRAINT fk_MascotaCliente FOREIGN KEY (ID_Mascota) REFERENCES Mascota(ID_Mascota)
 );
 
 CREATE TABLE Veterinario (
@@ -44,9 +52,9 @@ CREATE TABLE Cita (
   ID_Cliente NUMBER,
   ID_Mascota NUMBER,
   ID_Veterinario NUMBER,
-  CONSTRAINT fk_Cliente FOREIGN KEY (ID_Cliente) REFERENCES Cliente(ID_Cliente),
-  CONSTRAINT fk_Mascota FOREIGN KEY (ID_Mascota) REFERENCES Mascota(ID_Mascota),
-  CONSTRAINT fk_Veterinario FOREIGN KEY (ID_Veterinario) REFERENCES Veterinario(ID_Veterinario)
+  CONSTRAINT fk_ClienteCita FOREIGN KEY (ID_Cliente) REFERENCES Cliente(DNI_Cliente),
+  CONSTRAINT fk_MascotaCita FOREIGN KEY (ID_Mascota) REFERENCES Mascota(ID_Mascota),
+  CONSTRAINT fk_VeterinarioCita FOREIGN KEY (ID_Veterinario) REFERENCES Veterinario(DNI_Veterinario)
 );
 
 CREATE TABLE Producto (
@@ -57,8 +65,8 @@ CREATE TABLE Producto (
   CantidadStock NUMBER,
   ID_Proveedor NUMBER,
   ID_Recepcionista NUMBER,
-  CONSTRAINT fk_Proveedor FOREIGN KEY (ID_Proveedor) REFERENCES Proveedor(ID_Proveedor),
-  CONSTRAINT fk_Recepcionista FOREIGN KEY (ID_Recepcionista) REFERENCES Recepcionista(ID_Recepcionista)
+  CONSTRAINT fk_ProveedorProducto FOREIGN KEY (ID_Proveedor) REFERENCES Proveedor(ID_Proveedor),
+  CONSTRAINT fk_RecepcionistaProducto FOREIGN KEY (ID_Recepcionista) REFERENCES Recepcionista(DNI_Recepcionista)
 );
 
 CREATE TABLE Transaccion (
@@ -68,16 +76,8 @@ CREATE TABLE Transaccion (
   Tipo VARCHAR2(255),
   ID_Cliente NUMBER,
   ID_Proveedor NUMBER,
-  CONSTRAINT fk_Cliente FOREIGN KEY (ID_Cliente) REFERENCES Cliente(ID_Cliente),
-  CONSTRAINT fk_Proveedor FOREIGN KEY (ID_Proveedor) REFERENCES Proveedor(ID_Proveedor)
-);
-
-CREATE TABLE Mascota (
-  ID_Mascota NUMBER PRIMARY KEY,
-  Nombre VARCHAR2(255),
-  Raza VARCHAR2(255),
-  FechaNacimiento DATE,
-  Especie VARCHAR2(255)
+  CONSTRAINT fk_ClienteTransaccion FOREIGN KEY (ID_Cliente) REFERENCES Cliente(DNI_Cliente),
+  CONSTRAINT fk_ProveedorTransaccion FOREIGN KEY (ID_Proveedor) REFERENCES Proveedor(ID_Proveedor)
 );
 
 CREATE TABLE InstrumentoMedico (
@@ -87,7 +87,7 @@ CREATE TABLE InstrumentoMedico (
   PrecioCompra NUMBER,
   PrecioVenta NUMBER,
   ID_Proveedor NUMBER,
-  CONSTRAINT fk_Proveedor FOREIGN KEY (ID_Proveedor) REFERENCES Proveedor(ID_Proveedor)
+  CONSTRAINT fk_ProveedorIM FOREIGN KEY (ID_Proveedor) REFERENCES Proveedor(ID_Proveedor)
 );
 
 CREATE TABLE HistoriaClinica (
@@ -97,6 +97,6 @@ CREATE TABLE HistoriaClinica (
   Tratamiento VARCHAR2(255),
   DNI_Cliente NUMBER,
   ID_Mascota NUMBER,
-  CONSTRAINT fk_Cliente FOREIGN KEY (DNI_Cliente) REFERENCES Cliente(ID_Cliente),
-  CONSTRAINT fk_Mascota FOREIGN KEY (ID_Mascota) REFERENCES Mascota(ID_Mascota)
+  CONSTRAINT fk_ClienteHC FOREIGN KEY (DNI_Cliente) REFERENCES Cliente(DNI_Cliente),
+  CONSTRAINT fk_MascotaHC FOREIGN KEY (ID_Mascota) REFERENCES Mascota(ID_Mascota)
 );
