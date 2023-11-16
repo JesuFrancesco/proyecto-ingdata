@@ -1,81 +1,249 @@
-INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, Pago, ID_Mascota) VALUES (12345678, 'Juan', 'Perez', '3456789', 'Calle 123', 'correo@example.com', 500, 1);
-INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, Pago, ID_Mascota) VALUES (9876543, 'María', 'Gutiérrez', '2345678', 'Calle 456', 'maria@example.com', 400, 2);
-INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, Pago, ID_Mascota) VALUES (3456789, 'Carlos', 'Rodríguez', '12345678', 'Calle 789', 'correo@example.com', 300, 3);
-INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, Pago, ID_Mascota) VALUES (2345678, 'Ana', 'López', '567890', 'Calle 123', 'ana@example.com', 200, 4);
-INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, Pago, ID_Mascota) VALUES (6789012, 'Fernando', 'García', '9876543', 'Calle 345', 'fernando@example.com', 450, 5);
-INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, Pago, ID_Mascota) VALUES (5678901, 'Marta', 'Hernández', '789012', 'Calle 567', 'marta@example.com', 350, 6);
-INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, Pago, ID_Mascota) VALUES (4567890, 'Isabel', 'Ramos', '2345678', 'Calle 987', 'isabel@example.com', 250, 7);
-INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, Pago, ID_Mascota) VALUES (12345678, 'Juan', 'Perez', '3456789', 'Calle 123', 'correo@example.com', 500, 1);
-INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, Pago, ID_Mascota) VALUES (9876543, 'María', 'Gutiérrez', '2345678', 'Calle 456', 'maria@example.com', 400, 2);
-INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, Pago, ID_Mascota) VALUES (3456789, 'Carlos', 'Rodríguez', '12345678', 'Calle 789', 'correo@example.com', 300, 3);
+-------------------------------------------------------------------------------------------------------------------------------------
+-- [01] Values para la tabla de mascota
+-------------------------------------------------------------------------------------------------------------------------------------
 
--- Values para la tabla Veterinario
-INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (12345678, 'Pedro', 'García', '3456789', 'Calle 123', 'correo1@example.com', 'Cirugía');
-INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (9876543, 'Laura', 'Martínez', '2345678', 'Calle 456', 'correo2@example.com', 'Dermatología');
-INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (3456789, 'Carlos', 'Rodríguez', '12345678', 'Calle 789', 'correo3@example.com', 'Oftalmología');
-INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (2345678, 'Ana', 'López', '567890', 'Calle 123', 'correo4@example.com', 'Cardiología');
-INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (6789012, 'Fernando', 'García', '9876543', 'Calle 345', 'correo5@example.com', 'Neurología');
-INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (5678901, 'Marta', 'Hernández', '789012', 'Calle 567', 'correo6@example.com', 'Oncología');
-INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (4567890, 'Isabel', 'Ramos', '2345678', 'Calle 987', 'correo7@example.com', 'Endocrinología');
-INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (12345678, 'Juan', 'Pérez', '3456789', 'Calle 123', 'correo8@example.com', 'Cirugía');
-INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (9876543, 'María', 'Gutiérrez', '2345678', 'Calle 456', 'correo9@example.com', 'Dermatología');
-INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (3456789, 'Carlos', 'Rodríguez', '12345678', 'Calle 789', 'correo10@example.com', 'Oftalmología');
+select * from mascota;
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (1, 'Max', 'Labrador Retriever', TO_DATE('2019-05-01','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (2, 'Buddy', 'Golden Retriever', TO_DATE('2018-10-15','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (3, 'Luna', 'Siamese', TO_DATE('2020-02-28','YYYY-MM-DD'), 'Gato');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (4, 'Rocky', 'German Shepherd', TO_DATE('2017-07-20','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (5, 'Simba', 'Persian', TO_DATE('2019-11-10','YYYY-MM-DD'), 'Gato');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (6, 'Daisy', 'Beagle', TO_DATE('2016-04-05','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (7, 'Milo', 'Maine Coon', TO_DATE('2021-01-25','YYYY-MM-DD'), 'Gato');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (8, 'Bailey', 'Bulldog', TO_DATE('2018-09-12','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (9, 'Chloe', 'Ragdoll', TO_DATE('2020-06-30','YYYY-MM-DD'), 'Gato');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (10, 'Jack', 'Poodle', TO_DATE('2017-03-18','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (11, 'Bella', 'Golden Retriever', TO_DATE('2017-08-12','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (12, 'Rocky', 'German Shepherd', TO_DATE('2018-03-25','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (13, 'Charlie', 'Bulldog', TO_DATE('2016-11-18','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (14, 'Lucy', 'Beagle', TO_DATE('2019-02-07','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (15, 'Cooper', 'Boxer', TO_DATE('2017-07-09','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (16, 'Lola', 'Dachshund', TO_DATE('2018-09-14','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (17, 'Maximus', 'Siberian Husky', TO_DATE('2016-05-22','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (18, 'Mia', 'Poodle', TO_DATE('2020-01-03','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (19, 'Leo', 'Shih Tzu', TO_DATE('2015-12-08','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (20, 'Zoe', 'Great Dane', TO_DATE('2019-04-30','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (21, 'Oliver', 'Labrador Retriever', TO_DATE('2018-10-11','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (22, 'Daisy', 'Chihuahua', TO_DATE('2016-06-17','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (23, 'Tucker', 'Rottweiler', TO_DATE('2017-01-28','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (24, 'Coco', 'Doberman', TO_DATE('2019-07-05','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (25, 'Milo', 'Shetland Sheepdog', TO_DATE('2016-12-19','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (26, 'Sadie', 'French Bulldog', TO_DATE('2018-08-03','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (27, 'Bailey', 'Pug', TO_DATE('2017-09-14','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (28, 'Zeus', 'Basset Hound', TO_DATE('2016-04-09','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (29, 'Ruby', 'Cocker Spaniel', TO_DATE('2020-02-22','YYYY-MM-DD'), 'Perro');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (30, 'Duke', 'Saint Bernard', TO_DATE('2015-11-11','YYYY-MM-DD'), 'Perro');
 
--- Value para la tabla recepcionista
-INSERT INTO Recepcionista (DNI_Recepcionista, Nombres, Apellidos, Telefono, Direccion, Correo) VALUES (0, 'Jose', 'Cardenas', '12345678', 'Calle 789', 'correo10@example.com')
--- Values para tabla Cita
-INSERT INTO Cita (ID_Cita, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_Veterinario) 
-VALUES (1, '2023-11-13', 'Chequeo', 12345, 67890, 54321);
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (31, 'Whiskers', 'Persian', TO_DATE('2017-04-15','YYYY-MM-DD'), 'Gato');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (32, 'Mittens', 'Maine Coon', TO_DATE('2018-09-05','YYYY-MM-DD'), 'Gato');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (33, 'Oreo', 'Ragdoll', TO_DATE('2016-11-22','YYYY-MM-DD'), 'Gato');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (34, 'Shadow', 'British Shorthair', TO_DATE('2019-03-10','YYYY-MM-DD'), 'Gato');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (35, 'Simba', 'Bengal', TO_DATE('2017-08-03','YYYY-MM-DD'), 'Gato');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (36, 'Cleo', 'Sphynx', TO_DATE('2018-01-18','YYYY-MM-DD'), 'Gato');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (37, 'Felix', 'Scottish Fold', TO_DATE('2016-05-28','YYYY-MM-DD'), 'Gato');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (38, 'Milo', 'Russian Blue', TO_DATE('2020-02-02','YYYY-MM-DD'), 'Gato');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (39, 'Lily', 'Abyssinian', TO_DATE('2015-12-12','YYYY-MM-DD'), 'Gato');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (40, 'Leo', 'Siamese', TO_DATE('2019-04-20','YYYY-MM-DD'), 'Gato');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (41, 'Oliver', 'Persian', TO_DATE('2018-11-11','YYYY-MM-DD'), 'Gato');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (42, 'Chloe', 'Maine Coon', TO_DATE('2016-06-19','YYYY-MM-DD'), 'Gato');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (43, 'Misty', 'Ragdoll', TO_DATE('2017-02-28','YYYY-MM-DD'), 'Gato');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (44, 'Smokey', 'British Shorthair', TO_DATE('2019-07-15','YYYY-MM-DD'), 'Gato');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (45, 'Luna', 'Sphynx', TO_DATE('2016-12-01','YYYY-MM-DD'), 'Gato');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (46, 'Nala', 'Scottish Fold', TO_DATE('2018-08-22','YYYY-MM-DD'), 'Gato');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (47, 'Whiskey', 'Russian Blue', TO_DATE('2017-09-10','YYYY-MM-DD'), 'Gato');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (48, 'Ziggy', 'Abyssinian', TO_DATE('2016-04-05','YYYY-MM-DD'), 'Gato');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (49, 'Mochi', 'Bengal', TO_DATE('2020-01-25','YYYY-MM-DD'), 'Gato');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (50, 'Salem', 'Siberian', TO_DATE('2015-10-15','YYYY-MM-DD'), 'Gato');
 
-INSERT INTO Cita (ID_Cita, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_Veterinario) 
-VALUES (2, '2023-11-14', 'Vacunación', 54321, 24680, 98765);
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (51, 'Thumper', 'Holland Lop', TO_DATE('2016-03-15','YYYY-MM-DD'), 'Conejo');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (52, 'Bunny', 'Dwarf Hotot', TO_DATE('2018-08-05','YYYY-MM-DD'), 'Conejo');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (53, 'Snowball', 'Netherland Dwarf', TO_DATE('2017-11-22','YYYY-MM-DD'), 'Conejo');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (54, 'Cotton', 'Mini Rex', TO_DATE('2019-04-10','YYYY-MM-DD'), 'Conejo');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (55, 'Hazel', 'Jersey Wooly', TO_DATE('2017-07-03','YYYY-MM-DD'), 'Conejo');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (56, 'Cocoa', 'Himalayan', TO_DATE('2018-01-18','YYYY-MM-DD'), 'Conejo');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (57, 'Thistle', 'Flemish Giant', TO_DATE('2016-06-28','YYYY-MM-DD'), 'Conejo');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (58, 'Peanut', 'English Angora', TO_DATE('2020-02-02','YYYY-MM-DD'), 'Conejo');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (59, 'Biscuit', 'Lionhead', TO_DATE('2015-12-12','YYYY-MM-DD'), 'Conejo');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (60, 'Nibbles', 'Holland Lop', TO_DATE('2019-04-20','YYYY-MM-DD'), 'Conejo');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (61, 'Caramel', 'Dwarf Hotot', TO_DATE('2018-11-11','YYYY-MM-DD'), 'Conejo');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (62, 'Maple', 'Netherland Dwarf', TO_DATE('2016-06-19','YYYY-MM-DD'), 'Conejo');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (63, 'Hopper', 'Mini Rex', TO_DATE('2017-02-28','YYYY-MM-DD'), 'Conejo');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (64, 'Marshmallow', 'Himalayan', TO_DATE('2019-07-15','YYYY-MM-DD'), 'Conejo');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (65, 'Thistle', 'Flemish Giant', TO_DATE('2016-12-01','YYYY-MM-DD'), 'Conejo');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (66, 'Bluebell', 'Jersey Wooly', TO_DATE('2018-08-22','YYYY-MM-DD'), 'Conejo');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (67, 'Almond', 'English Angora', TO_DATE('2017-09-10','YYYY-MM-DD'), 'Conejo');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (68, 'Clover', 'Lionhead', TO_DATE('2016-04-05','YYYY-MM-DD'), 'Conejo');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (69, 'Daisy', 'Holland Lop', TO_DATE('2020-01-25','YYYY-MM-DD'), 'Conejo');
+INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (70, 'Oreo', 'Mini Rex', TO_DATE('2015-10-15','YYYY-MM-DD'), 'Conejo');
 
-INSERT INTO Cita (ID_Cita, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_Veterinario) 
-VALUES (3, '2023-11-15', 'Limpieza dental', 13579, 24680, 98765);
+-------------------------------------------------------------------------------------------------------------------------------------
+-- [02] Values para la tabla de cliente --
+-------------------------------------------------------------------------------------------------------------------------------------
 
-INSERT INTO Cita (ID_Cita, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_Veterinario) 
-VALUES (4, '2023-11-16', 'Tratado de heridas', 98765, 54321, 12345);
+select * from cliente;
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (71234567, 'Juan Pablo', 'Perez Rodriguez', '912345678', 'Calle 123, Lima', 'juan.perez@gmail.com', 1);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (82345678, 'Ana Sofia', 'Gomez Lopez', '923456789', 'Av. Principal 456, Arequipa', 'ana.gomez@gmail.com', 2);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (93456789, 'Diego Alejandro', 'Rodriguez Chavez', '934567890', 'Jr. Independencia 789, Trujillo', 'diego.rodriguez@gmail.com', 3);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (84567890, 'Maria Fernanda', 'Lopez Torres', '945678901', 'Calle Central 101, Cusco', 'maria.lopez@gmail.com', 4);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (95678901, 'Carlos Eduardo', 'Fernandez Diaz', '956789012', 'Av. America 202, Piura', 'carlos.fernandez@gmail.com', 5);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (56789012, 'Luis Angel', 'Torres Gutierrez', '967890123', 'Jr. Bolognesi 303, Iquitos', 'luis.torres@gmail.com', 6);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (67890123, 'Carmen Sofia', 'Martinez Castro', '978901234', 'Calle de los Pajaros 404, Chiclayo', 'carmen.martinez@gmail.com', 7);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (78901234, 'Pedro Jose', 'Garcia Huaman', '989012345', 'Av. de las Flores 505, Huancayo', 'pedro.garcia@gmail.com', 8);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (89012345, 'Laura Valentina', 'Sanchez Mendoza', '990123456', 'Jr. de las Estrellas 606, Tacna', 'laura.sanchez@gmail.com', 9);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (11223344, 'Jorge Luis', 'Herrera Torres', '991234567', 'Calle Luna 707, Cajamarca', 'jorge.herrera@gmail.com', 10);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (22334455, 'Silvia Isabel', 'Diaz Mendoza', '992345678', 'Av. del Sol 808, Ayacucho', 'silvia.diaz@gmail.com', 11);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (33445566, 'Raul Alonso', 'Ramirez Luna', '993456789', 'Jr. de los Suenos 909, Pucallpa', 'raul.ramirez@gmail.com', 12);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (44556677, 'Alicia Gabriela', 'Fuentes Ortega', '994567890', 'Calle de las Montanas 1010, Chimbote', 'alicia.fuentes@gmail.com', 13);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (55667788, 'Gabriel Andres', 'Ortiz Silva', '995678901', 'Av. de las Olas 1111, Huaraz', 'gabriel.ortiz@gmail.com', 14);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (66778899, 'Valeria Raquel', 'Casta�eda Huaman', '996789012', 'Jr. del Viento 1212, Tarapoto', 'valeria.castaneda@gmail.com', 15);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (77889900, 'Daniel Arturo', 'Vargas Paredes', '997890123', 'Calle de las Palmeras 1313, Ica', 'daniel.vargas@gmail.com', 16);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (88990011, 'Monica Carolina', 'Chavez Moreno', '998901234', 'Av. de los Suenos 1414, Huacho', 'monica.chavez@gmail.com', 17);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (99001122, 'Sergio Alberto', 'Luna Mendoza', '999012345', 'Jr. de las Mariposas 1515, Chincha', 'sergio.luna@gmail.com', 18);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (10112233, 'Isabel Cristina', 'Mendoza Paredes', '910111213', 'Calle de las Colinas 1616, Tumbes', 'isabel.mendoza@gmail.com', 19);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (12131415, 'Roberto Carlos', 'Paredes Huaman', '911121314', 'Av. de los Rios 1717, Puno', 'roberto.paredes@gmail.com', 20);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (13141516, 'Gloria Patricia', 'Flores Diaz', '912131415', 'Calle de las Cataratas 1919, Jauja', 'gloria.flores@gmail.com', 21);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (14151617, 'Arturo Alejandro', 'Villanueva Castro', '913141516', 'Calle de las Montanas 2020, Chimbote', 'arturo.villanueva@gmail.com', 22);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (15161718, 'Marta Elena', 'Cordova Salas', '914151617', 'Av. de las Palmeras 2121, Chiclayo', 'marta.cordova@gmail.com', 23);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (16171819, 'Hector Enrique', 'Alvarez Gutierrez', '915161718', 'Jr. de los Bosques 2222, Chimbote', 'hector.alvarez@gmail.com', 24);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (17181920, 'Lucia Gabriela', 'Guerrero Gutierrez', '916171819', 'Calle de las Colinas 2323, Trujillo', 'lucia.guerrero@gmail.com', 25);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (18192021, 'Alejandro Martin', 'Arias Navarro', '917181920', 'Av. de los Rios 2424, Huancayo', 'alejandro.arias@gmail.com', 26);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (19202122, 'Natalia Alejandra', 'Salas Silva', '918192021', 'Jr. de los Bosques 2424, Huancayo', 'natalia.salas@gmail.com', 27);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (20212223, 'Ricardo Alberto', 'Lopez Silva', '919202122', 'Calle de los Pajaros 2525, Piura', 'ricardo.lopez@gmail.com', 28);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (21222324, 'Elena Maria', 'Silva Luna', '920212223', 'Av. America 2626, Pucallpa', 'elena.silva@gmail.com', 29);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (22232425, 'Juan Jose', 'Moreno Huaman', '921222324', 'Jr. Independencia 2727, Tacna', 'juan.moreno@gmail.com', 30);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (23242526, 'Liliana Patricia', 'Navarro Ortega', '922232425', 'Calle de las Mariposas 2828, Ayacucho', 'liliana.navarro@gmail.com', 31);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (24252627, 'Martin Eduardo', 'Pinto Mendoza', '923242526', 'Av. del Sol 2929, Arequipa', 'martin.pinto@gmail.com', 32);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (25262728, 'Sofia Isabel', 'Castillo Silva', '924252627', 'Jr. de las Aves 3030, Huacho', 'sofia.castillo@gmail.com', 33);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (26272829, 'Roberto Miguel', 'Diaz Paredes', '925262728', 'Calle Luna 3131, Cajamarca', 'roberto.diaz@gmail.com', 34);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (27282930, 'Valentina Alejandra', 'Cabrera Mendoza', '926272829', 'Av. de las Olas 3232, Puno', 'valentina.cabrera@gmail.com', 35);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (28293031, 'Carlos Enrique', 'Valdez Luna', '927282930', 'Jr. de las Mariposas 3333, Huaraz', 'carlos.valdez@gmail.com', 36);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (29303132, 'Ana Gabriela', 'Herrera Torres', '928293031', 'Calle de las Colinas 3434, Chiclayo', 'ana.herrera@gmail.com', 37);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (30313233, 'Luis Eduardo', 'Lara Huaman', '929303132', 'Av. de los Rios 3535, Ica', 'luis.lara@gmail.com', 38);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (31323334, 'Marta Patricia', 'Gutierrez Castro', '930313233', 'Jr. de los Bosques 3636, Trujillo', 'marta.gutierrez@gmail.com', 39);
+INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (32333435, 'Jose Eduardo', 'Carrasco Mendoza', '931323334', 'Calle de las Mariposas 3737, Lima', 'jose.carrasco@gmail.com', 40);
 
-INSERT INTO Cita (ID_Cita, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_Veterinario) 
-VALUES (5, '2023-11-17', 'Esterilización', 24680, 12345, 54321);
+-------------------------------------------------------------------------------------------------------------------------------------
+-- [03] Values para la tabla de Veterinario
+-------------------------------------------------------------------------------------------------------------------------------------
 
-INSERT INTO Cita (ID_Cita, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_Veterinario) 
-VALUES (6, '2023-11-18', 'Consulta', 67890, 54321, 12345);
+select * from veterinario;
 
--- Values para tabla producto
-INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor) 
-VALUES (1, 'Shampoo', 'Shampoo para mascotas', 10.99, 100, 12345);
+INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (1, 'Pedro', 'Garc�a', '3456789', 'Calle 123', 'correo1@gmail.com', 'Cirug�a');
+INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (2, 'Laura', 'Mart�nez', '2345678', 'Calle 456', 'correo2@gmail.com', 'Dermatolog�a');
+INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (3, 'Carlos', 'Rodr�guez', '12345678', 'Calle 789', 'correo3@gmail.com', 'Oftalmolog�a');
 
-INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor) 
-VALUES (2, 'Collar', 'Collar ajustable de nylon', 7.50, 200, 54321);
+-------------------------------------------------------------------------------------------------------------------------------------
+-- [04] Values para la tabla de recepcionista --
+-------------------------------------------------------------------------------------------------------------------------------------
 
-INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor) 
-VALUES (3, 'Comida para perros', 'Comida premium', 29.99, 50, 67890);
+select * from recepcionista;
 
-INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor) 
-VALUES (4, 'Arena para gatos', 'Clumping cat litter', 15.75, 75, 24680);
+INSERT INTO Recepcionista (DNI_Recepcionista, Nombres, Apellidos, Telefono, Direccion, Correo) VALUES (1, 'Jose', 'Cardenas', '123-456-7890', '123 Main St', 'juanperez@email.com');
 
-INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor) 
-VALUES (5, 'Correa', 'Correa retraíble', 12.99, 120, 13579);
+-------------------------------------------------------------------------------------------------------------------------------------
+-- [05] Values para la tabla de Proveedor --
+-------------------------------------------------------------------------------------------------------------------------------------
 
-INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor) 
-VALUES (6, 'Comida para peces', 'Hojitas para peces tropicales', 5.99, 200, 98765);
+select * from proveedor;
+INSERT INTO Proveedor (ID_Proveedor, Nombre, Telefono, Correo, Direccion) VALUES (1, 'Proveedor1', '123-456-7890', 'Proveedor1@email.com', '123 Main St');
+INSERT INTO Proveedor (ID_Proveedor, Nombre, Telefono, Correo, Direccion) VALUES (2, 'Proveedor2', '234-567-8901', 'Proveedor2@email.com', '456 Elm St');
+INSERT INTO Proveedor (ID_Proveedor, Nombre, Telefono, Correo, Direccion) VALUES (3, 'Proveedor3', '345-678-9012', 'Proveedor3@email.com', '789 Oak St');
+INSERT INTO Proveedor (ID_Proveedor, Nombre, Telefono, Correo, Direccion) VALUES (4, 'Proveedor4', '456-789-0123', 'Proveedor4@email.com', '012 Pine St');
+INSERT INTO Proveedor (ID_Proveedor, Nombre, Telefono, Correo, Direccion) VALUES (5, 'Proveedor5', '567-890-1234', 'Proveedor5@email.com', '345 Cedar St');
+INSERT INTO Proveedor (ID_Proveedor, Nombre, Telefono, Correo, Direccion) VALUES (6, 'Proveedor6', '678-901-2345', 'Proveedor6@email.com', '678 Maple St');
+INSERT INTO Proveedor (ID_Proveedor, Nombre, Telefono, Correo, Direccion) VALUES (7, 'Proveedor7', '789-012-3456', 'Proveedor7@email.com', '901 Birch St');
+INSERT INTO Proveedor (ID_Proveedor, Nombre, Telefono, Correo, Direccion) VALUES (8, 'Proveedor8', '890-123-4567', 'Proveedor8@email.com', '234 Walnut St');
+INSERT INTO Proveedor (ID_Proveedor, Nombre, Telefono, Correo, Direccion) VALUES (9, 'Proveedor9', '901-234-5678', 'Proveedor9@email.com', '567 Ash St');
+INSERT INTO Proveedor (ID_Proveedor, Nombre, Telefono, Correo, Direccion) VALUES (10, 'Proveedor10', '012-345-6789', 'Proveedor10@email.com', '890 Pine St');
 
--- Values para la tabla de mascota 
-INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) 
-VALUES (1, 'Max', 'Labrador Retriever', '2019-05-01', 'Perro');
+-------------------------------------------------------------------------------------------------------------------------------------
+-- [06] Values para la tabla de Cita --
+-------------------------------------------------------------------------------------------------------------------------------------
 
-INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) 
-VALUES (2, 'Luna', 'Persian', '2020-02-14', 'Gato');
+select * from cita;
+INSERT INTO Cita (ID_Cita, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_Veterinario) VALUES (1, TO_DATE('2023-11-15','YYYY-MM-DD'), 'Consulta general', 1, 1, 1);
+INSERT INTO Cita (ID_Cita, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_Veterinario) VALUES (2, TO_DATE('2023-11-15','YYYY-MM-DD'), 'Vacunaci�n', 2, 2, 1);
+INSERT INTO Cita (ID_Cita, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_Veterinario) VALUES (3, TO_DATE('2023-11-15','YYYY-MM-DD'), 'Revisi�n dental', 3, 3, 2);
+INSERT INTO Cita (ID_Cita, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_Veterinario) VALUES (4, TO_DATE('2023-11-15','YYYY-MM-DD'), 'Desparasitaci�n', 4, 4, 2);
+INSERT INTO Cita (ID_Cita, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_Veterinario) VALUES (5, TO_DATE('2023-11-15','YYYY-MM-DD'), 'Cirug�a', 5, 8, 3);
+INSERT INTO Cita (ID_Cita, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_Veterinario) VALUES (6, TO_DATE('2023-11-15','YYYY-MM-DD'), 'Control de peso', 6, 10, 3);
+INSERT INTO Cita (ID_Cita, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_Veterinario) VALUES (7, TO_DATE('2023-11-15','YYYY-MM-DD'), 'Esterilizaci�n', 7, 7, 1);
+INSERT INTO Cita (ID_Cita, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_Veterinario) VALUES (8, TO_DATE('2023-11-15','YYYY-MM-DD'), 'Examen de sangre', 8, 9, 2);
+INSERT INTO Cita (ID_Cita, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_Veterinario) VALUES (9, TO_DATE('2023-11-15','YYYY-MM-DD'), 'Consulta dermatol�gica', 9, 5, 3);
+INSERT INTO Cita (ID_Cita, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_Veterinario) VALUES (10, TO_DATE('2023-11-15','YYYY-MM-DD'), 'Radiograf�a', 10, 6, 2);
 
-INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) 
-VALUES (3, 'Rocky', 'Bulldog', '2018-11-20', 'Perro');
+-------------------------------------------------------------------------------------------------------------------------------------
+-- [07] Values para la tabla de producto -- [1 VERSI�N]
+-------------------------------------------------------------------------------------------------------------------------------------
 
-INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) 
-VALUES (4, 'Simba', 'Siamese', '2019-07-10', 'Gato');
+select * from producto;
 
-INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) 
-VALUES (5, 'Buddy', 'Golden Retriever', '2020-01-05', 'Perro');
+-- VERSION 01 -- FRANK
 
-INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) 
-VALUES (6, 'Milo', 'Maine Coon', '2019-09-22', 'Gato');
+INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor, ID_Recepcionista) VALUES (1, 'Cama para perros', 'Una cama suave y c�moda para que tu perro descanse', 50, 10, 3, 1);
+INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor, ID_Recepcionista) VALUES (2, 'Pechera para perros', 'Una pechera ajustable y resistente para pasear a tu perro', 20, 15, 5, 1);
+INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor, ID_Recepcionista) VALUES (3, 'Pelota para perros', 'Una pelota de goma que rebota y hace ruido para divertir a tu perro', 5, 30, 7, 1);
+INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor, ID_Recepcionista) VALUES (4, 'Collar antipulgas', 'Un collar que protege a tu perro de las pulgas y garrapatas por 6 meses', 25, 20, 4, 1);
+INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor, ID_Recepcionista) VALUES (5, 'Shampoo para perros', 'Un shampoo que limpia y suaviza el pelo de tu perro', 15, 25, 6, 1);
+INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor, ID_Recepcionista) VALUES (6, 'Cepillo para perros', 'Un cepillo que desenreda y masajea el pelo de tu perro', 10, 18, 8, 1);
+INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor, ID_Recepcionista) VALUES (7, 'Comida para perros', 'Un alimento balanceado y nutritivo para tu perro', 40, 50, 9, 1);
+INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor, ID_Recepcionista) VALUES (8, 'Hueso para perros', 'Un hueso natural que fortalece los dientes de tu perro', 8, 35, 2, 1);
+INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor, ID_Recepcionista) VALUES (9, 'Juguete para gatos', 'Un juguete con plumas y cascabel que estimula el instinto de tu gato', 7, 28, 1, 1);
+INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor, ID_Recepcionista) VALUES (10, 'Arena para gatos', 'Una arena absorbente y desodorante para la bandeja de tu gato', 12, 40, 3, 1);
+INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor, ID_Recepcionista) VALUES (11, 'Rascador para gatos', 'Un rascador de sisal que evita que tu gato ara�e los muebles', 30, 12, 5, 1);
+INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor, ID_Recepcionista) VALUES (12, 'Comida para gatos', 'Un alimento h�medo y sabroso para tu gato', 20, 45, 4, 1);
+INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor, ID_Recepcionista) VALUES (13, 'Collar para gatos', 'Un collar con identificaci�n y campanilla para tu gato', 10, 22, 6, 1);
+INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor, ID_Recepcionista) VALUES (14, 'Shampoo para gatos', 'Un shampoo que elimina las pulgas y los malos olores de tu gato', 18, 20, 7, 1);
+INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor, ID_Recepcionista) VALUES (15, 'Cepillo para gatos', 'Un cepillo que quita el pelo muerto y da brillo al pelo de tu gato', 12, 15, 8, 1);
+INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor, ID_Recepcionista) VALUES (16, 'Correa para gatos', 'Una correa que te permite pasear a tu gato con seguridad', 15, 10, 9, 1);
+INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor, ID_Recepcionista) VALUES (17, 'Casa para gatos', 'Una casa acogedora y calentita para que tu gato duerma', 40, 8, 2, 1);
+INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor, ID_Recepcionista) VALUES (18, 'Comedero para gatos', 'Un comedero que dispensa la comida de tu gato autom�ticamente', 25, 12, 1, 1);
+INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor, ID_Recepcionista) VALUES (19, 'Bebedero para gatos', 'Un bebedero que mantiene el agua de tu gato fresca y limpia', 20, 14, 3, 1);
+INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor, ID_Recepcionista) VALUES (20, 'Hierba gatera', 'Una hierba que relaja y divierte a tu gato', 5, 30, 5, 1);
+
+-------------------------------------------------------------------------------------------------------------------------------------
+-- [08] Values para la tabla de transaccion -- [1 VERSI�N]
+-------------------------------------------------------------------------------------------------------------------------------------
+
+-- VERSION 01 -- FRANK
+
+select * from transaccion;
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+-- [09] Values para la tabla de instrumentomedico -- [1 VERSI�N]
+-------------------------------------------------------------------------------------------------------------------------------------
+
+select * from instrumentomedico;
+
+-- VERSION 01 -- FRANK
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+-- [10] Values para la tabla de historiaclinica -- [1 VERSI�N]
+-------------------------------------------------------------------------------------------------------------------------------------
+
+select * from historiaclinica;
+
+-- VERSION 01 -- FRANK
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+-- [10] SELECTS DE PRUEBA --
+-------------------------------------------------------------------------------------------------------------------------------------
+
+select * from mascota;
+select * from cliente;
+select * from veterinario;
+select * from recepcionista;
+select * from proveedor;
+select * from cita;
+select * from producto;
+select * from transaccion;
+select * from instrumentomedico;
+select * from proveedor;
+select * from historiaclinica;
+
