@@ -71,9 +71,9 @@ CREATE TABLE Producto (
 
 CREATE TABLE Transaccion (
   ID_Transaccion NUMBER PRIMARY KEY,
-  Fecha DATE,
-  Hora TIMESTAMP,
+  MomentoDia TIMESTAMP,
   Tipo VARCHAR2(255),
+  Monto NUMBER,
   ID_Cliente NUMBER,
   ID_Proveedor NUMBER,
   CONSTRAINT fk_ClienteTransaccion FOREIGN KEY (ID_Cliente) REFERENCES Cliente(DNI_Cliente),

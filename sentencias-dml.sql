@@ -2,7 +2,6 @@
 -- [01] Values para la tabla de mascota
 -------------------------------------------------------------------------------------------------------------------------------------
 
-select * from mascota;
 INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (1, 'Max', 'Labrador Retriever', TO_DATE('2019-05-01','YYYY-MM-DD'), 'Perro');
 INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (2, 'Buddy', 'Golden Retriever', TO_DATE('2018-10-15','YYYY-MM-DD'), 'Perro');
 INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES (3, 'Luna', 'Siamese', TO_DATE('2020-02-28','YYYY-MM-DD'), 'Gato');
@@ -80,7 +79,6 @@ INSERT INTO Mascota (ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES 
 -- [02] Values para la tabla de cliente --
 -------------------------------------------------------------------------------------------------------------------------------------
 
-select * from cliente;
 INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (71234567, 'Juan Pablo', 'Perez Rodriguez', '912345678', 'Calle 123, Lima', 'juan.perez@gmail.com', 1);
 INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (82345678, 'Ana Sofia', 'Gomez Lopez', '923456789', 'Av. Principal 456, Arequipa', 'ana.gomez@gmail.com', 2);
 INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES (93456789, 'Diego Alejandro', 'Rodriguez Chavez', '934567890', 'Jr. Independencia 789, Trujillo', 'diego.rodriguez@gmail.com', 3);
@@ -126,17 +124,13 @@ INSERT INTO Cliente (DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Corre
 -- [03] Values para la tabla de Veterinario
 -------------------------------------------------------------------------------------------------------------------------------------
 
-select * from veterinario;
-
 INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (1, 'Pedro', 'Garc�a', '3456789', 'Calle 123', 'correo1@gmail.com', 'Cirug�a');
 INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (2, 'Laura', 'Mart�nez', '2345678', 'Calle 456', 'correo2@gmail.com', 'Dermatolog�a');
 INSERT INTO Veterinario (DNI_Veterinario, Nombres, Apellidos, Telefono, Direccion, Correo, Especialidad) VALUES (3, 'Carlos', 'Rodr�guez', '12345678', 'Calle 789', 'correo3@gmail.com', 'Oftalmolog�a');
 
 -------------------------------------------------------------------------------------------------------------------------------------
--- [04] Values para la tabla de recepcionista --
+-- [04] Value para la tabla de recepcionista
 -------------------------------------------------------------------------------------------------------------------------------------
-
-select * from recepcionista;
 
 INSERT INTO Recepcionista (DNI_Recepcionista, Nombres, Apellidos, Telefono, Direccion, Correo) VALUES (1, 'Jose', 'Cardenas', '123-456-7890', '123 Main St', 'juanperez@email.com');
 
@@ -144,7 +138,6 @@ INSERT INTO Recepcionista (DNI_Recepcionista, Nombres, Apellidos, Telefono, Dire
 -- [05] Values para la tabla de Proveedor --
 -------------------------------------------------------------------------------------------------------------------------------------
 
-select * from proveedor;
 INSERT INTO Proveedor (ID_Proveedor, Nombre, Telefono, Correo, Direccion) VALUES (1, 'Proveedor1', '123-456-7890', 'Proveedor1@email.com', '123 Main St');
 INSERT INTO Proveedor (ID_Proveedor, Nombre, Telefono, Correo, Direccion) VALUES (2, 'Proveedor2', '234-567-8901', 'Proveedor2@email.com', '456 Elm St');
 INSERT INTO Proveedor (ID_Proveedor, Nombre, Telefono, Correo, Direccion) VALUES (3, 'Proveedor3', '345-678-9012', 'Proveedor3@email.com', '789 Oak St');
@@ -160,7 +153,6 @@ INSERT INTO Proveedor (ID_Proveedor, Nombre, Telefono, Correo, Direccion) VALUES
 -- [06] Values para la tabla de Cita --
 -------------------------------------------------------------------------------------------------------------------------------------
 
-select * from cita;
 INSERT INTO Cita (ID_Cita, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_Veterinario) VALUES (1, TO_DATE('2023-11-15','YYYY-MM-DD'), 'Consulta general', 1, 1, 1);
 INSERT INTO Cita (ID_Cita, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_Veterinario) VALUES (2, TO_DATE('2023-11-15','YYYY-MM-DD'), 'Vacunaci�n', 2, 2, 1);
 INSERT INTO Cita (ID_Cita, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_Veterinario) VALUES (3, TO_DATE('2023-11-15','YYYY-MM-DD'), 'Revisi�n dental', 3, 3, 2);
@@ -173,12 +165,8 @@ INSERT INTO Cita (ID_Cita, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_
 INSERT INTO Cita (ID_Cita, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_Veterinario) VALUES (10, TO_DATE('2023-11-15','YYYY-MM-DD'), 'Radiograf�a', 10, 6, 2);
 
 -------------------------------------------------------------------------------------------------------------------------------------
--- [07] Values para la tabla de producto -- [1 VERSI�N]
+-- [07] Values para la tabla de producto
 -------------------------------------------------------------------------------------------------------------------------------------
-
-select * from producto;
-
--- VERSION 01 -- FRANK
 
 INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor, ID_Recepcionista) VALUES (1, 'Cama para perros', 'Una cama suave y c�moda para que tu perro descanse', 50, 10, 3, 1);
 INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor, ID_Recepcionista) VALUES (2, 'Pechera para perros', 'Una pechera ajustable y resistente para pasear a tu perro', 20, 15, 5, 1);
@@ -202,34 +190,81 @@ INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, I
 INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, ID_Proveedor, ID_Recepcionista) VALUES (20, 'Hierba gatera', 'Una hierba que relaja y divierte a tu gato', 5, 30, 5, 1);
 
 -------------------------------------------------------------------------------------------------------------------------------------
--- [08] Values para la tabla de transaccion -- [1 VERSI�N]
+-- [08] Values para la tabla de transaccion
 -------------------------------------------------------------------------------------------------------------------------------------
 
 -- VERSION 01 -- FRANK
 
-select * from transaccion;
-
-
+INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (1, TO_TIMESTAMP('2023-03-28 13:45:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 75, 93456789, NULL);
+INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (2, TO_TIMESTAMP('2023-05-03 14:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 150, NULL, 7);
+INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (3, TO_TIMESTAMP('2023-04-26 16:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 40, 95678901, NULL);
+INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (4, TO_TIMESTAMP('2023-05-12 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 180, NULL, 4);
+INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (5, TO_TIMESTAMP('2023-02-20 11:15:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 90, 67890123, NULL);
+INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (6, TO_TIMESTAMP('2023-05-09 14:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 120, NULL, 9);
+INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (7, TO_TIMESTAMP('2023-04-05 16:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 60, 11223344, NULL);
+INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (8, TO_TIMESTAMP('2023-04-18 13:45:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 190, NULL, 2);
+INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (9, TO_TIMESTAMP('2023-01-17 14:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 100, 22334455, NULL);
+INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (10, TO_TIMESTAMP('2023-02-07 12:15:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 160, NULL, 6);
+INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (11, TO_TIMESTAMP('2023-05-14 09:45:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 80, 33445566, NULL);
+INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (12, TO_TIMESTAMP('2023-04-17 12:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 170, NULL, 8);
+INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (13, TO_TIMESTAMP('2023-04-13 11:15:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 50, 44556677, NULL);
+INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (14, TO_TIMESTAMP('2023-04-04 16:45:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 140, NULL, 3);
+INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (15, TO_TIMESTAMP('2023-05-19 15:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 110, 55667788, NULL);
+INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (16, TO_TIMESTAMP('2023-06-04 17:15:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 130, NULL, 5);
+INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (17, TO_TIMESTAMP('2023-02-14 10:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 70, 66778899, NULL);
+INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (18, TO_TIMESTAMP('2023-06-26 16:15:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 200, NULL, 1);
+INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (19, TO_TIMESTAMP('2023-05-31 13:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 55, 17181920, NULL);
+INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (20, TO_TIMESTAMP('2023-06-29 10:45:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 100, NULL, 10);
 
 -------------------------------------------------------------------------------------------------------------------------------------
--- [09] Values para la tabla de instrumentomedico -- [1 VERSI�N]
+-- [09] Values para la tabla de instrumentomedico
 -------------------------------------------------------------------------------------------------------------------------------------
 
-select * from instrumentomedico;
-
--- VERSION 01 -- FRANK
-
-
+INSERT INTO Instrumentomedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, ID_Proveedor) VALUES (1, 'Estetoscopio', 'Un instrumento que permite auscultar los sonidos del coraz�n y los pulmones de los animales', 150, 4);
+INSERT INTO Instrumentomedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, ID_Proveedor) VALUES (2, 'Term�metro', 'Un instrumento que mide la temperatura corporal de los animales', 20, 6);
+INSERT INTO Instrumentomedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, ID_Proveedor) VALUES (3, 'Jeringa', 'Un instrumento que sirve para inyectar medicamentos o extraer sangre de los animales', 5, 8);
+INSERT INTO Instrumentomedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, ID_Proveedor) VALUES (4, 'Bistur�', 'Un instrumento que tiene una hoja afilada y se usa para hacer incisiones en los tejidos de los animales', 30, 3);
+INSERT INTO Instrumentomedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, ID_Proveedor) VALUES (5, 'Pinza', 'Un instrumento que sirve para sujetar o extraer objetos peque�os de los animales', 15, 5);
+INSERT INTO Instrumentomedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, ID_Proveedor) VALUES (6, 'Tijera', 'Un instrumento que sirve para cortar el pelo, las u�as o los vendajes de los animales', 10, 7);
+INSERT INTO Instrumentomedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, ID_Proveedor) VALUES (7, 'Guantes', 'Un instrumento que sirve para proteger las manos del veterinario y evitar el contacto directo con los fluidos de los animales', 8, 9);
+INSERT INTO Instrumentomedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, ID_Proveedor) VALUES (8, 'Mascarilla', 'Un instrumento que sirve para proteger la boca y la nariz del veterinario y evitar la inhalaci�n de microorganismos de los animales', 5, 2);
+INSERT INTO Instrumentomedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, ID_Proveedor) VALUES (9, 'Laringoscopio', 'Un instrumento que sirve para examinar la laringe y las cuerdas vocales de los animales', 200, 4);
+INSERT INTO Instrumentomedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, ID_Proveedor) VALUES (10, 'Otoscopio', 'Un instrumento que sirve para examinar el o�do externo y medio de los animales', 150, 6);
+INSERT INTO Instrumentomedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, ID_Proveedor) VALUES (11, 'Oftalmoscopio', 'Un instrumento que sirve para examinar el ojo y el fondo de ojo de los animales', 180, 3);
+INSERT INTO Instrumentomedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, ID_Proveedor) VALUES (12, 'Electrocardi�grafo', 'Un instrumento que sirve para registrar la actividad el�ctrica del coraz�n de los animales', 500, 5);
+INSERT INTO Instrumentomedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, ID_Proveedor) VALUES (13, 'Ec�grafo', 'Un instrumento que sirve para obtener im�genes de los �rganos internos de los animales mediante ultrasonidos', 1000, 7);
+INSERT INTO Instrumentomedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, ID_Proveedor) VALUES (14, 'Radi�grafo', 'Un instrumento que sirve para obtener im�genes de los huesos y las articulaciones de los animales mediante rayos X', 1500, 9);
+INSERT INTO Instrumentomedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, ID_Proveedor) VALUES (15, 'Microscopio', 'Un instrumento que sirve para observar muestras biol�gicas de los animales con gran aumento', 300, 2);
+INSERT INTO Instrumentomedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, ID_Proveedor) VALUES (16, 'Centr�fuga', 'Un instrumento que sirve para separar los componentes de una muestra l�quida de los animales mediante la fuerza centr�fuga', 250, 4);
+INSERT INTO Instrumentomedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, ID_Proveedor) VALUES (17, 'Balanza', 'Un instrumento que sirve para medir el peso de los animales', 100, 6);
+INSERT INTO Instrumentomedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, ID_Proveedor) VALUES (18, 'Mesa de exploraci�n', 'Un instrumento que sirve para colocar a los animales en una posici�n adecuada para su examen o tratamiento', 400, 3);
+INSERT INTO Instrumentomedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, ID_Proveedor) VALUES (19, 'Mesa de cirug�a', 'Un instrumento que sirve para colocar a los animales en una posici�n adecuada para su intervenci�n quir�rgica', 600, 5);
+INSERT INTO Instrumentomedico (ID_Instrumento, Nombre, Descripcion, PrecioCompra, ID_Proveedor) VALUES (20, 'Autoclave', 'Un instrumento que sirve para esterilizar los instrumentos m�dicos mediante vapor a alta presi�n', 800, 7);
 
 -------------------------------------------------------------------------------------------------------------------------------------
--- [10] Values para la tabla de historiaclinica -- [1 VERSI�N]
+-- [10] Values para la tabla de historiaclinica
 -------------------------------------------------------------------------------------------------------------------------------------
 
-select * from historiaclinica;
-
--- VERSION 01 -- FRANK
-
-
+INSERT INTO Historiaclinica (ID_Historia, FechaRegistro, Diagnostico, Tratamiento, DNI_Cliente, ID_Mascota) VALUES (1, TO_DATE('2020-02-14', 'YYYY-MM-DD'), 'Fiebre y malestar general', 'Antibióticos y reposo', 71234567, 11);
+INSERT INTO Historiaclinica (ID_Historia, FechaRegistro, Diagnostico, Tratamiento, DNI_Cliente, ID_Mascota) VALUES (2, TO_DATE('2021-04-27', 'YYYY-MM-DD'), 'Problemas gastrointestinales', 'Cambio en la dieta y medicamentos', 82345678, 12);
+INSERT INTO Historiaclinica (ID_Historia, FechaRegistro, Diagnostico, Tratamiento, DNI_Cliente, ID_Mascota) VALUES (3, TO_DATE('2022-01-10', 'YYYY-MM-DD'), 'Dolor en las articulaciones', 'Antiinflamatorios y reposo', 93456789, 13);
+INSERT INTO Historiaclinica (ID_Historia, FechaRegistro, Diagnostico, Tratamiento, DNI_Cliente, ID_Mascota) VALUES (4, TO_DATE('2023-03-05', 'YYYY-MM-DD'), 'Infección en el oído', 'Gotas para los oídos y antibióticos', 84567890, 14);
+INSERT INTO Historiaclinica (ID_Historia, FechaRegistro, Diagnostico, Tratamiento, DNI_Cliente, ID_Mascota) VALUES (5, TO_DATE('2020-05-20', 'YYYY-MM-DD'), 'Problemas dentales', 'Extracción de dientes y cuidado dental', 95678901, 15);
+INSERT INTO Historiaclinica (ID_Historia, FechaRegistro, Diagnostico, Tratamiento, DNI_Cliente, ID_Mascota) VALUES (6, TO_DATE('2021-08-12', 'YYYY-MM-DD'), 'Herida en la pata', 'Limpieza y vendaje', 56789012, 16);
+INSERT INTO Historiaclinica (ID_Historia, FechaRegistro, Diagnostico, Tratamiento, DNI_Cliente, ID_Mascota) VALUES (7, TO_DATE('2022-02-28', 'YYYY-MM-DD'), 'Problemas respiratorios', 'Antibióticos y cuidado en casa', 67890123, 17);
+INSERT INTO Historiaclinica (ID_Historia, FechaRegistro, Diagnostico, Tratamiento, DNI_Cliente, ID_Mascota) VALUES (8, TO_DATE('2023-06-08', 'YYYY-MM-DD'), 'Alergias cutáneas', 'Medicamentos antialérgicos y baños especiales', 78901234, 18);
+INSERT INTO Historiaclinica (ID_Historia, FechaRegistro, Diagnostico, Tratamiento, DNI_Cliente, ID_Mascota) VALUES (9, TO_DATE('2020-11-15', 'YYYY-MM-DD'), 'Problemas oculares', 'Gotas para los ojos y revisión periódica', 89012345, 19);
+INSERT INTO Historiaclinica (ID_Historia, FechaRegistro, Diagnostico, Tratamiento, DNI_Cliente, ID_Mascota) VALUES (10, TO_DATE('2021-01-30', 'YYYY-MM-DD'), 'Fractura en una pata', 'Inmovilización y cirugía', 11223344, 20);
+INSERT INTO Historiaclinica (ID_Historia, FechaRegistro, Diagnostico, Tratamiento, DNI_Cliente, ID_Mascota) VALUES (11, TO_DATE('2022-03-22', 'YYYY-MM-DD'), 'Problemas gastrointestinales', 'Cambios en la dieta y medicamentos', 22334455, 21);
+INSERT INTO Historiaclinica (ID_Historia, FechaRegistro, Diagnostico, Tratamiento, DNI_Cliente, ID_Mascota) VALUES (12, TO_DATE('2023-05-05', 'YYYY-MM-DD'), 'Dolor en las articulaciones', 'Antiinflamatorios y reposo', 33445566, 22);
+INSERT INTO Historiaclinica (ID_Historia, FechaRegistro, Diagnostico, Tratamiento, DNI_Cliente, ID_Mascota) VALUES (13, TO_DATE('2020-02-18', 'YYYY-MM-DD'), 'Infección en el oído', 'Gotas para los oídos y antibióticos', 44556677, 23);
+INSERT INTO Historiaclinica (ID_Historia, FechaRegistro, Diagnostico, Tratamiento, DNI_Cliente, ID_Mascota) VALUES (14, TO_DATE('2021-04-03', 'YYYY-MM-DD'), 'Problemas dentales', 'Extracción de dientes y cuidado dental', 55667788, 24);
+INSERT INTO Historiaclinica (ID_Historia, FechaRegistro, Diagnostico, Tratamiento, DNI_Cliente, ID_Mascota) VALUES (15, TO_DATE('2022-06-17', 'YYYY-MM-DD'), 'Herida en la pata', 'Limpieza y vendaje', 66778899, 25);
+INSERT INTO Historiaclinica (ID_Historia, FechaRegistro, Diagnostico, Tratamiento, DNI_Cliente, ID_Mascota) VALUES (16, TO_DATE('2023-01-05', 'YYYY-MM-DD'), 'Problemas respiratorios', 'Antibióticos y cuidado en casa', 77889900, 26);
+INSERT INTO Historiaclinica (ID_Historia, FechaRegistro, Diagnostico, Tratamiento, DNI_Cliente, ID_Mascota) VALUES (17, TO_DATE('2020-09-23', 'YYYY-MM-DD'), 'Alergias cutáneas', 'Medicamentos antialérgicos y baños especiales', 88990011, 27);
+INSERT INTO Historiaclinica (ID_Historia, FechaRegistro, Diagnostico, Tratamiento, DNI_Cliente, ID_Mascota) VALUES (18, TO_DATE('2021-11-08', 'YYYY-MM-DD'), 'Problemas oculares', 'Gotas para los ojos y revisión periódica', 99001122, 28);
+INSERT INTO Historiaclinica (ID_Historia, FechaRegistro, Diagnostico, Tratamiento, DNI_Cliente, ID_Mascota) VALUES (19, TO_DATE('2022-02-19', 'YYYY-MM-DD'), 'Fractura en una pata', 'Inmovilización y cirugía', 10112233, 29);
+INSERT INTO Historiaclinica (ID_Historia, FechaRegistro, Diagnostico, Tratamiento, DNI_Cliente, ID_Mascota) VALUES (20, TO_DATE('2023-04-12', 'YYYY-MM-DD'), 'Problemas gastrointestinales', 'Cambios en la dieta y medicamentos', 12131415, 30);
 
 -------------------------------------------------------------------------------------------------------------------------------------
 -- [10] SELECTS DE PRUEBA --
