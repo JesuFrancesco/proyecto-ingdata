@@ -13,7 +13,6 @@ CREATE TABLE Cliente (
   Telefono VARCHAR2(20),
   Direccion VARCHAR2(255),
   Correo VARCHAR2(255),
-  Pago NUMBER,
   ID_Mascota NUMBER,
   CONSTRAINT fk_MascotaCliente FOREIGN KEY (ID_Mascota) REFERENCES Mascota(ID_Mascota)
 );
