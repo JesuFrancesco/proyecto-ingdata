@@ -270,15 +270,14 @@ INSERT INTO Historiaclinica (ID_Historia, FechaRegistro, Diagnostico, Tratamient
 -- [10] SELECTS DE PRUEBA --
 -------------------------------------------------------------------------------------------------------------------------------------
 
-select * from mascota;
 select * from cliente;
 select * from veterinario;
 select * from recepcionista;
-select * from proveedor;
+select * from mascota;
 select * from cita;
+select * from proveedor;
+select * from instrumentomedico;
 select * from producto;
 select * from transaccion;
-select * from instrumentomedico;
-select * from proveedor;
 select * from historiaclinica;
 
