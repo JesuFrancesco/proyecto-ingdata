@@ -84,7 +84,6 @@ CREATE TABLE InstrumentoMedico (
   Nombre VARCHAR2(255),
   Descripcion VARCHAR2(255),
   PrecioCompra NUMBER,
-  PrecioVenta NUMBER,
   ID_Proveedor NUMBER,
   CONSTRAINT fk_ProveedorIM FOREIGN KEY (ID_Proveedor) REFERENCES Proveedor(ID_Proveedor)
 );
