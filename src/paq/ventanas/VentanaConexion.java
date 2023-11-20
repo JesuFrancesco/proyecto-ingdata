@@ -6,6 +6,8 @@ import java.io.OutputStream;
 import java.sql.Connection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.JOptionPane;
 import paq.clases.ConexionSQL;
 
 /*
@@ -90,6 +92,11 @@ public class VentanaConexion extends javax.swing.JFrame {
         jPanel1.add(botonInicioSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 560, 135, 33));
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paq/img/gefi.jpg"))); // NOI18N
+        logo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoMouseClicked(evt);
+            }
+        });
         jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, -1, -1));
 
         campoUSER.setFont(new java.awt.Font("Cascadia Code", 0, 12)); // NOI18N
@@ -162,6 +169,10 @@ public class VentanaConexion extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void logoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoMouseClicked
+        // 
+    }//GEN-LAST:event_logoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
