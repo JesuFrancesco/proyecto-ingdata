@@ -9,7 +9,7 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import paq.clases.ConexionSQL;
-import paq.clases.SentenciaDML;
+import paq.clases.SentenciaPLSQL;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -22,12 +22,13 @@ import paq.clases.SentenciaDML;
  * @author SEBASTIAN
  */
 public class VentanaUI extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Ventana2
      */
     private Connection conexionSQL;
     private DefaultTableModel model;
+    private String query = null;
     
    public VentanaUI(Connection c) {
         this.conexionSQL = c;
@@ -51,25 +52,22 @@ public class VentanaUI extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaDatos = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         comboBoxTablas = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
+        botonActualizar = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        campoQuerySQL = new javax.swing.JTextArea();
+        botonQuery = new javax.swing.JButton();
+        botonAbrirReportes = new javax.swing.JButton();
+        botonAñadirCliente = new javax.swing.JButton();
+        botonAñadirTransaccion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("V");
 
-        jButton2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 24)); // NOI18N
-        jButton2.setText("Agregar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
+        tablaDatos.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tablaDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -80,28 +78,60 @@ public class VentanaUI extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaDatos);
 
-        jButton3.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 24)); // NOI18N
-        jButton3.setText("Salir");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("SAAS");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed", 2, 80)); // NOI18N
-        jLabel1.setText("SAAS");
-
-        comboBoxTablas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Cita", "Cliente", "Historia", "Instrumento", "Mascota", "Producto", "Proveedor", "Recepcionista", "Transacción", "Veterinario", " " }));
+        comboBoxTablas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Cita", "Cliente", "Historia", "Instrumento", "Mascota", "Producto", "Proveedor", "Recepcionista", "Transacción", "Veterinario" }));
         comboBoxTablas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxTablasActionPerformed(evt);
             }
         });
 
-        jButton1.setText("actualizarButton");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonActualizar.setText("actualizar tabla");
+        botonActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonActualizarActionPerformed(evt);
+            }
+        });
+
+        campoQuerySQL.setColumns(20);
+        campoQuerySQL.setFont(new java.awt.Font("Cascadia Code", 0, 14)); // NOI18N
+        campoQuerySQL.setRows(5);
+        jScrollPane2.setViewportView(campoQuerySQL);
+
+        botonQuery.setBackground(new java.awt.Color(255, 153, 51));
+        botonQuery.setText("Hacer query");
+        botonQuery.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonQueryActionPerformed(evt);
+            }
+        });
+
+        botonAbrirReportes.setText("Ver reportes");
+        botonAbrirReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAbrirReportesActionPerformed(evt);
+            }
+        });
+
+        botonAñadirCliente.setText("Agregar cliente y mascota");
+        botonAñadirCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAñadirClienteActionPerformed(evt);
+            }
+        });
+
+        botonAñadirTransaccion.setText("Reportar transaccion");
+        botonAñadirTransaccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAñadirTransaccionActionPerformed(evt);
             }
         });
 
@@ -109,45 +139,53 @@ public class VentanaUI extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(72, 72, 72)
-                .addComponent(comboBoxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(364, 364, 364))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(198, 198, 198)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comboBoxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
+                        .addComponent(botonActualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(64, 64, 64))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(230, 230, 230)
+                        .addComponent(botonAbrirReportes))
+                    .addComponent(jScrollPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 859, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(botonAñadirCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botonQuery, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botonAñadirTransaccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(61, 61, 61))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(botonAbrirReportes)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(comboBoxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))))
+                            .addComponent(botonActualizar))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(botonAñadirCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonAñadirTransaccion, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonQuery))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -155,52 +193,66 @@ public class VentanaUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(51, 51, 51))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-  
-       
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void botonQueryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonQueryActionPerformed
+        try {
+            setQuery(campoQuerySQL.getText());
+            //System.out.println(getQuery());
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jButton3ActionPerformed
+            // Definir modelo
+            DefaultTableModel modelo = new DefaultTableModel();
+            // Poner encabezado
+            String[] atributos = null;
+            Statement statement = conexionSQL.createStatement();
+            ResultSet resultSet = statement.executeQuery(getQuery()); // Llamada de query
+            
+            String[] x = getQuery().split(" ");
+            for (int i = 0; i < x.length; i++) if (x[i].equalsIgnoreCase("insert") || x[i].equalsIgnoreCase("alter") || x[i].equalsIgnoreCase("update")) return;
+            
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            int numColumnas = metaData.getColumnCount();
+            atributos = new String[numColumnas];
 
-    private void comboBoxTablasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxTablasActionPerformed
-//        // Lógica para la lista desplegable
-//        int selectedIndex = comboBoxTablas.getSelectedIndex();
-//
-//        // Limpiar la tabla antes de actualizar
-//        model.setRowCount(0);
-//
-//        switch (selectedIndex) {
-//            case 0:
-//                //model.setColumnIdentifiers(new Object[]{"ID_Cita", "Motivo"});
-//                // Lógica para agregar filas a la tabla de la tabla "Cita"
-//                break;
-//            case 1:
-//                //model.setColumnIdentifiers(new Object[]{"ID_Cliente", "Nombre"});
-//                // Lógica para agregar filas a la tabla de la tabla "Cliente"
-//                break;
-//            case 2:
-//                //model.setColumnIdentifiers(new Object[]{"ID_Mascota", "Raza"});
-//                // Lógica para agregar filas a la tabla de la tabla "Mascota"
-//                break;
-//            // Agrega más casos según sea necesario para otras tablas
-//        }
-    }//GEN-LAST:event_comboBoxTablasActionPerformed
+            for (int i = 1; i <= numColumnas; i++) {
+                atributos[i-1] = metaData.getColumnName(i);
+            }
+            modelo.setColumnIdentifiers(atributos);
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+            // Llenar tabla con información
+            while (resultSet.next()) {
+                String[] info = new String[atributos.length];
+                for (int i = 0; i < atributos.length; i++) {
+                    info[i] = resultSet.getString(atributos[i]);
+                }
+                modelo.addRow(info);
+            }
+
+            // Cerrar resultSet y sentencia
+            resultSet.close();
+            statement.close();
+
+            // Colocar modelo creado
+            tablaDatos.setModel(modelo);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Algo salio mal:\n" + ex.getMessage(), "Error en query", 2);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Algo salio mal:\n" + ex.getMessage() + "\n" + ex.getClass(), "Error en query", 2);
+        }
+    }//GEN-LAST:event_botonQueryActionPerformed
+
+    private void botonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarActionPerformed
         try {
             // Lógica para el botón "Actualizar"
             DefaultTableModel modelo = (DefaultTableModel) tablaDatos.getModel();
@@ -210,12 +262,47 @@ public class VentanaUI extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(VentanaUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonActualizarActionPerformed
+
+    private void comboBoxTablasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxTablasActionPerformed
+        
+        if(comboBoxTablas.getSelectedItem().toString().equalsIgnoreCase("-")) return;
+        try {
+            // Lógica para el botón "Actualizar"
+            DefaultTableModel modelo = (DefaultTableModel) tablaDatos.getModel();
+            modelo.setColumnCount(0); // Elimina todas las columnas existentes
+            modelo.setRowCount(0);    // Elimina todas las filas existentes
+            actualizarTabla();
+        } catch (SQLException ex) {
+            Logger.getLogger(VentanaUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_comboBoxTablasActionPerformed
+
+    private void botonAñadirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAñadirClienteActionPerformed
+        new VentanaCliente().setVisible(true);
+    }//GEN-LAST:event_botonAñadirClienteActionPerformed
+
+    private void botonAñadirTransaccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAñadirTransaccionActionPerformed
+        new VentanaTransaccion().setVisible(true);
+    }//GEN-LAST:event_botonAñadirTransaccionActionPerformed
+
+    private void botonAbrirReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAbrirReportesActionPerformed
+        try {
+            new VentanaReporte(conexionSQL).setVisible(true);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Algo salio mal:\n" + ex.getMessage());
+        }
+    }//GEN-LAST:event_botonAbrirReportesActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "SAAS: Sistema de AdministrAción Sofisticado");
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     
     private void actualizarTabla() throws SQLException {
         // Lógica para actualizar la tabla según la opción seleccionada
-        String tablaSeleccionada = (String) comboBoxTablas.getSelectedItem(); if (tablaSeleccionada.equalsIgnoreCase("-")) tablaSeleccionada = null;
+        String tablaSeleccionada = (String) comboBoxTablas.getSelectedItem();
         DefaultTableModel modelo = new DefaultTableModel();
 
         String[] atributos = null;
@@ -253,12 +340,16 @@ public class VentanaUI extends javax.swing.JFrame {
                 tablaSeleccionada = "Veterinario";
                 break;
             default:
+                tablaSeleccionada = null;
                 break;
+        } else {
+            JOptionPane.showMessageDialog(null, "ERROR EN TABLA: " + tablaSeleccionada);
+            return;
         }
         
         // Poner encabezado
         Statement statement = conexionSQL.createStatement();
-        ResultSet resultSet = statement.executeQuery(SentenciaDML.SELECT_TODO_TABLA + tablaSeleccionada);
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM " + tablaSeleccionada);
 //        ResultSet resultSet = statement.executeQuery("select * from Cita inner join Cliente on cita.id_cliente = cliente.dni_cliente where cliente.nombres like '%a'");
         
         ResultSetMetaData metaData = resultSet.getMetaData();
@@ -286,17 +377,31 @@ public class VentanaUI extends javax.swing.JFrame {
         // Colocar modelo creado
         tablaDatos.setModel(modelo);
     }
+
+    public String getQuery() {
+        return query;
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
+    }
+
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonAbrirReportes;
+    private javax.swing.JButton botonActualizar;
+    private javax.swing.JButton botonAñadirCliente;
+    private javax.swing.JButton botonAñadirTransaccion;
+    private javax.swing.JButton botonQuery;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JTextArea campoQuerySQL;
     private javax.swing.JComboBox comboBoxTablas;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tablaDatos;
     // End of variables declaration//GEN-END:variables
 }

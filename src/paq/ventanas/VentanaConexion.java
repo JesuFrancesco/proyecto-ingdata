@@ -72,12 +72,13 @@ public class VentanaConexion extends javax.swing.JFrame {
         passLabel.setText("Password");
         jPanel1.add(passLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 480, -1, -1));
 
+        campoIP.setFont(new java.awt.Font("Cascadia Code", 0, 12)); // NOI18N
         campoIP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoIPActionPerformed(evt);
             }
         });
-        jPanel1.add(campoIP, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 397, 145, -1));
+        jPanel1.add(campoIP, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 145, -1));
 
         botonInicioSesion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 24)); // NOI18N
         botonInicioSesion.setText("Log in");
@@ -91,6 +92,7 @@ public class VentanaConexion extends javax.swing.JFrame {
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paq/img/gefi.jpg"))); // NOI18N
         jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, -1, -1));
 
+        campoUSER.setFont(new java.awt.Font("Cascadia Code", 0, 12)); // NOI18N
         campoUSER.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoUSERActionPerformed(evt);
@@ -98,6 +100,7 @@ public class VentanaConexion extends javax.swing.JFrame {
         });
         jPanel1.add(campoUSER, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 442, 145, -1));
 
+        campoPASS.setFont(new java.awt.Font("Cascadia Code", 0, 12)); // NOI18N
         campoPASS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoPASSActionPerformed(evt);
@@ -135,7 +138,7 @@ public class VentanaConexion extends javax.swing.JFrame {
         try {
             Connection c = ConexionSQL.conectar(campoIP.getText(), campoUSER.getText(), campoPASS.getText());
             if (c != null) {
-                this.setVisible(false);
+                dispose();
                 new VentanaUI(c).setVisible(true);
             }
         } catch (Exception ex) {
@@ -160,41 +163,6 @@ public class VentanaConexion extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_botonSalirActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaConexion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaConexion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaConexion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaConexion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaConexion().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bgImgLabel;
