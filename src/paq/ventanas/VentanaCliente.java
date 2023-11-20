@@ -140,15 +140,15 @@ public class VentanaCliente extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("FECNACIMIENTO");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 580, -1, -1));
+        jLabel13.setText("FECNACIMIENTO\n(DD/MM/AA)");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 560, -1, 30));
 
         jLabel14.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("ESPECIE");
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 650, -1, -1));
         getContentPane().add(campoEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 650, 200, -1));
-        getContentPane().add(campoFechaMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 580, 200, -1));
+        getContentPane().add(campoFechaMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 590, 200, 30));
         getContentPane().add(campoRaza, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 510, 200, -1));
         getContentPane().add(campoNombreMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 200, -1));
         getContentPane().add(campoID_Mascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 200, -1));
@@ -186,20 +186,23 @@ public class VentanaCliente extends javax.swing.JFrame {
 
     private void botonInsertClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInsertClienteActionPerformed
     try {
+        String query = "INSERT INTO MASCOTA(ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES("+ campoID_Mascota.getText() +", '"+ campoNombreMa.getText() +"', '"+ campoRaza.getText() + "', to_date('"+campoFechaMascota.getText()+"', 'DD/MM/RR')"+", '" + campoEspecie.getText() + "')";
+        String query2 = "INSERT INTO CLIENTE(DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES("+ campoDNI.getText() +", '"+ campoNombresCl.getText() +"', '"+ campoApellidosCl.getText() + "', '" + campoTelefono.getText() + "', '" + campoDireccion.getText() + "', '"+ campoCorreo.getText() + "', " + campoID_Mascota.getText() + ")";
+        String queries[] = {query, query2};
+        for (String queryString : queries) {
             Statement statement = conexionSQL.createStatement();
-            // Ver reduccion de campoID
-            String query = "INSERT INTO MASCOTA(ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES("+ campoID_Mascota.getText() +", '"+ campoNombreMa.getText() +"', '"+ campoRaza.getText() + "', '" + campoFechaMascota.getText() + "', '" + campoEspecie.getText() + "');"
-                    + "INSERT INTO CLIENTE(DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES("+ campoDNI.getText() +", '"+ campoNombresCl.getText() +"', '"+ campoApellidosCl.getText() + "', '" + campoTelefono.getText() + "', '" + campoDireccion.getText() + "', '"+ campoCorreo.getText() + "', " + campoID_Mascota.getText() + ");";
             
-            ResultSet resultSet = statement.executeQuery(query); 
+//            System.out.println(queryString);
+            ResultSet resultSet = statement.executeQuery(queryString); 
 
             // Cerrar resultSet y sentencia
-            resultSet.close();
+            resultSet.close(); // resultSet2.close();
             statement.close();
+        }
+            
+            JOptionPane.showMessageDialog(null, "Cliente y mascota registrados.", "INSERT REALIZADO CON EXITO", 1);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Algo salio mal:\n" + ex.getMessage(), "Error en query", 2);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Algo salio mal:\n" + ex.getMessage() + "\n" + ex.getClass(), "Error en query", 2);
         }
     }//GEN-LAST:event_botonInsertClienteActionPerformed
 

@@ -219,7 +219,7 @@ public class VentanaUI extends javax.swing.JFrame {
             ResultSet resultSet = statement.executeQuery(getQuery()); // Llamada de query
             
             String[] x = getQuery().split(" ");
-            for (int i = 0; i < x.length; i++) if (x[i].equalsIgnoreCase("insert") || x[i].equalsIgnoreCase("alter") || x[i].equalsIgnoreCase("update")) return;
+            for (int i = 0; i < x.length; i++) if (x[i].equalsIgnoreCase("insert") || x[i].equalsIgnoreCase("alter") || x[i].equalsIgnoreCase("update") || x[i].equalsIgnoreCase("delete")) return;
             
             ResultSetMetaData metaData = resultSet.getMetaData();
             int numColumnas = metaData.getColumnCount();
