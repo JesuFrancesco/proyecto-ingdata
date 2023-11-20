@@ -5,6 +5,9 @@
  */
 package paq.ventanas;
 
+import java.sql.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jesu
@@ -14,7 +17,9 @@ public class VentanaCliente extends javax.swing.JFrame {
     /**
      * Creates new form frameCliente
      */
-    public VentanaCliente() {
+    private Connection conexionSQL;
+    public VentanaCliente(Connection c) {
+        this.conexionSQL = c;
         initComponents();
     }
 
@@ -31,28 +36,29 @@ public class VentanaCliente extends javax.swing.JFrame {
         imgCliente = new javax.swing.JLabel();
         imgMascota = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        campoDNI = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        campoNombresCl = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        campoApellidosCl = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        campoTelefono = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        campoDireccion = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        campoCorreo = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
+        campoEspecie = new javax.swing.JTextField();
+        campoFechaMascota = new javax.swing.JTextField();
+        campoRaza = new javax.swing.JTextField();
+        campoNombreMa = new javax.swing.JTextField();
+        campoID_Mascota = new javax.swing.JTextField();
         botonSalir = new javax.swing.JButton();
+        botonInsertCliente = new javax.swing.JButton();
         bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -66,12 +72,12 @@ public class VentanaCliente extends javax.swing.JFrame {
         getContentPane().add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 110));
 
         imgCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imgCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paq/img/usuario2.png"))); // NOI18N
+        imgCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paq/img/Cliente.png"))); // NOI18N
         imgCliente.setText(" ");
         getContentPane().add(imgCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 200, 180));
 
         imgMascota.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imgMascota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paq/img/Mascota (1).png"))); // NOI18N
+        imgMascota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paq/img/Mascota.png"))); // NOI18N
         imgMascota.setText(" ");
         getContentPane().add(imgMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, 210, 210));
 
@@ -80,42 +86,42 @@ public class VentanaCliente extends javax.swing.JFrame {
         jLabel2.setText("DNI_CLIENTE");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, -1));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        campoDNI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                campoDNIActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, 170, -1));
+        getContentPane().add(campoDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, 170, -1));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("NOMBRES");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 420, -1, -1));
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 420, 170, 20));
+        getContentPane().add(campoNombresCl, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 420, 170, 20));
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("APELLIDOS");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 470, -1, -1));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 480, 170, -1));
+        getContentPane().add(campoApellidosCl, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 480, 170, -1));
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("TELEFONO");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 530, -1, -1));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 530, 170, -1));
+        getContentPane().add(campoTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 530, 170, -1));
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("DIRECCION");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 590, -1, -1));
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 590, 170, -1));
+        getContentPane().add(campoDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 590, 170, -1));
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("CORREO");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 650, -1, -1));
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 650, 170, -1));
+        getContentPane().add(campoCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 650, 170, -1));
 
         jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -141,11 +147,11 @@ public class VentanaCliente extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("ESPECIE");
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 650, -1, -1));
-        getContentPane().add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 650, 200, -1));
-        getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 580, 200, -1));
-        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 510, 200, -1));
-        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 200, -1));
-        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 200, -1));
+        getContentPane().add(campoEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 650, 200, -1));
+        getContentPane().add(campoFechaMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 580, 200, -1));
+        getContentPane().add(campoRaza, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 510, 200, -1));
+        getContentPane().add(campoNombreMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 200, -1));
+        getContentPane().add(campoID_Mascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 200, -1));
 
         botonSalir.setText("Salir");
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -155,24 +161,63 @@ public class VentanaCliente extends javax.swing.JFrame {
         });
         getContentPane().add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 730, -1, -1));
 
+        botonInsertCliente.setText("Crear cliente");
+        botonInsertCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonInsertClienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonInsertCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 710, 130, 40));
+
         bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paq/img/f2.jpg"))); // NOI18N
         getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 800));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void campoDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoDNIActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_campoDNIActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_botonSalirActionPerformed
 
+    private void botonInsertClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInsertClienteActionPerformed
+    try {
+            Statement statement = conexionSQL.createStatement();
+            // Ver reduccion de campoID
+            String query = "INSERT INTO MASCOTA(ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES("+ campoID_Mascota.getText() +", '"+ campoNombreMa.getText() +"', '"+ campoRaza.getText() + "', '" + campoFechaMascota.getText() + "', '" + campoEspecie.getText() + "');"
+                    + "INSERT INTO CLIENTE(DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES("+ campoDNI.getText() +", '"+ campoNombresCl.getText() +"', '"+ campoApellidosCl.getText() + "', '" + campoTelefono.getText() + "', '" + campoDireccion.getText() + "', '"+ campoCorreo.getText() + "', " + campoID_Mascota.getText() + ");";
+            
+            ResultSet resultSet = statement.executeQuery(query); 
+
+            // Cerrar resultSet y sentencia
+            resultSet.close();
+            statement.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Algo salio mal:\n" + ex.getMessage(), "Error en query", 2);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Algo salio mal:\n" + ex.getMessage() + "\n" + ex.getClass(), "Error en query", 2);
+        }
+    }//GEN-LAST:event_botonInsertClienteActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg;
+    private javax.swing.JButton botonInsertCliente;
     private javax.swing.JButton botonSalir;
+    private javax.swing.JTextField campoApellidosCl;
+    private javax.swing.JTextField campoCorreo;
+    private javax.swing.JTextField campoDNI;
+    private javax.swing.JTextField campoDireccion;
+    private javax.swing.JTextField campoEspecie;
+    private javax.swing.JTextField campoFechaMascota;
+    private javax.swing.JTextField campoID_Mascota;
+    private javax.swing.JTextField campoNombreMa;
+    private javax.swing.JTextField campoNombresCl;
+    private javax.swing.JTextField campoRaza;
+    private javax.swing.JTextField campoTelefono;
     private javax.swing.JLabel imgCliente;
     private javax.swing.JLabel imgMascota;
     private javax.swing.JLabel jLabel10;
@@ -186,17 +231,6 @@ public class VentanaCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

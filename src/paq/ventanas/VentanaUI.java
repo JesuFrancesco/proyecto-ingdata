@@ -279,11 +279,11 @@ public class VentanaUI extends javax.swing.JFrame {
     }//GEN-LAST:event_comboBoxTablasActionPerformed
 
     private void botonAñadirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAñadirClienteActionPerformed
-        new VentanaCliente().setVisible(true);
+        new VentanaCliente(conexionSQL).setVisible(true);
     }//GEN-LAST:event_botonAñadirClienteActionPerformed
 
     private void botonAñadirTransaccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAñadirTransaccionActionPerformed
-        new VentanaTransaccion().setVisible(true);
+        new VentanaTransaccion(conexionSQL).setVisible(true);
     }//GEN-LAST:event_botonAñadirTransaccionActionPerformed
 
     private void botonAbrirReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAbrirReportesActionPerformed

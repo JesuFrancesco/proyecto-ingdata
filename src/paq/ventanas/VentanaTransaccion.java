@@ -5,6 +5,10 @@
  */
 package paq.ventanas;
 
+import java.sql.*;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Jesu
@@ -14,7 +18,9 @@ public class VentanaTransaccion extends javax.swing.JFrame {
     /**
      * Creates new form frameTransaccion
      */
-    public VentanaTransaccion() {
+    private Connection conexionSQL;
+    public VentanaTransaccion(Connection c) {
+        this.conexionSQL = c;
         initComponents();
     }
 
@@ -41,7 +47,8 @@ public class VentanaTransaccion extends javax.swing.JFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        botonSalir = new javax.swing.JButton();
+        botonInsertTrans = new javax.swing.JButton();
         bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -114,13 +121,21 @@ public class VentanaTransaccion extends javax.swing.JFrame {
         jLabel6.setText("REPORTE");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 110));
 
-        jButton1.setText("Salir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonSalir.setText("Salir");
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 570, 90, -1));
+        jPanel1.add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 570, 90, -1));
+
+        botonInsertTrans.setText("Registrar transaccion");
+        botonInsertTrans.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonInsertTransActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonInsertTrans, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 550, 150, 40));
 
         bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paq/img/f3.jpg"))); // NOI18N
         jPanel1.add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, -490, 790, 1200));
@@ -146,14 +161,19 @@ public class VentanaTransaccion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void botonInsertTransActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInsertTransActionPerformed
+        
+    }//GEN-LAST:event_botonInsertTransActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton botonInsertTrans;
+    private javax.swing.JButton botonSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
