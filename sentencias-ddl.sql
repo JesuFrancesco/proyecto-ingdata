@@ -68,17 +68,6 @@ CREATE TABLE Producto (
   CONSTRAINT fk_RecepcionistaProducto FOREIGN KEY (ID_Recepcionista) REFERENCES Recepcionista(DNI_Recepcionista)
 );
 
--- CREATE TABLE Transaccion (
---   ID_Transaccion NUMBER PRIMARY KEY,
---   MomentoDia TIMESTAMP,
---   Tipo VARCHAR2(255),
---   Monto NUMBER,
---   ID_Cliente NUMBER,
---   ID_Proveedor NUMBER,
---   CONSTRAINT fk_ClienteTransaccion FOREIGN KEY (ID_Cliente) REFERENCES Cliente(DNI_Cliente),
---   CONSTRAINT fk_ProveedorTransaccion FOREIGN KEY (ID_Proveedor) REFERENCES Proveedor(ID_Proveedor)
--- );
-
 CREATE TABLE TransaccionCliente (
   ID_Transaccion NUMBER PRIMARY KEY,
   MomentoDia TIMESTAMP,

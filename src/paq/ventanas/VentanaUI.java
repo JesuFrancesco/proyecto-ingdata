@@ -87,7 +87,7 @@ public class VentanaUI extends javax.swing.JFrame {
             }
         });
 
-        comboBoxTablas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Cita", "Cliente", "Historia", "Instrumento", "Mascota", "Producto", "Proveedor", "Recepcionista", "Transacción", "Veterinario" }));
+        comboBoxTablas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Cita", "Cliente", "Historia", "Instrumento", "Mascota", "Producto", "Proveedor", "Recepcionista", "Trans_Cliente", "Trans_Proveedor", "Veterinario" }));
         comboBoxTablas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxTablasActionPerformed(evt);
@@ -333,8 +333,11 @@ public class VentanaUI extends javax.swing.JFrame {
             case "Recepcionista":
                 tablaSeleccionada = "Recepcionista";
                 break;
-            case "Transacción":
-                tablaSeleccionada = "Transaccion";
+            case "Trans_Cliente":
+                tablaSeleccionada = "TransaccionCliente";
+                break;
+            case "Trans_Proveedor":
+                tablaSeleccionada = "TransaccionProveedor";
                 break;
             case "Veterinario":
                 tablaSeleccionada = "Veterinario";
