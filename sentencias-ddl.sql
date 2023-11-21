@@ -68,15 +68,37 @@ CREATE TABLE Producto (
   CONSTRAINT fk_RecepcionistaProducto FOREIGN KEY (ID_Recepcionista) REFERENCES Recepcionista(DNI_Recepcionista)
 );
 
-CREATE TABLE Transaccion (
+-- CREATE TABLE Transaccion (
+--   ID_Transaccion NUMBER PRIMARY KEY,
+--   MomentoDia TIMESTAMP,
+--   Tipo VARCHAR2(255),
+--   Monto NUMBER,
+--   ID_Cliente NUMBER,
+--   ID_Proveedor NUMBER,
+--   CONSTRAINT fk_ClienteTransaccion FOREIGN KEY (ID_Cliente) REFERENCES Cliente(DNI_Cliente),
+--   CONSTRAINT fk_ProveedorTransaccion FOREIGN KEY (ID_Proveedor) REFERENCES Proveedor(ID_Proveedor)
+-- );
+
+CREATE TABLE TransaccionCliente (
   ID_Transaccion NUMBER PRIMARY KEY,
   MomentoDia TIMESTAMP,
   Tipo VARCHAR2(255),
   Monto NUMBER,
   ID_Cliente NUMBER,
+  ID_Producto NUMBER,
+  CONSTRAINT fk_ClienteTransaccion FOREIGN KEY (ID_cliente) REFERENCES Cliente(DNI_Cliente),
+  CONSTRAINT fk_ProductoTransaccion FOREIGN KEY (ID_producto) REFERENCES Producto(ID_Producto)
+);
+
+CREATE TABLE TransaccionProveedor (
+  ID_Transaccion NUMBER PRIMARY KEY,
+  MomentoDia TIMESTAMP,
+  Tipo VARCHAR2(255),
+  Monto NUMBER,
   ID_Proveedor NUMBER,
-  CONSTRAINT fk_ClienteTransaccion FOREIGN KEY (ID_Cliente) REFERENCES Cliente(DNI_Cliente),
-  CONSTRAINT fk_ProveedorTransaccion FOREIGN KEY (ID_Proveedor) REFERENCES Proveedor(ID_Proveedor)
+  ID_Instrumento NUMBER,
+  CONSTRAINT fk_ProveedorTransaccion FOREIGN KEY (ID_proveedor) REFERENCES Proveedor(ID_Proveedor),
+  CONSTRAINT fk_InstrumentoTransaccion FOREIGN KEY (ID_instrumento) REFERENCES InstrumentoMedico(ID_Instrumento)
 );
 
 CREATE TABLE InstrumentoMedico (

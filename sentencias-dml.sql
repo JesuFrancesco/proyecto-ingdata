@@ -195,26 +195,29 @@ INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, I
 
 -- VERSION 01 -- FRANK
 
-INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (1, TO_TIMESTAMP('2023-03-28 13:45:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 75, 93456789, NULL);
-INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (2, TO_TIMESTAMP('2023-05-03 14:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 150, NULL, 7);
-INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (3, TO_TIMESTAMP('2023-04-26 16:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 40, 95678901, NULL);
-INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (4, TO_TIMESTAMP('2023-05-12 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 180, NULL, 4);
-INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (5, TO_TIMESTAMP('2023-02-20 11:15:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 90, 67890123, NULL);
-INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (6, TO_TIMESTAMP('2023-05-09 14:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 120, NULL, 9);
-INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (7, TO_TIMESTAMP('2023-04-05 16:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 60, 11223344, NULL);
-INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (8, TO_TIMESTAMP('2023-04-18 13:45:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 190, NULL, 2);
-INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (9, TO_TIMESTAMP('2023-01-17 14:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 100, 22334455, NULL);
-INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (10, TO_TIMESTAMP('2023-02-07 12:15:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 160, NULL, 6);
-INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (11, TO_TIMESTAMP('2023-05-14 09:45:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 80, 33445566, NULL);
-INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (12, TO_TIMESTAMP('2023-04-17 12:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 170, NULL, 8);
-INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (13, TO_TIMESTAMP('2023-04-13 11:15:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 50, 44556677, NULL);
-INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (14, TO_TIMESTAMP('2023-04-04 16:45:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 140, NULL, 3);
-INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (15, TO_TIMESTAMP('2023-05-19 15:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 110, 55667788, NULL);
-INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (16, TO_TIMESTAMP('2023-06-04 17:15:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 130, NULL, 5);
-INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (17, TO_TIMESTAMP('2023-02-14 10:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 70, 66778899, NULL);
-INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (18, TO_TIMESTAMP('2023-06-26 16:15:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 200, NULL, 1);
-INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (19, TO_TIMESTAMP('2023-05-31 13:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 55, 17181920, NULL);
-INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (20, TO_TIMESTAMP('2023-06-29 10:45:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 100, NULL, 10);
+-- INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (1, TO_TIMESTAMP('2023-03-28 13:45:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 75, 93456789, NULL);
+-- INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (2, TO_TIMESTAMP('2023-05-03 14:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 150, NULL, 7);
+-- INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (3, TO_TIMESTAMP('2023-04-26 16:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 40, 95678901, NULL);
+-- INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (4, TO_TIMESTAMP('2023-05-12 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 180, NULL, 4);
+-- INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (5, TO_TIMESTAMP('2023-02-20 11:15:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 90, 67890123, NULL);
+-- INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (6, TO_TIMESTAMP('2023-05-09 14:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 120, NULL, 9);
+-- INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (7, TO_TIMESTAMP('2023-04-05 16:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 60, 11223344, NULL);
+-- INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (8, TO_TIMESTAMP('2023-04-18 13:45:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 190, NULL, 2);
+-- INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (9, TO_TIMESTAMP('2023-01-17 14:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 100, 22334455, NULL);
+-- INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (10, TO_TIMESTAMP('2023-02-07 12:15:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 160, NULL, 6);
+-- INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (11, TO_TIMESTAMP('2023-05-14 09:45:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 80, 33445566, NULL);
+-- INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (12, TO_TIMESTAMP('2023-04-17 12:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 170, NULL, 8);
+-- INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (13, TO_TIMESTAMP('2023-04-13 11:15:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 50, 44556677, NULL);
+-- INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (14, TO_TIMESTAMP('2023-04-04 16:45:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 140, NULL, 3);
+-- INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (15, TO_TIMESTAMP('2023-05-19 15:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 110, 55667788, NULL);
+-- INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (16, TO_TIMESTAMP('2023-06-04 17:15:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 130, NULL, 5);
+-- INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (17, TO_TIMESTAMP('2023-02-14 10:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 70, 66778899, NULL);
+-- INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (18, TO_TIMESTAMP('2023-06-26 16:15:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 200, NULL, 1);
+-- INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (19, TO_TIMESTAMP('2023-05-31 13:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Venta', 55, 17181920, NULL);
+-- INSERT INTO Transaccion (ID_Transaccion, MomentoDia, Tipo, Monto, ID_Cliente, ID_Proveedor) VALUES (20, TO_TIMESTAMP('2023-06-29 10:45:00', 'YYYY-MM-DD HH24:MI:SS'), 'Compra', 100, NULL, 10);
+
+
+
 
 -------------------------------------------------------------------------------------------------------------------------------------
 -- [09] Values para la tabla de instrumentomedico
