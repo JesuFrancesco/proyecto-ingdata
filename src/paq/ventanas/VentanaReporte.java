@@ -5,7 +5,10 @@
  */
 package paq.ventanas;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import oracle.jdbc.OracleCallableStatement;
 import paq.clases.SentenciaPLSQL;
 
 /**
@@ -44,8 +47,8 @@ public class VentanaReporte extends javax.swing.JFrame {
         botonEficVet = new javax.swing.JButton();
         botonGastoInstrumento = new javax.swing.JButton();
         botonFrCitas = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        botonIngresoTotal = new javax.swing.JButton();
+        botonGanancias = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         botonSalir = new javax.swing.JButton();
@@ -87,13 +90,23 @@ public class VentanaReporte extends javax.swing.JFrame {
         });
         jPanel1.add(botonFrCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 210, -1));
 
-        jButton4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jButton4.setText("Calcular ingresos totales");
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 240, -1, -1));
+        botonIngresoTotal.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        botonIngresoTotal.setText("Calcular ingresos totales");
+        botonIngresoTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonIngresoTotalActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonIngresoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 240, -1, -1));
 
-        jButton5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jButton5.setText("jButton5");
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 370, 180, -1));
+        botonGanancias.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        botonGanancias.setText("Calcular ganancias");
+        botonGanancias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGananciasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonGanancias, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 370, 180, -1));
 
         jButton6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         jButton6.setText("jButton6");
@@ -179,6 +192,53 @@ public class VentanaReporte extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonGastoInstrumentoActionPerformed
 
+    private void botonIngresoTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresoTotalActionPerformed
+        try {
+            // Activar DBMS
+            activarLlamada.executeUpdate();
+
+            CallableStatement llamada = conexionSQL.prepareCall(SentenciaPLSQL.CALC_4);
+            llamada.registerOutParameter(1, Types.DOUBLE); // Retorna double
+            llamada.execute();
+            double returnValue = llamada.getDouble(1);
+            campoResultado.setText("Total de ingresos: " + returnValue);
+            
+            // Desactivar DBMS
+            desactivarLlamada.executeUpdate();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Algo salio mal:\n" + ex.getMessage());
+        }
+    }//GEN-LAST:event_botonIngresoTotalActionPerformed
+
+    private void botonGananciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGananciasActionPerformed
+
+        try (CallableStatement call = conexionSQL.prepareCall(
+            "begin " +
+            "  dbms_output.enable(1000000);" +
+            SentenciaPLSQL.CALC_5 +
+            "  dbms_output.get_lines(?, ?);" +
+            "  dbms_output.disable();" +
+            "end;")) {
+            call.registerOutParameter(1, Types.NUMERIC);
+            call.registerOutParameter(2, Types.ARRAY, "DBMSOUTPUT_LINESARRAY");
+            call.setInt(3, 1000);
+            call.execute();
+
+            // Retrieve and print the DBMS output
+            Array array = call.getArray(2);
+            Object[] output = (Object[]) array.getArray();
+            String resultadoDBMS = "";
+            for (Object line : output) {
+                resultadoDBMS += line + "\n";
+            }
+            
+            campoResultado.setText(resultadoDBMS);
+            call.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Algo salio mal:\n" + ex.getMessage() + "\n" + ex.getSQLState());
+        }
+    }//GEN-LAST:event_botonGananciasActionPerformed
+
     private void mostrarResultado(String sentencia) throws SQLException{
         // Preparar la llamada de la sentencia enviada
         CallableStatement userCall = conexionSQL.prepareCall(sentencia);
@@ -209,11 +269,11 @@ public class VentanaReporte extends javax.swing.JFrame {
     private javax.swing.JLabel bg;
     private javax.swing.JButton botonEficVet;
     private javax.swing.JButton botonFrCitas;
+    private javax.swing.JButton botonGanancias;
     private javax.swing.JButton botonGastoInstrumento;
+    private javax.swing.JButton botonIngresoTotal;
     private javax.swing.JButton botonSalir;
     private javax.swing.JTextArea campoResultado;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

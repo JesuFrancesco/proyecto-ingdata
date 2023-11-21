@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION CalcIngresosTotales RETURN NUMBER IS
+CREATE OR REPLACE FUNCTION calcIngresosTotales RETURN NUMBER IS
     total_ingresos NUMBER := 0;
 BEGIN
     -- Calcular los ingresos totales por ventas
@@ -52,3 +52,12 @@ BEGIN
 
   RETURN total_ingresos;
 END calcPosiblesGanancias;
+
+-- /
+
+-- DECLARE
+--      pivote NUMBER;
+-- BEGIN
+--      pivote := calcPosiblesGanancias;
+-- END;
+-- /
