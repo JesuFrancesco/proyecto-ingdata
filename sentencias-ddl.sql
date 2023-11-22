@@ -71,7 +71,6 @@ CREATE TABLE Producto (
 CREATE TABLE TransaccionCliente (
   ID_Transaccion NUMBER PRIMARY KEY,
   MomentoDia TIMESTAMP,
-  Tipo VARCHAR2(255),
   Monto NUMBER,
   ID_Cliente NUMBER,
   ID_Producto NUMBER,
@@ -82,7 +81,6 @@ CREATE TABLE TransaccionCliente (
 CREATE TABLE TransaccionProveedor (
   ID_Transaccion NUMBER PRIMARY KEY,
   MomentoDia TIMESTAMP,
-  Tipo VARCHAR2(255),
   Monto NUMBER,
   ID_Proveedor NUMBER,
   ID_Instrumento NUMBER,

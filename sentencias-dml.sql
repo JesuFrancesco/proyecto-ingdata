@@ -192,11 +192,51 @@ INSERT INTO Producto (ID_Producto, Nombre, Descripcion, Precio, CantidadStock, I
 -------------------------------------------------------------------------------------------------------------------------------------
 -- [08.1] Values para la tabla de transaccion (CLIENTE)
 -------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO TransaccionCliente (ID_Transaccion, MomentoDia, Monto, ID_Cliente, ID_Producto) VALUES (1, TO_DATE('2023-11-21 16:15:00', 'YYYY-MM-DD HH24:MI:SS'), 100.00, 78901234, 1);
+INSERT INTO TransaccionCliente (ID_Transaccion, MomentoDia, Monto, ID_Cliente, ID_Producto) VALUES (2, TO_DATE('2023-11-21 16:16:00', 'YYYY-MM-DD HH24:MI:SS'), 200.00, 89012345, 2);
+INSERT INTO TransaccionCliente (ID_Transaccion, MomentoDia, Monto, ID_Cliente, ID_Producto) VALUES (3, TO_DATE('2023-11-21 16:17:00', 'YYYY-MM-DD HH24:MI:SS'), 300.00, 11223344, 3);
+INSERT INTO TransaccionCliente (ID_Transaccion, MomentoDia, Monto, ID_Cliente, ID_Producto) VALUES (4, TO_DATE('2023-11-21 16:18:00', 'YYYY-MM-DD HH24:MI:SS'), 400.00, 22334455, 4);
+INSERT INTO TransaccionCliente (ID_Transaccion, MomentoDia, Monto, ID_Cliente, ID_Producto) VALUES (5, TO_DATE('2023-11-21 16:19:00', 'YYYY-MM-DD HH24:MI:SS'), 500.00, 33445566, 5);
+INSERT INTO TransaccionCliente (ID_Transaccion, MomentoDia, Monto, ID_Cliente, ID_Producto) VALUES (6, TO_DATE('2023-11-21 16:20:00', 'YYYY-MM-DD HH24:MI:SS'), 600.00, 44556677, 6);
+INSERT INTO TransaccionCliente (ID_Transaccion, MomentoDia, Monto, ID_Cliente, ID_Producto) VALUES (7, TO_DATE('2023-11-21 16:21:00', 'YYYY-MM-DD HH24:MI:SS'), 700.00, 55667788, 7);
+INSERT INTO TransaccionCliente (ID_Transaccion, MomentoDia, Monto, ID_Cliente, ID_Producto) VALUES (8, TO_DATE('2023-11-21 16:22:00', 'YYYY-MM-DD HH24:MI:SS'), 800.00, 66778899, 8);
+INSERT INTO TransaccionCliente (ID_Transaccion, MomentoDia, Monto, ID_Cliente, ID_Producto) VALUES (9, TO_DATE('2023-11-21 16:23:00', 'YYYY-MM-DD HH24:MI:SS'), 900.00, 77889900, 9);
+INSERT INTO TransaccionCliente (ID_Transaccion, MomentoDia, Monto, ID_Cliente, ID_Producto) VALUES (10, TO_DATE('2023-11-21 16:24:00', 'YYYY-MM-DD HH24:MI:SS'), 1000.00, 88990011, 10);
+INSERT INTO TransaccionCliente (ID_Transaccion, MomentoDia, Monto, ID_Cliente, ID_Producto) VALUES (11, TO_DATE('2023-11-21 16:25:00', 'YYYY-MM-DD HH24:MI:SS'), 1100.00, 99001122, 11);
+INSERT INTO TransaccionCliente (ID_Transaccion, MomentoDia, Monto, ID_Cliente, ID_Producto) VALUES (12, TO_DATE('2023-11-21 16:26:00', 'YYYY-MM-DD HH24:MI:SS'), 1200.00, 10112233, 12);
+INSERT INTO TransaccionCliente (ID_Transaccion, MomentoDia, Monto, ID_Cliente, ID_Producto) VALUES (13, TO_DATE('2023-11-21 16:27:00', 'YYYY-MM-DD HH24:MI:SS'), 1300.00, 12131415, 13);
+INSERT INTO TransaccionCliente (ID_Transaccion, MomentoDia, Monto, ID_Cliente, ID_Producto) VALUES (14, TO_DATE('2023-11-21 16:28:00', 'YYYY-MM-DD HH24:MI:SS'), 1400.00, 13141516, 14);
+INSERT INTO TransaccionCliente (ID_Transaccion, MomentoDia, Monto, ID_Cliente, ID_Producto) VALUES (15, TO_DATE('2023-11-21 16:29:00', 'YYYY-MM-DD HH24:MI:SS'), 1500.00, 14151617, 15);
+INSERT INTO TransaccionCliente (ID_Transaccion, MomentoDia, Monto, ID_Cliente, ID_Producto) VALUES (16, TO_DATE('2023-11-21 16:30:00', 'YYYY-MM-DD HH24:MI:SS'), 1600.00, 15161718, 16);
+INSERT INTO TransaccionCliente (ID_Transaccion, MomentoDia, Monto, ID_Cliente, ID_Producto) VALUES (17, TO_DATE('2023-11-21 16:31:00', 'YYYY-MM-DD HH24:MI:SS'), 1700.00, 16171819, 17);
+INSERT INTO TransaccionCliente (ID_Transaccion, MomentoDia, Monto, ID_Cliente, ID_Producto) VALUES (18, TO_DATE('2023-11-21 16:32:00', 'YYYY-MM-DD HH24:MI:SS'), 1800.00, 17181920, 18);
+INSERT INTO TransaccionCliente (ID_Transaccion, MomentoDia, Monto, ID_Cliente, ID_Producto) VALUES (19, TO_DATE('2023-11-21 16:33:00', 'YYYY-MM-DD HH24:MI:SS'), 1900.00, 18192021, 19);
+INSERT INTO TransaccionCliente (ID_Transaccion, MomentoDia, Monto, ID_Cliente, ID_Producto) VALUES (20, TO_DATE('2023-11-21 16:34:00', 'YYYY-MM-DD HH24:MI:SS'), 2000.00, 19202122, 20);
 
 
 -------------------------------------------------------------------------------------------------------------------------------------
 -- [08.2] Values para la tabla de transaccion (PROVEEDOR)
 -------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO TransaccionProveedor (ID_Transaccion, MomentoDia, Monto, ID_Proveedor, ID_Instrumento) VALUES (1, TO_DATE('2023-11-21 16:15:00', 'YYYY-MM-DD HH24:MI:SS'), 100.00, 1, 1);
+INSERT INTO TransaccionProveedor (ID_Transaccion, MomentoDia, Monto, ID_Proveedor, ID_Instrumento) VALUES (2, TO_DATE('2023-11-21 16:16:00', 'YYYY-MM-DD HH24:MI:SS'), 200.00, 2, 2);
+INSERT INTO TransaccionProveedor (ID_Transaccion, MomentoDia, Monto, ID_Proveedor, ID_Instrumento) VALUES (3, TO_DATE('2023-11-21 16:17:00', 'YYYY-MM-DD HH24:MI:SS'), 300.00, 3, 3);
+INSERT INTO TransaccionProveedor (ID_Transaccion, MomentoDia, Monto, ID_Proveedor, ID_Instrumento) VALUES (4, TO_DATE('2023-11-21 16:18:00', 'YYYY-MM-DD HH24:MI:SS'), 400.00, 4, 4);
+INSERT INTO TransaccionProveedor (ID_Transaccion, MomentoDia, Monto, ID_Proveedor, ID_Instrumento) VALUES (5, TO_DATE('2023-11-21 16:19:00', 'YYYY-MM-DD HH24:MI:SS'), 500.00, 5, 5);
+INSERT INTO TransaccionProveedor (ID_Transaccion, MomentoDia, Monto, ID_Proveedor, ID_Instrumento) VALUES (6, TO_DATE('2023-11-21 16:20:00', 'YYYY-MM-DD HH24:MI:SS'), 600.00, 6, 6);
+INSERT INTO TransaccionProveedor (ID_Transaccion, MomentoDia, Monto, ID_Proveedor, ID_Instrumento) VALUES (7, TO_DATE('2023-11-21 16:21:00', 'YYYY-MM-DD HH24:MI:SS'), 700.00, 7, 7);
+INSERT INTO TransaccionProveedor (ID_Transaccion, MomentoDia, Monto, ID_Proveedor, ID_Instrumento) VALUES (8, TO_DATE('2023-11-21 16:22:00', 'YYYY-MM-DD HH24:MI:SS'), 800.00, 8, 8);
+INSERT INTO TransaccionProveedor (ID_Transaccion, MomentoDia, Monto, ID_Proveedor, ID_Instrumento) VALUES (9, TO_DATE('2023-11-21 16:23:00', 'YYYY-MM-DD HH24:MI:SS'), 900.00, 9, 9);
+INSERT INTO TransaccionProveedor (ID_Transaccion, MomentoDia, Monto, ID_Proveedor, ID_Instrumento) VALUES (10, TO_DATE('2023-11-21 16:24:00', 'YYYY-MM-DD HH24:MI:SS'), 1000.00, 10, 10);
+INSERT INTO TransaccionProveedor (ID_Transaccion, MomentoDia, Monto, ID_Proveedor, ID_Instrumento) VALUES (11, TO_DATE('2023-11-21 16:25:00', 'YYYY-MM-DD HH24:MI:SS'), 1100.00, 11, 11);
+INSERT INTO TransaccionProveedor (ID_Transaccion, MomentoDia, Monto, ID_Proveedor, ID_Instrumento) VALUES (12, TO_DATE('2023-11-21 16:26:00', 'YYYY-MM-DD HH24:MI:SS'), 1200.00, 12, 12);
+INSERT INTO TransaccionProveedor (ID_Transaccion, MomentoDia, Monto, ID_Proveedor, ID_Instrumento) VALUES (13, TO_DATE('2023-11-21 16:27:00', 'YYYY-MM-DD HH24:MI:SS'), 1300.00, 13, 13);
+INSERT INTO TransaccionProveedor (ID_Transaccion, MomentoDia, Monto, ID_Proveedor, ID_Instrumento) VALUES (14, TO_DATE('2023-11-21 16:28:00', 'YYYY-MM-DD HH24:MI:SS'), 1400.00, 14, 14);
+INSERT INTO TransaccionProveedor (ID_Transaccion, MomentoDia, Monto, ID_Proveedor, ID_Instrumento) VALUES (15, TO_DATE('2023-11-21 16:29:00', 'YYYY-MM-DD HH24:MI:SS'), 1500.00, 15, 15);
+INSERT INTO TransaccionProveedor (ID_Transaccion, MomentoDia, Monto, ID_Proveedor, ID_Instrumento) VALUES (16, TO_DATE('2023-11-21 16:30:00', 'YYYY-MM-DD HH24:MI:SS'), 1600.00, 16, 16);
+INSERT INTO TransaccionProveedor (ID_Transaccion, MomentoDia, Monto, ID_Proveedor, ID_Instrumento) VALUES (17, TO_DATE('2023-11-21 16:31:00', 'YYYY-MM-DD HH24:MI:SS'), 1700.00, 17, 17);
+INSERT INTO TransaccionProveedor (ID_Transaccion, MomentoDia, Monto, ID_Proveedor, ID_Instrumento) VALUES (18, TO_DATE('2023-11-21 16:32:00', 'YYYY-MM-DD HH24:MI:SS'), 1800.00, 18, 18);
+INSERT INTO TransaccionProveedor (ID_Transaccion, MomentoDia, Monto, ID_Proveedor, ID_Instrumento) VALUES (19, TO_DATE('2023-11-21 16:33:00', 'YYYY-MM-DD HH24:MI:SS'), 1900.00, 19, 19);
+INSERT INTO TransaccionProveedor (ID_Transaccion, MomentoDia, Monto, ID_Proveedor, ID_Instrumento) VALUES (20, TO_DATE('2023-11-21 16:34:00', 'YYYY-MM-DD HH24:MI:SS'), 2000.00, 20, 20);
 
 
 
