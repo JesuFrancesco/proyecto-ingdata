@@ -98,7 +98,7 @@ public class VentanaCliente extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Nombres");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, -1, 20));
-        getContentPane().add(campoNombresCl, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 170, 20));
+        getContentPane().add(campoNombresCl, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 170, -1));
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));

@@ -3,13 +3,9 @@ package paq.ventanas;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import paq.clases.ConexionSQL;
-import paq.clases.SentenciaPLSQL;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -26,17 +22,13 @@ public class VentanaUI extends javax.swing.JFrame {
     /**
      * Creates new form Ventana2
      */
-    private Connection conexionSQL;
-    private DefaultTableModel model;
+    private final Connection conexionSQL;
     private String query = null;
     
    public VentanaUI(Connection c) {
         this.conexionSQL = c;
         initComponents();
         this.setLocationRelativeTo(null);
-
-        // Configuración de columnas al inicio
-        model = new DefaultTableModel();
    }
     
 
