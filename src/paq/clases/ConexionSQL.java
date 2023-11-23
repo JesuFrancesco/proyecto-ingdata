@@ -29,10 +29,10 @@ public class ConexionSQL {
             
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Driver OracleJDBC no encontrado.", "ERROR OJDBC", 0);
-            e.printStackTrace(); return null;
+            return null;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Servidor SQL no encontrado.", "ERROR OJDBC", 0);
-            e.printStackTrace(); return null;
+            JOptionPane.showMessageDialog(null, "No se ha podido conectar al servidor SQL.\n" + e.getLocalizedMessage(), "ERROR OJDBC", 0);
+            return null;
         }
     }
 }

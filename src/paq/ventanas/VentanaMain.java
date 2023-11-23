@@ -1,11 +1,16 @@
 package paq.ventanas;
 
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,7 +22,7 @@ import java.util.logging.Logger;
  *
  * @author SEBASTIAN
  */
-public class VentanaUI extends javax.swing.JFrame {
+public class VentanaMain extends javax.swing.JFrame {
     
     /**
      * Creates new form Ventana2
@@ -25,10 +30,11 @@ public class VentanaUI extends javax.swing.JFrame {
     private final Connection conexionSQL;
     private String query = null;
     
-   public VentanaUI(Connection c) {
+   public VentanaMain(Connection c) {
         this.conexionSQL = c;
         initComponents();
-        this.setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
+        tablaDatos.setDefaultEditor(Object.class, null);
    }
     
 
@@ -55,6 +61,7 @@ public class VentanaUI extends javax.swing.JFrame {
         botonAbrirReportes = new javax.swing.JButton();
         botonAñadirCliente = new javax.swing.JButton();
         botonAñadirTransaccion = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("V");
@@ -72,7 +79,7 @@ public class VentanaUI extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("SAAS");
+        jLabel1.setText("UL-VET-TECH");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
@@ -127,29 +134,45 @@ public class VentanaUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setText("Panel de sentencias SQL*");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(comboBoxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(botonActualizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(230, 230, 230)
-                        .addComponent(botonAbrirReportes))
-                    .addComponent(jScrollPane1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 859, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botonAñadirCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonQuery, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonAñadirTransaccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(72, 72, 72)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(comboBoxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(46, 46, 46)
+                                .addComponent(botonActualizar)
+                                .addGap(102, 102, 102)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(67, 67, 67)
+                                .addComponent(botonAbrirReportes))
+                            .addComponent(jScrollPane1)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 859, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(botonAñadirCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(botonQuery, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(botonAñadirTransaccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addGap(61, 61, 61))
         );
         jPanel1Layout.setVerticalGroup(
@@ -167,17 +190,19 @@ public class VentanaUI extends javax.swing.JFrame {
                             .addComponent(comboBoxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonActualizar))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(botonAñadirCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonAñadirTransaccion, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonAñadirTransaccion, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(botonQuery))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -252,7 +277,7 @@ public class VentanaUI extends javax.swing.JFrame {
             modelo.setRowCount(0);    // Elimina todas las filas existentes
             actualizarTabla();
         } catch (SQLException ex) {
-            Logger.getLogger(VentanaUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VentanaMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_botonActualizarActionPerformed
 
@@ -266,7 +291,7 @@ public class VentanaUI extends javax.swing.JFrame {
             modelo.setRowCount(0);    // Elimina todas las filas existentes
             actualizarTabla();
         } catch (SQLException ex) {
-            Logger.getLogger(VentanaUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VentanaMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_comboBoxTablasActionPerformed
 
@@ -287,9 +312,34 @@ public class VentanaUI extends javax.swing.JFrame {
     }//GEN-LAST:event_botonAbrirReportesActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "SAAS: Sistema de AdministrAción Sofisticado");
+        
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        String htmlContent = "<html><body style=\"font-family:Times New Roman; font-size:16pt;\">" +
+                "Ejemplos de Sentencias SQL en Oracle XE:<br/>" +
+                "<a href=\"https://pentestmonkey.net/cheat-sheet/sql-injection/oracle-sql-injection-cheat-sheet\">Página con cheatsheet de PentestMonkey</a>" +
+                "</body></html>";
+
+        JEditorPane editorPane = new JEditorPane("text/html", htmlContent);
+        editorPane.setEditable(false);
+        editorPane.setBackground(editorPane.getBackground());
+
+        HyperlinkListener listener = (HyperlinkEvent e) -> {
+            if (e.getEventType().equals(HyperlinkEvent.EventType.ACTIVATED)) {
+                try {
+                    Desktop.getDesktop().browse(e.getURL().toURI());
+                } catch (URISyntaxException ex) {
+                    Logger.getLogger(VentanaMain.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(VentanaMain.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+        editorPane.addHyperlinkListener(listener);
+
+        JOptionPane.showMessageDialog(null, editorPane);
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     
     private void actualizarTabla() throws SQLException {
@@ -381,9 +431,6 @@ public class VentanaUI extends javax.swing.JFrame {
         this.query = query;
     }
 
-    
-    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAbrirReportes;
     private javax.swing.JButton botonActualizar;
@@ -394,6 +441,7 @@ public class VentanaUI extends javax.swing.JFrame {
     private javax.swing.JTextArea campoQuerySQL;
     private javax.swing.JComboBox comboBoxTablas;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

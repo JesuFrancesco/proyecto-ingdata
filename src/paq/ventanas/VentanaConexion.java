@@ -1,13 +1,8 @@
 package paq.ventanas;
 
-
-import java.io.IOException;
-import java.io.OutputStream;
 import java.sql.Connection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.Icon;
-import javax.swing.JOptionPane;
 import paq.clases.ConexionSQL;
 
 /*
@@ -27,7 +22,7 @@ public class VentanaConexion extends javax.swing.JFrame {
      */
     public VentanaConexion() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -145,7 +140,7 @@ public class VentanaConexion extends javax.swing.JFrame {
             Connection c = ConexionSQL.conectar(campoIP.getText(), campoUSER.getText(), campoPASS.getText());
             if (c != null) {
                 dispose();
-                new VentanaUI(c).setVisible(true);
+                new VentanaMain(c).setVisible(true);
             }
         } catch (Exception ex) {
             Logger.getLogger(VentanaConexion.class.getName()).log(Level.SEVERE, null, ex);
@@ -166,7 +161,7 @@ public class VentanaConexion extends javax.swing.JFrame {
     }//GEN-LAST:event_botonSalirActionPerformed
 
     private void logoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoMouseClicked
-        // 
+        //
     }//GEN-LAST:event_logoMouseClicked
 
 

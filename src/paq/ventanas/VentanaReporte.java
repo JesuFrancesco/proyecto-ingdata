@@ -5,10 +5,7 @@
  */
 package paq.ventanas;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import oracle.jdbc.OracleCallableStatement;
 import paq.clases.SentenciaPLSQL;
 
 /**
@@ -31,6 +28,7 @@ public class VentanaReporte extends javax.swing.JFrame {
         this.desactivarLlamada = conexionSQL.prepareCall("begin dbms_output.disable(); end;"); 
         
         initComponents();
+        setLocationRelativeTo(null);
         campoResultado.setEditable(false);
     }
 
@@ -109,7 +107,7 @@ public class VentanaReporte extends javax.swing.JFrame {
         jPanel1.add(botonGanancias, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 370, 180, -1));
 
         jButton6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jButton6.setText("jButton6");
+        jButton6.setText("funcion3");
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 500, 180, -1));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));

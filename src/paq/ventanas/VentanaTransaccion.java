@@ -6,11 +6,9 @@
 package paq.ventanas;
 
 import java.sql.*;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,10 +19,11 @@ public class VentanaTransaccion extends javax.swing.JFrame {
     /**
      * Creates new form frameTransaccion
      */
-    private Connection conexionSQL;
+    private final Connection conexionSQL;
     public VentanaTransaccion(Connection c) {
         this.conexionSQL = c;
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -158,24 +157,24 @@ public class VentanaTransaccion extends javax.swing.JFrame {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yy hh:mm:ss a");
         String momentoDia = ahora.format(formato);
         JOptionPane.showMessageDialog(null, momentoDia);
-//        try {
-//            String queryCliente = "INSERT INTO TRANSACCIONCLIENTE(ID_transaccion, momentodia, id_cliente, id_producto) VALUES("+ campoID_Mascota.getText() +", '"+ campoNombreMa.getText() +"', '"+ campoRaza.getText() + "', to_date('"+campoFechaMascota.getText()+"', 'DD/MM/RR')"+", '" + campoEspecie.getText() + "')";            
-//            String queryProveedor = "INSERT INTO TRANSACCIONPROVEEDOR(ID_transaccion, momentodia, id_cliente, id_producto) VALUES("+ campoID_Mascota.getText() +", '"+ campoNombreMa.getText() +"', '"+ campoRaza.getText() + "', to_date('"+campoFechaMascota.getText()+"', 'DD/MM/RR')"+", '" + campoEspecie.getText() + "')";            
-//            
-//            Statement statement = conexionSQL.createStatement();
-//
-////          System.out.println(queryString);
-//            ResultSet resultSet = statement.executeQuery((botonCliente_r.isSelected())? queryCliente: queryProveedor); 
-//
-//            // Cerrar resultSet y sentencia
-//            resultSet.close();
-//            statement.close();
-//            
-//
-//            JOptionPane.showMessageDialog(null, "Transaccion de " + ((botonCliente_r.isSelected())? "cliente":"proveedor") +" realizada.", "INSERT REALIZADO CON EXITO", 1);
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, "Algo salio mal:\n" + ex.getMessage(), "Error en query", 2);
-//        }
+        try {
+            String queryCliente = "INSERT INTO TRANSACCIONCLIENTE(ID_transaccion, momentodia, id_cliente, id_producto) VALUES("+ campoID_Mascota.getText() +", '"+ campoNombreMa.getText() +"', '"+ campoRaza.getText() + "', to_date('"+campoFechaMascota.getText()+"', 'DD/MM/RR')"+", '" + campoEspecie.getText() + "')";            
+            String queryProveedor = "INSERT INTO TRANSACCIONPROVEEDOR(ID_transaccion, momentodia, id_cliente, id_producto) VALUES("+ campoID_Mascota.getText() +", '"+ campoNombreMa.getText() +"', '"+ campoRaza.getText() + "', to_date('"+campoFechaMascota.getText()+"', 'DD/MM/RR')"+", '" + campoEspecie.getText() + "')";            
+            
+            Statement statement = conexionSQL.createStatement();
+
+//          System.out.println(queryString);
+            ResultSet resultSet = statement.executeQuery((botonCliente_r.isSelected())? queryCliente: queryProveedor); 
+
+            // Cerrar resultSet y sentencia
+            resultSet.close();
+            statement.close();
+            
+
+            JOptionPane.showMessageDialog(null, "Transaccion de " + ((botonCliente_r.isSelected())? "cliente":"proveedor") +" realizada.", "INSERT REALIZADO CON EXITO", 1);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Algo salio mal:\n" + ex.getMessage(), "Error en query", 2);
+        }
     }//GEN-LAST:event_botonInsertTransActionPerformed
 
 
