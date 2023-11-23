@@ -48,8 +48,9 @@ public class VentanaConexion extends javax.swing.JFrame {
         botonInicioSesion = new javax.swing.JButton();
         logo = new javax.swing.JLabel();
         campoUSER = new javax.swing.JTextField();
-        campoPASS = new javax.swing.JTextField();
         botonSalir = new javax.swing.JButton();
+        campoPASS = new javax.swing.JPasswordField();
+        campoGIF = new javax.swing.JLabel();
         bgImgLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,9 +58,9 @@ public class VentanaConexion extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        title.setFont(new java.awt.Font("Comic Sans MS", 0, 80)); // NOI18N
+        title.setFont(new java.awt.Font("Comic Sans MS", 1, 72)); // NOI18N
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title.setText("SAAS");
+        title.setText("UL-VET-TECH");
         jPanel1.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -7, 600, 140));
 
         ipLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
@@ -80,7 +81,7 @@ public class VentanaConexion extends javax.swing.JFrame {
                 campoIPActionPerformed(evt);
             }
         });
-        jPanel1.add(campoIP, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 145, -1));
+        jPanel1.add(campoIP, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 150, -1));
 
         botonInicioSesion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 24)); // NOI18N
         botonInicioSesion.setText("Log in");
@@ -89,9 +90,9 @@ public class VentanaConexion extends javax.swing.JFrame {
                 botonInicioSesionActionPerformed(evt);
             }
         });
-        jPanel1.add(botonInicioSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 560, 135, 33));
+        jPanel1.add(botonInicioSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 560, 135, 33));
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paq/img/gefi.jpg"))); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paq/img/logovet.jpg"))); // NOI18N
         logo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 logoMouseClicked(evt);
@@ -105,15 +106,7 @@ public class VentanaConexion extends javax.swing.JFrame {
                 campoUSERActionPerformed(evt);
             }
         });
-        jPanel1.add(campoUSER, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 442, 145, -1));
-
-        campoPASS.setFont(new java.awt.Font("Cascadia Code", 0, 12)); // NOI18N
-        campoPASS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoPASSActionPerformed(evt);
-            }
-        });
-        jPanel1.add(campoPASS, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 487, 145, -1));
+        jPanel1.add(campoUSER, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 442, 150, -1));
 
         botonSalir.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 24)); // NOI18N
         botonSalir.setText("Salir");
@@ -122,7 +115,13 @@ public class VentanaConexion extends javax.swing.JFrame {
                 botonSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 560, 135, 33));
+        jPanel1.add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 560, 150, 33));
+        jPanel1.add(campoPASS, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, 150, -1));
+
+        campoGIF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        campoGIF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paq/img/ulimalogo.gif"))); // NOI18N
+        campoGIF.setText(" ");
+        jPanel1.add(campoGIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 590, 90, 90));
 
         bgImgLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paq/img/bg.jpg"))); // NOI18N
         jPanel1.add(bgImgLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 690));
@@ -161,10 +160,6 @@ public class VentanaConexion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_campoUSERActionPerformed
 
-    private void campoPASSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPASSActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoPASSActionPerformed
-
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         // TODO add your handling code here:
         System.exit(0);
@@ -179,8 +174,9 @@ public class VentanaConexion extends javax.swing.JFrame {
     private javax.swing.JLabel bgImgLabel;
     private javax.swing.JButton botonInicioSesion;
     private javax.swing.JButton botonSalir;
+    private javax.swing.JLabel campoGIF;
     private javax.swing.JTextField campoIP;
-    private javax.swing.JTextField campoPASS;
+    private javax.swing.JPasswordField campoPASS;
     private javax.swing.JTextField campoUSER;
     private javax.swing.JLabel ipLabel;
     private javax.swing.JPanel jPanel1;

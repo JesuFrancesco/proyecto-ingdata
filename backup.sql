@@ -1,5 +1,5 @@
 --------------------------------------------------------
--- Archivo creado  - martes-noviembre-21-2023   
+-- Archivo creado  - miércoles-noviembre-22-2023   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Table CITA
@@ -537,8 +537,7 @@ BEGIN
     -- Calcular los ingresos totales por ventas
     SELECT COALESCE(SUM(Monto), 0)
     INTO total_ingresos
-    FROM Transaccion
-    WHERE Tipo = 'Venta';
+    FROM TransaccionCliente;
 
     -- Devolver el total de ingresos por ventas
     RETURN total_ingresos;
@@ -575,7 +574,7 @@ BEGIN
     v_cantidad_stock := product.CantidadStock;
     v_ganancias := product.Ganancias;
 
-    -- Mostrar la informaci?n utilizando DBMS_OUTPUT
+    -- Mostrar la información utilizando DBMS_OUTPUT
     DBMS_OUTPUT.PUT_LINE('Producto: ' || v_producto_nombre || ', Stock: ' || v_cantidad_stock || ', Posibles Ganancias: ' || v_ganancias);
   END LOOP;
 

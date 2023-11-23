@@ -116,8 +116,9 @@ public class VentanaReporte extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 1, 72)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("REPORTE");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 2, 1280, 160));
+        jLabel2.setText("Reporte de estadísticos");
+        jLabel2.setToolTipText("");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 2, 1280, 150));
 
         botonSalir.setText("Salir");
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
