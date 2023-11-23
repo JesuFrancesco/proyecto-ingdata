@@ -14,7 +14,7 @@
 # Package Files #
 *.jar
 !ojdbc8.jar
-!LGoodDatePicker-11.2.1.jar
+!jcalendar-1.4.jar
 *.war
 *.nar
 *.ear
