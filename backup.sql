@@ -1,5 +1,5 @@
 --------------------------------------------------------
--- Archivo creado  - mi?rcoles-noviembre-22-2023   
+-- Archivo creado  - jueves-noviembre-23-2023   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Table CITA
@@ -581,7 +581,7 @@ BEGIN
     v_cantidad_stock := product.CantidadStock;
     v_ganancias := product.Ganancias;
 
-    -- Mostrar la informaci?n utilizando DBMS_OUTPUT
+    -- Mostrar la información utilizando DBMS_OUTPUT
     DBMS_OUTPUT.PUT_LINE('Producto: ' || v_producto_nombre || ', Stock: ' || v_cantidad_stock || ', Posibles Ganancias: ' || v_ganancias);
   END LOOP;
 

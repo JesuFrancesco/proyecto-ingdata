@@ -8,6 +8,8 @@ package paq.ventanas;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -37,10 +39,10 @@ public class VentanaTransaccion extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        campoIDProd_IDInst = new javax.swing.JTextField();
+        campoMonto = new javax.swing.JTextField();
         campoProd_Inst = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        campoDNI_IDProv = new javax.swing.JTextField();
         campoDNI_Proveedor = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         botonCliente_r = new javax.swing.JRadioButton();
@@ -56,19 +58,19 @@ public class VentanaTransaccion extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        campoIDProd_IDInst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                campoIDProd_IDInstActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, 200, -1));
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 200, -1));
+        jPanel1.add(campoIDProd_IDInst, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, 200, -1));
+        jPanel1.add(campoMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 200, -1));
 
         campoProd_Inst.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         campoProd_Inst.setForeground(new java.awt.Color(255, 255, 255));
         campoProd_Inst.setText("ID del producto");
         jPanel1.add(campoProd_Inst, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, -1, 20));
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 200, -1));
+        jPanel1.add(campoDNI_IDProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 200, -1));
 
         campoDNI_Proveedor.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         campoDNI_Proveedor.setForeground(new java.awt.Color(255, 255, 255));
@@ -109,7 +111,7 @@ public class VentanaTransaccion extends javax.swing.JFrame {
         jLabel6.setText("Transacción");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 100));
 
-        botonSalir.setText("Salir");
+        botonSalir.setText("Cancelar");
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSalirActionPerformed(evt);
@@ -133,9 +135,9 @@ public class VentanaTransaccion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void campoIDProd_IDInstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoIDProd_IDInstActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_campoIDProd_IDInstActionPerformed
 
     private void botonCliente_rActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCliente_rActionPerformed
         campoDNI_Proveedor.setText("DNI Cliente");
@@ -152,28 +154,46 @@ public class VentanaTransaccion extends javax.swing.JFrame {
     }//GEN-LAST:event_botonSalirActionPerformed
 
     private void botonInsertTransActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInsertTransActionPerformed
-        // Obtener momento del dia
-        LocalDateTime ahora = LocalDateTime.now();
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yy hh:mm:ss a");
-        String momentoDia = ahora.format(formato);
-        JOptionPane.showMessageDialog(null, momentoDia);
         try {
-            String queryCliente = "INSERT INTO TRANSACCIONCLIENTE(ID_transaccion, momentodia, id_cliente, id_producto) VALUES("+ campoID_Mascota.getText() +", '"+ campoNombreMa.getText() +"', '"+ campoRaza.getText() + "', to_date('"+campoFechaMascota.getText()+"', 'DD/MM/RR')"+", '" + campoEspecie.getText() + "')";            
-            String queryProveedor = "INSERT INTO TRANSACCIONPROVEEDOR(ID_transaccion, momentodia, id_cliente, id_producto) VALUES("+ campoID_Mascota.getText() +", '"+ campoNombreMa.getText() +"', '"+ campoRaza.getText() + "', to_date('"+campoFechaMascota.getText()+"', 'DD/MM/RR')"+", '" + campoEspecie.getText() + "')";            
-            
-            Statement statement = conexionSQL.createStatement();
+            // Obtener momento del dia
+            LocalDateTime ahora = LocalDateTime.now();
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yy hh:mm:ss a");
+            String momentoDia = ahora.format(formato);
+            JOptionPane.showMessageDialog(null, momentoDia);
 
-//          System.out.println(queryString);
-            ResultSet resultSet = statement.executeQuery((botonCliente_r.isSelected())? queryCliente: queryProveedor); 
+            String destino = (botonCliente_r.isSelected())? "CLIENTE": "PROVEEDOR";
+            // Obtener siguiente ID
+            String queryMaxID = "SELECT MAX(ID_TRANSACCION) FROM TRANSACCION" + destino;
+            PreparedStatement preparedStatement = conexionSQL.prepareStatement(queryMaxID);
+            ResultSet filaResultado = preparedStatement.executeQuery();
 
-            // Cerrar resultSet y sentencia
-            resultSet.close();
-            statement.close();
-            
+            int maxId = 0;
 
-            JOptionPane.showMessageDialog(null, "Transaccion de " + ((botonCliente_r.isSelected())? "cliente":"proveedor") +" realizada.", "INSERT REALIZADO CON EXITO", 1);
+            if (filaResultado.next()) {
+                maxId = filaResultado.getInt(1);
+            }
+
+            // Calcalo de ID próxima
+            int nuevaID = maxId + 1;
+
+            // Insertar fila de TRANSACCION
+            String queryTransaccion = "INSERT INTO TRANSACCION" + destino + " VALUES(?, ?, ?, ?, ?)";
+            preparedStatement = conexionSQL.prepareStatement(queryTransaccion);
+            preparedStatement.setInt(1, nuevaID);
+            preparedStatement.setTimestamp(2, Timestamp.valueOf(ahora));
+            preparedStatement.setInt(3, Integer.parseInt(campoMonto.getText()));
+            preparedStatement.setInt(4, Integer.parseInt(campoDNI_IDProv.getText()));
+            preparedStatement.setInt(5, Integer.parseInt(campoIDProd_IDInst.getText()));
+
+            int filaMascota = preparedStatement.executeUpdate();
+
+            if (filaMascota > 0) {
+                System.out.println("Transaccion registrada: " + nuevaID);
+            }
+
+            JOptionPane.showMessageDialog(null, "Transaccion n°" + nuevaID + " registada.", "INSERT realizado con exito", 1);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Algo salio mal:\n" + ex.getMessage(), "Error en query", 2);
+            JOptionPane.showMessageDialog(null, "Algo salio mal.\n" + ex.getLocalizedMessage());
         }
     }//GEN-LAST:event_botonInsertTransActionPerformed
 
@@ -185,13 +205,13 @@ public class VentanaTransaccion extends javax.swing.JFrame {
     private javax.swing.JRadioButton botonProveedor_r;
     private javax.swing.JButton botonSalir;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JTextField campoDNI_IDProv;
     private javax.swing.JLabel campoDNI_Proveedor;
+    private javax.swing.JTextField campoIDProd_IDInst;
+    private javax.swing.JTextField campoMonto;
     private javax.swing.JLabel campoProd_Inst;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }

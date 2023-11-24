@@ -127,7 +127,7 @@ public class VentanaReporte extends javax.swing.JFrame {
         jPanel1.add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 600, -1, -1));
 
         campoResultado.setColumns(20);
-        campoResultado.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        campoResultado.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         campoResultado.setRows(5);
         jScrollPane1.setViewportView(campoResultado);
 

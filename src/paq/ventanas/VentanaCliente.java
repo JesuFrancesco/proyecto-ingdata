@@ -179,13 +179,10 @@ public class VentanaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_botonSalirActionPerformed
 
     private void botonInsertClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInsertClienteActionPerformed
-        try {
-            String fechaNac = (new SimpleDateFormat("dd/MM/yy").format(campoFecha.getDate()));
-//            String query = "INSERT INTO MASCOTA(ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES("+ campoID_Mascota.getText() +", '"+ campoNombreMa.getText() +"', '"+ campoRaza.getText() + "', to_date('"+fechaNac+"', 'DD/MM/RR')"+", '" + campoEspecie.getText() + "')";
-                
+        try {                
             // Obtener siguiente ID
-            String getMaxIdQuery = "SELECT MAX(id_mascota) FROM Mascota";
-            PreparedStatement preparedStatement = conexionSQL.prepareStatement(getMaxIdQuery);
+            String queryMaxID = "SELECT MAX(id_mascota) FROM Mascota";
+            PreparedStatement preparedStatement = conexionSQL.prepareStatement(queryMaxID);
             ResultSet filaResultado = preparedStatement.executeQuery();
 
             int maxId = 0;
@@ -194,36 +191,40 @@ public class VentanaCliente extends javax.swing.JFrame {
                 maxId = filaResultado.getInt(1);
             }
 
-            // Calculate the new ID value
+            // Calcalo de ID próxima
             int nuevaID = maxId + 1;
 
-            // Insert the new row with the calculated ID value
-            String insertQuery = "INSERT INTO MASCOTA(ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES(?, ?, ?, ?, ?)";
-            preparedStatement = conexionSQL.prepareStatement(insertQuery);
+            // Insertar fila de mascota
+            String mascotaQuery = "INSERT INTO MASCOTA(ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES(?, ?, ?, ?, ?)";
+            preparedStatement = conexionSQL.prepareStatement(mascotaQuery);
             preparedStatement.setInt(1, nuevaID);
             preparedStatement.setString(2, campoNombreMa.getText());
             preparedStatement.setString(3, campoRaza.getText());
-            preparedStatement.setString(4, "to_date('"+fechaNac+"', 'DD/MM/RR')");
+            preparedStatement.setTimestamp(4, new Timestamp(campoFecha.getDate().getTime()));
             preparedStatement.setString(5, campoEspecie.getText());
 
-            int rowsInserted = preparedStatement.executeUpdate();
-
-            if (rowsInserted > 0) {
-                System.out.println("Cliente insertado: " + nuevaID);
+            int filaMascota = preparedStatement.executeUpdate();
+            
+            if (filaMascota > 0) {
+                System.out.println("Mascota insertado: " + nuevaID);
             }
             
-            String query2 = "INSERT INTO CLIENTE(DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES("+ campoDNI.getText() +", '"+ campoNombresCl.getText() +"', '"+ campoApellidosCl.getText() + "', '" + campoTelefono.getText() + "', '" + campoDireccion.getText() + "', '"+ campoCorreo.getText() + "', " + nuevaID + ")";
-//            String queries[] = {query, query2};
-//            for (String queryString : queries) {
-//                Statement statement = conexionSQL.createStatement();
-//
-////                System.out.println(queryString);
-//                ResultSet resultSet = statement.executeQuery(queryString); 
-//
-//                // Cerrar resultSet y sentencia
-//                resultSet.close(); // resultSet2.close();
-//                statement.close();
-//            }
+            // Insertar fila de cliente
+            String clienteQuery = "INSERT INTO CLIENTE(DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES(?, ?, ?, ?, ?, ?, ?)";
+            preparedStatement = conexionSQL.prepareStatement(clienteQuery);
+            preparedStatement.setInt(1, Integer.parseInt(campoDNI.getText()));
+            preparedStatement.setString(2, campoNombresCl.getText());
+            preparedStatement.setString(3, campoApellidosCl.getText());
+            preparedStatement.setString(4, campoTelefono.getText());
+            preparedStatement.setString(5, campoDireccion.getText());
+            preparedStatement.setString(6, campoCorreo.getText());
+            preparedStatement.setInt(7, nuevaID);
+            
+            int filaCliente = preparedStatement.executeUpdate();
+            
+            if (filaCliente > 0) {
+                System.out.println("Cliente insertado: " + campoDNI.getText());
+            }
 
             JOptionPane.showMessageDialog(null, "Cliente y mascota registrados.", "INSERT realizado con exito", 1);
         } catch (SQLException ex) {
