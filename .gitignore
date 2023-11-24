@@ -30,3 +30,4 @@ replay_pid*
 *.db-journal
 *.db
 *.sqbpro
+nbproject/private/
