@@ -6,7 +6,6 @@
 package paq.ventanas;
 
 import java.sql.*;
-import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
 /**
@@ -59,9 +58,11 @@ public class VentanaCliente extends javax.swing.JFrame {
         botonSalir = new javax.swing.JButton();
         botonInsertCliente = new javax.swing.JButton();
         campoFecha = new com.toedter.calendar.JDateChooser();
+        campoClRegistrado = new javax.swing.JCheckBox();
         bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Proyecto Integrador | 2023-II");
         setMinimumSize(new java.awt.Dimension(800, 840));
         setPreferredSize(new java.awt.Dimension(800, 840));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -74,12 +75,12 @@ public class VentanaCliente extends javax.swing.JFrame {
         imgCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imgCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paq/img/Cliente.png"))); // NOI18N
         imgCliente.setText(" ");
-        getContentPane().add(imgCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 200, 180));
+        getContentPane().add(imgCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 200, 180));
 
         imgMascota.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imgMascota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paq/img/Mascota.png"))); // NOI18N
         imgMascota.setText(" ");
-        getContentPane().add(imgMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, 210, 210));
+        getContentPane().add(imgMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, 210, 210));
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -163,6 +164,14 @@ public class VentanaCliente extends javax.swing.JFrame {
         getContentPane().add(botonInsertCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 720, 210, 40));
         getContentPane().add(campoFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 540, 140, -1));
 
+        campoClRegistrado.setText("Cliente ya registrado");
+        campoClRegistrado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoClRegistradoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(campoClRegistrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, -1));
+
         bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paq/img/f2.jpg"))); // NOI18N
         getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 800));
 
@@ -186,10 +195,7 @@ public class VentanaCliente extends javax.swing.JFrame {
             ResultSet filaResultado = preparedStatement.executeQuery();
 
             int maxId = 0;
-
-            if (filaResultado.next()) {
-                maxId = filaResultado.getInt(1);
-            }
+            if (filaResultado.next()) maxId = filaResultado.getInt(1);
 
             // Calcalo de ID próxima
             int nuevaID = maxId + 1;
@@ -204,39 +210,53 @@ public class VentanaCliente extends javax.swing.JFrame {
             preparedStatement.setString(5, campoEspecie.getText());
 
             int filaMascota = preparedStatement.executeUpdate();
+            if (filaMascota > 0) System.out.println("Mascota insertado con éxito en fila " + nuevaID);
             
-            if (filaMascota > 0) {
-                System.out.println("Mascota insertado: " + nuevaID);
-            }
-            
-            // Insertar fila de cliente
-            String clienteQuery = "INSERT INTO CLIENTE(DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo, ID_Mascota) VALUES(?, ?, ?, ?, ?, ?, ?)";
-            preparedStatement = conexionSQL.prepareStatement(clienteQuery);
-            preparedStatement.setInt(1, Integer.parseInt(campoDNI.getText()));
-            preparedStatement.setString(2, campoNombresCl.getText());
-            preparedStatement.setString(3, campoApellidosCl.getText());
-            preparedStatement.setString(4, campoTelefono.getText());
-            preparedStatement.setString(5, campoDireccion.getText());
-            preparedStatement.setString(6, campoCorreo.getText());
-            preparedStatement.setInt(7, nuevaID);
-            
-            int filaCliente = preparedStatement.executeUpdate();
-            
-            if (filaCliente > 0) {
-                System.out.println("Cliente insertado: " + campoDNI.getText());
-            }
+            if(!campoClRegistrado.isSelected()){
+                // Insertar fila de cliente
+                String clienteQuery = "INSERT INTO CLIENTE(DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo) VALUES(?, ?, ?, ?, ?, ?)";
+                preparedStatement = conexionSQL.prepareStatement(clienteQuery);
+                preparedStatement.setInt(1, Integer.parseInt(campoDNI.getText()));
+                preparedStatement.setString(2, campoNombresCl.getText());
+                preparedStatement.setString(3, campoApellidosCl.getText());
+                preparedStatement.setString(4, campoTelefono.getText());
+                preparedStatement.setString(5, campoDireccion.getText());
+                preparedStatement.setString(6, campoCorreo.getText());
 
-            JOptionPane.showMessageDialog(null, "Cliente y mascota registrados.", "INSERT realizado con exito", 1);
+                int filaCliente = preparedStatement.executeUpdate();
+                if (filaCliente > 0) System.out.println("Cliente insertado con éxito en fila " + campoDNI.getText());
+            }
+            
+            // Insertar fila de mascota
+            String fkQuery = "INSERT INTO CLIENTE_MASCOTA(ID_Cliente, ID_Mascota) VALUES(?, ?)";
+            preparedStatement = conexionSQL.prepareStatement(fkQuery);
+            preparedStatement.setInt(1, Integer.parseInt(campoDNI.getText()));
+            preparedStatement.setInt(2, nuevaID);
+            
+            int filaFKQuery = preparedStatement.executeUpdate();
+            if (filaFKQuery > 0) System.out.println("Vínculo Cliente_mascota realizado con exito.");
+            
+            JOptionPane.showMessageDialog(null, "Operación realizada con éxito.", "INSERT's realizados con éxito", 1);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Algo salio mal:\n" + ex.getMessage(), "Error en query", 2);
         }
     }//GEN-LAST:event_botonInsertClienteActionPerformed
+
+    private void campoClRegistradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoClRegistradoActionPerformed
+        boolean esRegistrado = !campoClRegistrado.isSelected();
+        jLabel3.setVisible(esRegistrado); campoNombresCl.setVisible(esRegistrado);
+        jLabel4.setVisible(esRegistrado); campoApellidosCl.setVisible(esRegistrado);
+        jLabel5.setVisible(esRegistrado); campoTelefono.setVisible(esRegistrado);
+        jLabel6.setVisible(esRegistrado); campoDireccion.setVisible(esRegistrado);
+        jLabel7.setVisible(esRegistrado); campoCorreo.setVisible(esRegistrado);
+    }//GEN-LAST:event_campoClRegistradoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg;
     private javax.swing.JButton botonInsertCliente;
     private javax.swing.JButton botonSalir;
     private javax.swing.JTextField campoApellidosCl;
+    private javax.swing.JCheckBox campoClRegistrado;
     private javax.swing.JTextField campoCorreo;
     private javax.swing.JTextField campoDNI;
     private javax.swing.JTextField campoDireccion;

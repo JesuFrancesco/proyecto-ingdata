@@ -1,10 +1,10 @@
-create or replace FUNCTION           "CALCINGRESOSTOTALES" RETURN NUMBER IS
+create or replace FUNCTION CALCINGRESOSTOTALES RETURN NUMBER IS
     total_ingresos NUMBER := 0;
 BEGIN
     -- Calcular los ingresos totales por ventas
     SELECT COALESCE(SUM(Monto), 0)
     INTO total_ingresos
-    FROM TransaccionCliente;
+    FROM Transaccion_cliente;
 
     -- Devolver el total de ingresos por ventas
     RETURN total_ingresos;

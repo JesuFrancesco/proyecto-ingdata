@@ -1,5 +1,5 @@
 CREATE TABLE Mascota (
-  ID_Mascota NUMBER PRIMARY KEY,
+  ID NUMBER PRIMARY KEY,
   Nombre VARCHAR2(255),
   Raza VARCHAR2(255),
   FechaNacimiento DATE,
@@ -7,7 +7,7 @@ CREATE TABLE Mascota (
 );
 
 CREATE TABLE Cliente (
-  DNI_Cliente NUMBER PRIMARY KEY,
+  DNI NUMBER PRIMARY KEY,
   Nombres VARCHAR2(255),
   Apellidos VARCHAR2(255),
   Telefono VARCHAR2(20),
@@ -18,7 +18,7 @@ CREATE TABLE Cliente (
 );
 
 CREATE TABLE Veterinario (
-  DNI_Veterinario NUMBER PRIMARY KEY,
+  DNI NUMBER PRIMARY KEY,
   Nombres VARCHAR2(255),
   Apellidos VARCHAR2(255),
   Telefono VARCHAR2(20),
@@ -28,7 +28,7 @@ CREATE TABLE Veterinario (
 );
 
 CREATE TABLE Recepcionista (
-  DNI_Recepcionista NUMBER PRIMARY KEY,
+  DNI NUMBER PRIMARY KEY,
   Nombres VARCHAR2(255),
   Apellidos VARCHAR2(255),
   Telefono VARCHAR2(20),
@@ -37,7 +37,7 @@ CREATE TABLE Recepcionista (
 );
 
 CREATE TABLE Proveedor (
-  ID_Proveedor NUMBER PRIMARY KEY,
+  ID NUMBER PRIMARY KEY,
   Nombre VARCHAR2(255),
   Telefono VARCHAR2(20),
   Correo VARCHAR2(255),
@@ -45,7 +45,7 @@ CREATE TABLE Proveedor (
 );
 
 CREATE TABLE Cita (
-  ID_Cita NUMBER PRIMARY KEY,
+  ID NUMBER PRIMARY KEY,
   FechaRegistro DATE,
   RazonCita VARCHAR2(255),
   ID_Cliente NUMBER,
@@ -57,7 +57,7 @@ CREATE TABLE Cita (
 );
 
 CREATE TABLE Producto (
-  ID_Producto NUMBER PRIMARY KEY,
+  ID NUMBER PRIMARY KEY,
   Nombre VARCHAR2(255),
   Descripcion VARCHAR2(255),
   Precio NUMBER,
@@ -69,7 +69,7 @@ CREATE TABLE Producto (
 );
 
 CREATE TABLE TransaccionCliente (
-  ID_Transaccion NUMBER PRIMARY KEY,
+  ID NUMBER PRIMARY KEY,
   MomentoDia TIMESTAMP,
   Monto NUMBER,
   ID_Cliente NUMBER,
@@ -79,7 +79,7 @@ CREATE TABLE TransaccionCliente (
 );
 
 CREATE TABLE TransaccionProveedor (
-  ID_Transaccion NUMBER PRIMARY KEY,
+  ID NUMBER PRIMARY KEY,
   MomentoDia TIMESTAMP,
   Monto NUMBER,
   ID_Proveedor NUMBER,
@@ -89,7 +89,7 @@ CREATE TABLE TransaccionProveedor (
 );
 
 CREATE TABLE InstrumentoMedico (
-  ID_Instrumento NUMBER PRIMARY KEY,
+  ID NUMBER PRIMARY KEY,
   Nombre VARCHAR2(255),
   Descripcion VARCHAR2(255),
   PrecioCompra NUMBER,
@@ -98,7 +98,7 @@ CREATE TABLE InstrumentoMedico (
 );
 
 CREATE TABLE HistoriaClinica (
-  ID_Historia NUMBER PRIMARY KEY,
+  ID NUMBER PRIMARY KEY,
   FechaRegistro DATE,
   Diagnostico VARCHAR2(255),
   Tratamiento VARCHAR2(255),

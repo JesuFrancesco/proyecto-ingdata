@@ -49,7 +49,7 @@ public class VentanaConexion extends javax.swing.JFrame {
         bgImgLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Proyecto Integrador 2023-II");
+        setTitle("Proyecto Integrador | 2023-II");
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

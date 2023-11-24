@@ -53,6 +53,7 @@ public class VentanaTransaccion extends javax.swing.JFrame {
         bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Proyecto Integrador | 2023-II");
         setMinimumSize(new java.awt.Dimension(610, 630));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -163,7 +164,7 @@ public class VentanaTransaccion extends javax.swing.JFrame {
 
             String destino = (botonCliente_r.isSelected())? "CLIENTE": "PROVEEDOR";
             // Obtener siguiente ID
-            String queryMaxID = "SELECT MAX(ID_TRANSACCION) FROM TRANSACCION" + destino;
+            String queryMaxID = "SELECT MAX(ID_TRANSACCION) FROM TRANSACCION_" + destino;
             PreparedStatement preparedStatement = conexionSQL.prepareStatement(queryMaxID);
             ResultSet filaResultado = preparedStatement.executeQuery();
 
@@ -177,7 +178,7 @@ public class VentanaTransaccion extends javax.swing.JFrame {
             int nuevaID = maxId + 1;
 
             // Insertar fila de TRANSACCION
-            String queryTransaccion = "INSERT INTO TRANSACCION" + destino + " VALUES(?, ?, ?, ?, ?)";
+            String queryTransaccion = "INSERT INTO TRANSACCION_" + destino + " VALUES(?, ?, ?, ?, ?)";
             preparedStatement = conexionSQL.prepareStatement(queryTransaccion);
             preparedStatement.setInt(1, nuevaID);
             preparedStatement.setTimestamp(2, Timestamp.valueOf(ahora));

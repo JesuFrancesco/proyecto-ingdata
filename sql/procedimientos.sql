@@ -7,7 +7,7 @@ BEGIN
        BEGIN
            SELECT COUNT(*) INTO v_frecuencia_citas
            FROM Cita c
-           JOIN Mascota m ON c.ID_Mascota = m.ID_Mascota
+           JOIN Mascota m ON c.ID = m.ID
            WHERE m.Especie = rec_especie.Especie;
 
            -- Imprime la información en la consola
@@ -23,39 +23,6 @@ END CalcFrecuenciaCitas;
 -- END;
 -- /
 
--- create or replace PROCEDURE CalcPromedioCitasPorEspecie AS
--- BEGIN
---     FOR especie_actual IN (SELECT DISTINCT Especie FROM Mascota) LOOP
---         DECLARE
---             nombre_especie VARCHAR2(255);
---             cantidad_citas NUMBER;
---             porcentaje_promedio NUMBER;
---         BEGIN
---             -- Obtener el nombre de la especie actual
---             nombre_especie := especie_actual.Especie;
-
---             -- Contar la cantidad de citas para la especie actual
---             SELECT COUNT(*) INTO cantidad_citas
---             FROM Cita
---             WHERE ID_Mascota IN (SELECT ID_Mascota FROM Mascota WHERE Especie = nombre_especie);
-
---             -- Calcular el porcentaje promedio
---             SELECT COALESCE(AVG(CantidadCitas), 0) INTO porcentaje_promedio
---             FROM (SELECT COUNT(*) AS CantidadCitas
---                   FROM Cita
---                   WHERE ID_Mascota IN (SELECT ID_Mascota FROM Mascota WHERE Especie = nombre_especie)
---                   GROUP BY ID_Mascota);
-
---             -- Imprimir los resultados en la consola
---             DBMS_OUTPUT.PUT_LINE('Especie: ' || nombre_especie);
---             DBMS_OUTPUT.PUT_LINE('Cantidad de Citas: ' || cantidad_citas);
---             DBMS_OUTPUT.PUT_LINE('Porcentaje Promedio: ' || TO_CHAR(porcentaje_promedio, '999.99') || '%');
---             DBMS_OUTPUT.PUT_LINE('------------------------------');
---         END;
---     END LOOP;
--- END CalcPromedioCitasPorEspecie;
-
-
 CREATE OR REPLACE PROCEDURE CalcularEficienciaVeterinario AS
 BEGIN
    FOR rec_veterinario IN (SELECT * FROM Veterinario) LOOP
@@ -68,7 +35,7 @@ BEGIN
            v_eficiencia NUMBER;
        BEGIN
            -- Obtener datos del veterinario actual
-           v_dni_veterinario := rec_veterinario.DNI_Veterinario;
+           v_dni_veterinario := rec_veterinario.DNI;
            v_nombre_veterinario := rec_veterinario.Nombres;
            v_apellidos_veterinario := rec_veterinario.Apellidos;
 
@@ -114,7 +81,7 @@ BEGIN
            gastos_instrumentos_actual NUMBER;
        BEGIN
            -- Obtener datos del proveedor actual
-           id_proveedor_actual := proveedor_actual.ID_Proveedor;
+           id_proveedor_actual := proveedor_actual.ID;
            nombre_proveedor_actual := proveedor_actual.Nombre;
 
            -- Calcular los gastos totales en instrumentos médicos por el proveedor actual

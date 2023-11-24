@@ -65,7 +65,7 @@ public class VentanaMain extends javax.swing.JFrame {
         botonAgendarCita = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("V");
+        setTitle("Proyecto Integrador | 2023-II");
 
         tablaDatos.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tablaDatos.setModel(new javax.swing.table.DefaultTableModel(
@@ -87,7 +87,7 @@ public class VentanaMain extends javax.swing.JFrame {
             }
         });
 
-        comboBoxTablas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Cita", "Cliente", "Historia", "Instrumento", "Mascota", "Producto", "Proveedor", "Recepcionista", "Trans_Cliente", "Trans_Proveedor", "Veterinario" }));
+        comboBoxTablas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Cita", "Cliente", "Cliente_Mascota", "Historia", "Instrumento", "Mascota", "Producto", "Proveedor", "Recepcionista", "Trans_Cliente", "Trans_Proveedor", "Veterinario" }));
         comboBoxTablas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxTablasActionPerformed(evt);
@@ -353,7 +353,11 @@ public class VentanaMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void botonAgendarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgendarCitaActionPerformed
-        // TODO add your handling code here:
+        try {
+            new VentanaCita(conexionSQL).setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(VentanaMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_botonAgendarCitaActionPerformed
 
     
@@ -371,6 +375,9 @@ public class VentanaMain extends javax.swing.JFrame {
                 break;
             case "Cliente":
                 tablaSeleccionada = "Cliente";
+                break;
+            case "Cliente_Mascota":
+                tablaSeleccionada = "Cliente_Mascota";
                 break;
             case "Historia":
                 tablaSeleccionada = "HistoriaClinica";
@@ -391,10 +398,10 @@ public class VentanaMain extends javax.swing.JFrame {
                 tablaSeleccionada = "Recepcionista";
                 break;
             case "Trans_Cliente":
-                tablaSeleccionada = "TransaccionCliente";
+                tablaSeleccionada = "Transaccion_Cliente";
                 break;
             case "Trans_Proveedor":
-                tablaSeleccionada = "TransaccionProveedor";
+                tablaSeleccionada = "Transaccion_Proveedor";
                 break;
             case "Veterinario":
                 tablaSeleccionada = "Veterinario";
