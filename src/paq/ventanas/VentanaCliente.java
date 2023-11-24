@@ -190,7 +190,7 @@ public class VentanaCliente extends javax.swing.JFrame {
     private void botonInsertClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInsertClienteActionPerformed
         try {                
             // Obtener siguiente ID
-            String queryMaxID = "SELECT MAX(id_mascota) FROM Mascota";
+            String queryMaxID = "SELECT MAX(id) FROM Mascota";
             PreparedStatement preparedStatement = conexionSQL.prepareStatement(queryMaxID);
             ResultSet filaResultado = preparedStatement.executeQuery();
 
@@ -201,7 +201,7 @@ public class VentanaCliente extends javax.swing.JFrame {
             int nuevaID = maxId + 1;
 
             // Insertar fila de mascota
-            String mascotaQuery = "INSERT INTO MASCOTA(ID_Mascota, Nombre, Raza, FechaNacimiento, Especie) VALUES(?, ?, ?, ?, ?)";
+            String mascotaQuery = "INSERT INTO MASCOTA(ID, Nombre, Raza, FechaNacimiento, Especie) VALUES(?, ?, ?, ?, ?)";
             preparedStatement = conexionSQL.prepareStatement(mascotaQuery);
             preparedStatement.setInt(1, nuevaID);
             preparedStatement.setString(2, campoNombreMa.getText());
@@ -214,7 +214,7 @@ public class VentanaCliente extends javax.swing.JFrame {
             
             if(!campoClRegistrado.isSelected()){
                 // Insertar fila de cliente
-                String clienteQuery = "INSERT INTO CLIENTE(DNI_Cliente, Nombres, Apellidos, Telefono, Direccion, Correo) VALUES(?, ?, ?, ?, ?, ?)";
+                String clienteQuery = "INSERT INTO CLIENTE(DNI, Nombres, Apellidos, Telefono, Direccion, Correo) VALUES(?, ?, ?, ?, ?, ?)";
                 preparedStatement = conexionSQL.prepareStatement(clienteQuery);
                 preparedStatement.setInt(1, Integer.parseInt(campoDNI.getText()));
                 preparedStatement.setString(2, campoNombresCl.getText());
@@ -237,6 +237,7 @@ public class VentanaCliente extends javax.swing.JFrame {
             if (filaFKQuery > 0) System.out.println("Vínculo Cliente_mascota realizado con exito.");
             
             JOptionPane.showMessageDialog(null, "Operación realizada con éxito.", "INSERT's realizados con éxito", 1);
+            campoClRegistrado.setSelected(true);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Algo salio mal:\n" + ex.getMessage(), "Error en query", 2);
         }

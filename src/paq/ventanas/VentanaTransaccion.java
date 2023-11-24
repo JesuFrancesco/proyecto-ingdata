@@ -160,11 +160,11 @@ public class VentanaTransaccion extends javax.swing.JFrame {
             LocalDateTime ahora = LocalDateTime.now();
             DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yy hh:mm:ss a");
             String momentoDia = ahora.format(formato);
-            JOptionPane.showMessageDialog(null, momentoDia);
+//            JOptionPane.showMessageDialog(null, momentoDia);
 
             String destino = (botonCliente_r.isSelected())? "CLIENTE": "PROVEEDOR";
             // Obtener siguiente ID
-            String queryMaxID = "SELECT MAX(ID_TRANSACCION) FROM TRANSACCION_" + destino;
+            String queryMaxID = "SELECT MAX(ID) FROM TRANSACCION_" + destino;
             PreparedStatement preparedStatement = conexionSQL.prepareStatement(queryMaxID);
             ResultSet filaResultado = preparedStatement.executeQuery();
 
