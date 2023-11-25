@@ -1,6 +1,5 @@
 package paq.ventanas;
 
-
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -30,12 +29,46 @@ public class VentanaMain extends javax.swing.JFrame {
     private final Connection conexionSQL;
     private String query = null;
     
-   public VentanaMain(Connection c) {
+   public VentanaMain(Connection c) throws SQLException {
         this.conexionSQL = c;
         initComponents();
         setLocationRelativeTo(null);
         tablaDatos.setDefaultEditor(Object.class, null);
+        // Cambiar al esquema de ingdata
+        Statement cambiarEsquema = c.createStatement(); cambiarEsquema.execute("ALTER SESSION SET CURRENT_SCHEMA=INGDATA"); cambiarEsquema.close();
    }
+
+    public JButton getBotonAbrirReportes() {
+        return botonAbrirReportes;
+    }
+
+    public void setBotonAbrirReportes(JButton botonAbrirReportes) {
+        this.botonAbrirReportes = botonAbrirReportes;
+    }
+
+    public JButton getBotonAgendarCita() {
+        return botonAgendarCita;
+    }
+
+    public void setBotonAgendarCita(JButton botonAgendarCita) {
+        this.botonAgendarCita = botonAgendarCita;
+    }
+
+    public JButton getBotonAñadirCliente() {
+        return botonAñadirCliente;
+    }
+
+    public void setBotonAñadirCliente(JButton botonAñadirCliente) {
+        this.botonAñadirCliente = botonAñadirCliente;
+    }
+
+    public JButton getBotonAñadirTransaccion() {
+        return botonAñadirTransaccion;
+    }
+
+    public void setBotonAñadirTransaccion(JButton botonAñadirTransaccion) {
+        this.botonAñadirTransaccion = botonAñadirTransaccion;
+    }
     
 
 
@@ -61,8 +94,9 @@ public class VentanaMain extends javax.swing.JFrame {
         botonAbrirReportes = new javax.swing.JButton();
         botonAñadirCliente = new javax.swing.JButton();
         botonAñadirTransaccion = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        campoSentenciaSQL = new javax.swing.JLabel();
         botonAgendarCita = new javax.swing.JButton();
+        campoPerrito = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Proyecto Integrador | 2023-II");
@@ -135,11 +169,12 @@ public class VentanaMain extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("Panel de sentencias SQL*");
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        campoSentenciaSQL.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        campoSentenciaSQL.setText("Panel de sentencias SQL*");
+        campoSentenciaSQL.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        campoSentenciaSQL.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                campoSentenciaSQLMouseClicked(evt);
             }
         });
 
@@ -149,6 +184,10 @@ public class VentanaMain extends javax.swing.JFrame {
                 botonAgendarCitaActionPerformed(evt);
             }
         });
+
+        campoPerrito.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        campoPerrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paq/img/perrito.gif"))); // NOI18N
+        campoPerrito.setText(" ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -165,15 +204,16 @@ public class VentanaMain extends javax.swing.JFrame {
                                 .addComponent(botonActualizar)
                                 .addGap(102, 102, 102)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(67, 67, 67)
-                                .addComponent(botonAbrirReportes))
+                                .addGap(18, 18, 18)
+                                .addComponent(botonAbrirReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(campoSentenciaSQL, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campoPerrito, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 859, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -190,18 +230,21 @@ public class VentanaMain extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(botonAbrirReportes)))
+                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(comboBoxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonActualizar))))
+                            .addComponent(botonActualizar)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(botonAbrirReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
-                .addGap(32, 32, 32)
-                .addComponent(jLabel2)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(campoSentenciaSQL, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoPerrito, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -243,13 +286,14 @@ public class VentanaMain extends javax.swing.JFrame {
             DefaultTableModel modelo = new DefaultTableModel();
             // Poner encabezado
             String[] atributos = null;
-            Statement statement = conexionSQL.createStatement();
-            ResultSet resultSet = statement.executeQuery(getQuery()); // Llamada de query
+            Statement llamada = conexionSQL.createStatement();
+            ResultSet setDeResultados = llamada.executeQuery(getQuery()); // Llamada de query
             
-            String[] x = getQuery().split(" ");
-            for (int i = 0; i < x.length; i++) if (x[i].equalsIgnoreCase("insert") || x[i].equalsIgnoreCase("alter") || x[i].equalsIgnoreCase("update") || x[i].equalsIgnoreCase("delete")) return;
+            // Verificar si es sentencia que no retorna resultset
+            String[] palabras = getQuery().split(" ");
+            for (String palabra : palabras) if (palabra.equalsIgnoreCase("insert") || palabra.equalsIgnoreCase("alter") || palabra.equalsIgnoreCase("update") || palabra.equalsIgnoreCase("delete")) return;
             
-            ResultSetMetaData metaData = resultSet.getMetaData();
+            ResultSetMetaData metaData = setDeResultados.getMetaData();
             int numColumnas = metaData.getColumnCount();
             atributos = new String[numColumnas];
 
@@ -259,22 +303,25 @@ public class VentanaMain extends javax.swing.JFrame {
             modelo.setColumnIdentifiers(atributos);
 
             // Llenar tabla con información
-            while (resultSet.next()) {
+            while (setDeResultados.next()) {
                 String[] info = new String[atributos.length];
                 for (int i = 0; i < atributos.length; i++) {
-                    info[i] = resultSet.getString(atributos[i]);
+                    info[i] = setDeResultados.getString(atributos[i]);
                 }
                 modelo.addRow(info);
             }
 
             // Cerrar resultSet y sentencia
-            resultSet.close();
-            statement.close();
+            setDeResultados.close();
+            llamada.close();
 
             // Colocar modelo creado
             tablaDatos.setModel(modelo);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Algo salio mal:\n" + ex.getMessage(), "Error en query", 2);
+            if (ex.getErrorCode() == 1031) {                
+                JOptionPane.showMessageDialog(null, "", "Permisos insuficientes", 0, new ImageIcon(getClass().getResource("/paq/img/textopermisos.gif")));
+            }
+            else JOptionPane.showMessageDialog(null, "Error en query:\n" + ex.getMessage(), "Error en query", 2);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Algo salio mal:\n" + ex.getMessage() + "\n" + ex.getClass(), "Error en query", 2);
         }
@@ -326,13 +373,13 @@ public class VentanaMain extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLabel1MouseClicked
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        String htmlContent = "<html><body style=\"font-family:Times New Roman; font-size:16pt;\">" +
+    private void campoSentenciaSQLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoSentenciaSQLMouseClicked
+        String textoHTML = "<html><body style=\"font-family:Times New Roman; font-size:16pt;\">" +
                 "Ejemplos de Sentencias SQL en Oracle XE:<br/>" +
                 "<a href=\"https://pentestmonkey.net/cheat-sheet/sql-injection/oracle-sql-injection-cheat-sheet\">Página con cheatsheet de PentestMonkey</a>" +
                 "</body></html>";
 
-        JEditorPane editorPane = new JEditorPane("text/html", htmlContent);
+        JEditorPane editorPane = new JEditorPane("text/html", textoHTML);
         editorPane.setEditable(false);
         editorPane.setBackground(editorPane.getBackground());
 
@@ -350,7 +397,7 @@ public class VentanaMain extends javax.swing.JFrame {
         editorPane.addHyperlinkListener(listener);
 
         JOptionPane.showMessageDialog(null, editorPane);
-    }//GEN-LAST:event_jLabel2MouseClicked
+    }//GEN-LAST:event_campoSentenciaSQLMouseClicked
 
     private void botonAgendarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgendarCitaActionPerformed
         try {
@@ -461,10 +508,11 @@ public class VentanaMain extends javax.swing.JFrame {
     private javax.swing.JButton botonAñadirTransaccion;
     private javax.swing.JButton botonQuery;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel campoPerrito;
     private javax.swing.JTextArea campoQuerySQL;
+    private javax.swing.JLabel campoSentenciaSQL;
     private javax.swing.JComboBox comboBoxTablas;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

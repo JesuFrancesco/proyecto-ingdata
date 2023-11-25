@@ -11,7 +11,7 @@ Cosas por hacer
 - [x] Carga de Datos
 - [!] Creación de prototipos de interfaz de usuario para todos los requerimientos
 - [x] Sentencias DML (Scripts) por cada prototipo creado.
-- [!] Interfaces de usuario implementadas que den soporte al flujo principal del proceso de negocio planteado.
-- [!] Uso de Programación PL/SQL
+- [x] Interfaces de usuario implementadas que den soporte al flujo principal del proceso de negocio planteado.
+- [x] Uso de Programación PL/SQL
 - [] Carga de Datos y operaciones CRUD utilizando MongoDB.
 - [] Prácticas de organización y trabajo en equipo (actualización).   

@@ -17,14 +17,10 @@ import javax.swing.JOptionPane;
 public class ConexionSQL {
     public static Connection conectar(String ip, String nombre, String pass){
         try {
-            // Load the Oracle JDBC driver
+            // Cargar el driver JDBC (version 8) y verificar conexión
             Class.forName("oracle.jdbc.driver.OracleDriver");
-
-            // Create a connection
             Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@"+ip+":1521:XE", nombre, pass);
-            
-            System.out.println("Conexion establecida");
-            
+            System.out.println("Conexion establecida en " + ip.trim() + " con usuario '" + nombre + "'.");
             return connection;
             
         } catch (ClassNotFoundException e) {

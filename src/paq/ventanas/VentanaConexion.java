@@ -1,6 +1,7 @@
 package paq.ventanas;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import paq.clases.ConexionSQL;
@@ -140,9 +141,16 @@ public class VentanaConexion extends javax.swing.JFrame {
             Connection c = ConexionSQL.conectar(campoIP.getText(), campoUSER.getText(), campoPASS.getText());
             if (c != null) {
                 dispose();
-                new VentanaMain(c).setVisible(true);
+                VentanaMain ventana = new VentanaMain(c);
+                if(!campoUSER.getText().trim().equalsIgnoreCase("ingdata") && !campoUSER.getText().trim().equalsIgnoreCase("veterinario") && !campoUSER.getText().trim().equalsIgnoreCase("recepcionista")){ // XDDDDDD
+                    ventana.getBotonAbrirReportes().setVisible(false);
+                    ventana.getBotonAgendarCita().setVisible(false);
+                    ventana.getBotonAñadirCliente().setVisible(false);
+                    ventana.getBotonAñadirTransaccion().setVisible(false);
+                }
+                ventana.setVisible(true);
             }
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(VentanaConexion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_botonInicioSesionActionPerformed

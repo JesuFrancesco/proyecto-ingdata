@@ -47,7 +47,6 @@ public class VentanaReporte extends javax.swing.JFrame {
         botonFrCitas = new javax.swing.JButton();
         botonIngresoTotal = new javax.swing.JButton();
         botonGanancias = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         botonSalir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -95,7 +94,7 @@ public class VentanaReporte extends javax.swing.JFrame {
                 botonIngresoTotalActionPerformed(evt);
             }
         });
-        jPanel1.add(botonIngresoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 240, -1, -1));
+        jPanel1.add(botonIngresoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 300, -1, -1));
 
         botonGanancias.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         botonGanancias.setText("Calcular ganancias");
@@ -104,11 +103,7 @@ public class VentanaReporte extends javax.swing.JFrame {
                 botonGananciasActionPerformed(evt);
             }
         });
-        jPanel1.add(botonGanancias, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 370, 180, -1));
-
-        jButton6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jButton6.setText("funcion3");
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 500, 180, -1));
+        jPanel1.add(botonGanancias, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 440, 180, -1));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Arial", 1, 72)); // NOI18N
@@ -228,7 +223,8 @@ public class VentanaReporte extends javax.swing.JFrame {
             Object[] output = (Object[]) array.getArray();
             String resultadoDBMS = "";
             for (Object line : output) {
-                resultadoDBMS += line + "\n";
+                System.out.println("-> " + line);
+                if(line != null) resultadoDBMS += line + "\n";
             }
             
             campoResultado.setText(resultadoDBMS);
@@ -255,9 +251,8 @@ public class VentanaReporte extends javax.swing.JFrame {
         String output[] = (String[]) array.getArray(), resultado = "";
         for (String line : output) {
             // Cada linea del DBMS
-//            System.out.println(line);
-            if (!resultado.equalsIgnoreCase("null"))
-            resultado += line + "\n";
+            System.out.println("-> " + line);
+            if (line != null) resultado += line + "\n";
         }
 
         // Mostrar resultado
@@ -273,7 +268,6 @@ public class VentanaReporte extends javax.swing.JFrame {
     private javax.swing.JButton botonIngresoTotal;
     private javax.swing.JButton botonSalir;
     private javax.swing.JTextArea campoResultado;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
