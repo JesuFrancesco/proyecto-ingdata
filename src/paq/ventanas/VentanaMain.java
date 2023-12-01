@@ -319,7 +319,7 @@ public class VentanaMain extends javax.swing.JFrame {
             tablaDatos.setModel(modelo);
         } catch (SQLException ex) {
             if (ex.getErrorCode() == 1031) {                
-                JOptionPane.showMessageDialog(null, "", "Permisos insuficientes", 0, new ImageIcon(getClass().getResource("/paq/img/textopermisos.gif")));
+                JOptionPane.showMessageDialog(null, "Como usuario solo estas limitado a ver la tabla Cita y Producto.", "Permisos insuficientes como usuario.", JOptionPane.ERROR_MESSAGE);
             }
             else JOptionPane.showMessageDialog(null, "Error en query:\n" + ex.getMessage(), "Error en query", 2);
         } catch (Exception ex) {
@@ -464,7 +464,6 @@ public class VentanaMain extends javax.swing.JFrame {
         // Poner encabezado
         Statement statement = conexionSQL.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT * FROM " + tablaSeleccionada);
-//        ResultSet resultSet = statement.executeQuery("select * from Cita inner join Cliente on cita.id_cliente = cliente.dni_cliente where cliente.nombres like '%a'");
         
         ResultSetMetaData metaData = resultSet.getMetaData();
         int numColumnas = metaData.getColumnCount();
