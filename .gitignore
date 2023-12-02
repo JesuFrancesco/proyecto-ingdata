@@ -32,3 +32,4 @@ replay_pid*
 *.sqbpro
 nbproject/private/
 /dist/
+build/built-jar.properties
