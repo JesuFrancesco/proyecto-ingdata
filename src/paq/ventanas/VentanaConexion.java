@@ -144,8 +144,7 @@ public class VentanaConexion extends javax.swing.JFrame {
         try {
             Connection c = ConexionSQL.conectar(campoIP.getText(), campoUSER.getText(), campoPASS.getText());
             if (c != null) {
-//                dispose();
-                JFrame ventana;
+                dispose();
                 if(!campoUSER.getText().trim().equalsIgnoreCase("ingdata") && !campoUSER.getText().trim().equalsIgnoreCase("veterinario") && !campoUSER.getText().trim().equalsIgnoreCase("recepcionista")){ // XDDDDDD
                     try {
                         int id = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su DNI", "Usuario detectado", JOptionPane.INFORMATION_MESSAGE));
