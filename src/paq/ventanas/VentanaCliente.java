@@ -65,6 +65,7 @@ public class VentanaCliente extends javax.swing.JFrame {
         setTitle("Proyecto Integrador | 2023-II");
         setMinimumSize(new java.awt.Dimension(800, 840));
         setPreferredSize(new java.awt.Dimension(800, 840));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         title.setFont(new java.awt.Font("Trebuchet MS", 1, 48)); // NOI18N

@@ -1,9 +1,12 @@
 package paq.ventanas;
 
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import paq.clases.ConexionSQL;
 
 /*
@@ -51,6 +54,7 @@ public class VentanaConexion extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Proyecto Integrador | 2023-II");
+        setResizable(false);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -141,14 +145,14 @@ public class VentanaConexion extends javax.swing.JFrame {
             Connection c = ConexionSQL.conectar(campoIP.getText(), campoUSER.getText(), campoPASS.getText());
             if (c != null) {
                 dispose();
-                VentanaMain ventana = new VentanaMain(c);
                 if(!campoUSER.getText().trim().equalsIgnoreCase("ingdata") && !campoUSER.getText().trim().equalsIgnoreCase("veterinario") && !campoUSER.getText().trim().equalsIgnoreCase("recepcionista")){ // XDDDDDD
-                    ventana.getBotonAbrirReportes().setVisible(false);
-                    ventana.getBotonAgendarCita().setVisible(false);
-                    ventana.getBotonAñadirCliente().setVisible(false);
-                    ventana.getBotonAñadirTransaccion().setVisible(false);
+                    try {
+                        int id = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su DNI", "Usuario detectado", JOptionPane.INFORMATION_MESSAGE));
+                        new VentanaMainUsu(c, id).setVisible(true);
+                    } catch (HeadlessException | NumberFormatException | SQLException e) { JOptionPane.showMessageDialog(null, "Algo salio mal:\n"+e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE); }
+                } else {
+                    new VentanaMain(c).setVisible(true);
                 }
-                ventana.setVisible(true);
             }
         } catch (SQLException ex) {
             Logger.getLogger(VentanaConexion.class.getName()).log(Level.SEVERE, null, ex);
