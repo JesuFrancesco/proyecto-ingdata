@@ -16,6 +16,7 @@ BEGIN
        END;
    END LOOP;
 END CalcFrecuenciaCitas;
+/
 -- /
 
 -- BEGIN
@@ -65,6 +66,7 @@ BEGIN
        END;
    END LOOP;
 END CalcularEficienciaVeterinario;
+/
 -- /
 
 -- BEGIN
@@ -72,7 +74,7 @@ END CalcularEficienciaVeterinario;
 -- END;
 -- /
 
-CREATE OR REPLACE PROCEDURE CalGastosInstrumentosPorProv AS
+create or replace PROCEDURE CalGastosInstrumentosPorProv AS
 BEGIN
    FOR proveedor_actual IN (SELECT * FROM Proveedor) LOOP
        DECLARE
@@ -85,8 +87,8 @@ BEGIN
            nombre_proveedor_actual := proveedor_actual.Nombre;
 
            -- Calcular los gastos totales en instrumentos médicos por el proveedor actual
-           SELECT COALESCE(SUM(PrecioCompra), 0) INTO gastos_instrumentos_actual
-           FROM InstrumentoMedico
+           SELECT COALESCE(SUM(MONTO), 0) INTO gastos_instrumentos_actual
+           FROM transaccion_proveedor
            WHERE ID_Proveedor = id_proveedor_actual;
 
            -- Imprimir los gastos en la consola

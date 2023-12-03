@@ -9,6 +9,7 @@ BEGIN
     -- Devolver el total de ingresos por ventas
     RETURN total_ingresos;
 END CalcIngresosTotales;
+/
 -- /
 
 -- DECLARE
