@@ -97,6 +97,7 @@ public class VentanaMain extends javax.swing.JFrame {
         campoSentenciaSQL = new javax.swing.JLabel();
         botonAgendarCita = new javax.swing.JButton();
         campoPerrito = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Proyecto Integrador | 2023-II");
@@ -189,6 +190,13 @@ public class VentanaMain extends javax.swing.JFrame {
         campoPerrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/paq/img/perrito.gif"))); // NOI18N
         campoPerrito.setText(" ");
 
+        jButton1.setText("Ver cliente y mascota");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -202,7 +210,9 @@ public class VentanaMain extends javax.swing.JFrame {
                                 .addComponent(comboBoxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(46, 46, 46)
                                 .addComponent(botonActualizar)
-                                .addGap(102, 102, 102)
+                                .addGap(19, 19, 19)
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
                                 .addComponent(botonAbrirReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -235,7 +245,8 @@ public class VentanaMain extends javax.swing.JFrame {
                         .addGap(37, 37, 37)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(comboBoxTablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonActualizar)))
+                            .addComponent(botonActualizar)
+                            .addComponent(jButton1)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(botonAbrirReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -407,6 +418,45 @@ public class VentanaMain extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonAgendarCitaActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            String tablaSeleccionada = (String) comboBoxTablas.getSelectedItem();
+            DefaultTableModel modelo = new DefaultTableModel();
+            
+            String[] atributos = null;
+            // Poner encabezado
+            Statement statement = conexionSQL.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM CLIENTE c INNER JOIN CLIENTE_MASCOTA cm ON c.DNI = cm.id_cliente INNER JOIN MASCOTA m ON cm.id_mascota = m.id");
+            
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            int numColumnas = metaData.getColumnCount();
+            atributos = new String[numColumnas];
+            
+            for (int i = 1; i <= numColumnas; i++) {
+                atributos[i-1] = metaData.getColumnName(i);
+            }
+            modelo.setColumnIdentifiers(atributos);
+            
+            // Llenar tabla con información
+            while (resultSet.next()) {
+                String[] info = new String[atributos.length];
+                for (int i = 0; i < atributos.length; i++) {
+                    info[i] = resultSet.getString(atributos[i]);
+                }
+                modelo.addRow(info);
+            }
+            
+            // Cerrar resultSet y sentencia
+            resultSet.close();
+            statement.close();
+            
+            // Colocar modelo creado
+            tablaDatos.setModel(modelo);
+        } catch (SQLException ex) {
+            Logger.getLogger(VentanaMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     
     private void actualizarTabla() throws SQLException {
         // Lógica para actualizar la tabla según la opción seleccionada
@@ -511,6 +561,7 @@ public class VentanaMain extends javax.swing.JFrame {
     private javax.swing.JTextArea campoQuerySQL;
     private javax.swing.JLabel campoSentenciaSQL;
     private javax.swing.JComboBox comboBoxTablas;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
