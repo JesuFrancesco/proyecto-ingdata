@@ -1,31 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package paq.ventanas;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import paq.clases.SentenciaPLSQL;
 
 /**
- *
  * @author Jesu
  */
 public class VentanaReporte extends javax.swing.JFrame {
 
-    /**
-     * Creates new form frameReporte
-     */
-    // Enable DBMS_OUTPUT
-    
-    
-    private Connection conexionSQL;
-    private CallableStatement activarLlamada, desactivarLlamada;;
+    private final Connection conexionSQL;
+    private final CallableStatement activarDBMS_OUTPUT, desactivarDBMS_OUTPUT;
     public VentanaReporte(Connection c) throws SQLException {
         this.conexionSQL = c;
-        this.activarLlamada = conexionSQL.prepareCall("begin dbms_output.enable(NULL); end;"); 
-        this.desactivarLlamada = conexionSQL.prepareCall("begin dbms_output.disable(); end;"); 
+        this.activarDBMS_OUTPUT = conexionSQL.prepareCall("begin dbms_output.enable(NULL); end;"); 
+        this.desactivarDBMS_OUTPUT = conexionSQL.prepareCall("begin dbms_output.disable(); end;"); 
         
         initComponents();
         setLocationRelativeTo(null);
@@ -145,13 +133,13 @@ public class VentanaReporte extends javax.swing.JFrame {
     private void botonFrCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFrCitasActionPerformed
         try {
             // Activar DBMS
-            activarLlamada.executeUpdate();
+            activarDBMS_OUTPUT.executeUpdate();
 
             // Llamada a DBMS
             mostrarResultado(SentenciaPLSQL.CALC_1);
             
             // Desactivar DBMS
-            desactivarLlamada.executeUpdate();
+            desactivarDBMS_OUTPUT.executeUpdate();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Algo salio mal:\n" + ex.getMessage());
         }
@@ -160,13 +148,13 @@ public class VentanaReporte extends javax.swing.JFrame {
     private void botonEficVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEficVetActionPerformed
         try {
             // Activar DBMS
-            activarLlamada.executeUpdate();
+            activarDBMS_OUTPUT.executeUpdate();
 
             // Llamada a DBMS
             mostrarResultado(SentenciaPLSQL.CALC_2);
             
             // Desactivar DBMS
-            desactivarLlamada.executeUpdate();
+            desactivarDBMS_OUTPUT.executeUpdate();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Algo salio mal:\n" + ex.getMessage());
         }
@@ -175,13 +163,13 @@ public class VentanaReporte extends javax.swing.JFrame {
     private void botonGastoInstrumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGastoInstrumentoActionPerformed
         try {
             // Activar DBMS
-            activarLlamada.executeUpdate();
+            activarDBMS_OUTPUT.executeUpdate();
 
             // Llamada a DBMS
             mostrarResultado(SentenciaPLSQL.CALC_3);
             
             // Desactivar DBMS
-            desactivarLlamada.executeUpdate();
+            desactivarDBMS_OUTPUT.executeUpdate();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Algo salio mal:\n" + ex.getMessage());
         }
@@ -190,7 +178,7 @@ public class VentanaReporte extends javax.swing.JFrame {
     private void botonIngresoTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresoTotalActionPerformed
         try {
             // Activar DBMS
-            activarLlamada.executeUpdate();
+            activarDBMS_OUTPUT.executeUpdate();
 
             CallableStatement llamada = conexionSQL.prepareCall(SentenciaPLSQL.CALC_4);
             llamada.registerOutParameter(1, Types.DOUBLE); // Retorna double
@@ -199,7 +187,7 @@ public class VentanaReporte extends javax.swing.JFrame {
             campoResultado.setText("Total de ingresos: " + returnValue);
             
             // Desactivar DBMS
-            desactivarLlamada.executeUpdate();
+            desactivarDBMS_OUTPUT.executeUpdate();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Algo salio mal:\n" + ex.getMessage());
         }

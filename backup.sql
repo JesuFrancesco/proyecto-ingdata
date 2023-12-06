@@ -1,5 +1,5 @@
 --------------------------------------------------------
--- Archivo creado  - sábado-noviembre-25-2023   
+-- Archivo creado  - miércoles-diciembre-06-2023   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Table CITA
@@ -200,6 +200,9 @@
   GRANT SELECT ON "INGDATA"."VETERINARIO" TO "USUARIO";
 REM INSERTING into INGDATA.CITA
 SET DEFINE OFF;
+Insert into INGDATA.CITA (ID,FECHAREGISTRO,RAZONCITA,ID_CLIENTE,ID_MASCOTA,ID_VETERINARIO) values ('18',to_date('06/06/23','DD/MM/RR'),'baño medicado','71234567','1','3');
+Insert into INGDATA.CITA (ID,FECHAREGISTRO,RAZONCITA,ID_CLIENTE,ID_MASCOTA,ID_VETERINARIO) values ('19',to_date('22/12/23','DD/MM/RR'),'Fiebre','75064350','74','3');
+Insert into INGDATA.CITA (ID,FECHAREGISTRO,RAZONCITA,ID_CLIENTE,ID_MASCOTA,ID_VETERINARIO) values ('20',to_date('08/01/77','DD/MM/RR'),'soy cyborg','22232425','30','3');
 Insert into INGDATA.CITA (ID,FECHAREGISTRO,RAZONCITA,ID_CLIENTE,ID_MASCOTA,ID_VETERINARIO) values ('1',to_date('15/11/23','DD/MM/RR'),'Consulta general','22334455','1','1');
 Insert into INGDATA.CITA (ID,FECHAREGISTRO,RAZONCITA,ID_CLIENTE,ID_MASCOTA,ID_VETERINARIO) values ('2',to_date('15/11/23','DD/MM/RR'),'Vacunaci??n','33445566','2','1');
 Insert into INGDATA.CITA (ID,FECHAREGISTRO,RAZONCITA,ID_CLIENTE,ID_MASCOTA,ID_VETERINARIO) values ('3',to_date('15/11/23','DD/MM/RR'),'Revisi??n dental','44556677','3','2');
@@ -216,9 +219,10 @@ Insert into INGDATA.CITA (ID,FECHAREGISTRO,RAZONCITA,ID_CLIENTE,ID_MASCOTA,ID_VE
 Insert into INGDATA.CITA (ID,FECHAREGISTRO,RAZONCITA,ID_CLIENTE,ID_MASCOTA,ID_VETERINARIO) values ('14',to_date('15/11/23','DD/MM/RR'),'Desparasitaci??n','16171819','4','2');
 Insert into INGDATA.CITA (ID,FECHAREGISTRO,RAZONCITA,ID_CLIENTE,ID_MASCOTA,ID_VETERINARIO) values ('15',to_date('15/11/23','DD/MM/RR'),'Cirug??a','17181920','8','3');
 Insert into INGDATA.CITA (ID,FECHAREGISTRO,RAZONCITA,ID_CLIENTE,ID_MASCOTA,ID_VETERINARIO) values ('16',to_date('15/11/23','DD/MM/RR'),'Control de peso','18192021','10','3');
-Insert into INGDATA.CITA (ID,FECHAREGISTRO,RAZONCITA,ID_CLIENTE,ID_MASCOTA,ID_VETERINARIO) values ('17',to_date('24/11/21','DD/MM/RR'),'Chequeo','12345678','71','1');
 REM INSERTING into INGDATA.CLIENTE
 SET DEFINE OFF;
+Insert into INGDATA.CLIENTE (DNI,NOMBRES,APELLIDOS,TELEFONO,DIRECCION,CORREO) values ('75064350','Luis Mateo','Salas Contreras','945809200','Calle 789, Lima','luis.salas@gmail.com');
+Insert into INGDATA.CLIENTE (DNI,NOMBRES,APELLIDOS,TELEFONO,DIRECCION,CORREO) values ('75064398','Luis Mario','Perez Contreras','945809200','Calle 789, Lima','luis.perez@gmail.com');
 Insert into INGDATA.CLIENTE (DNI,NOMBRES,APELLIDOS,TELEFONO,DIRECCION,CORREO) values ('71234567','Juan Pablo','Perez Rodriguez','912345678','Calle 123, Lima','juan.perez@gmail.com');
 Insert into INGDATA.CLIENTE (DNI,NOMBRES,APELLIDOS,TELEFONO,DIRECCION,CORREO) values ('82345678','Ana Sofia','Gomez Lopez','923456789','Av. Principal 456, Arequipa','ana.gomez@gmail.com');
 Insert into INGDATA.CLIENTE (DNI,NOMBRES,APELLIDOS,TELEFONO,DIRECCION,CORREO) values ('93456789','Diego Alejandro','Rodriguez Chavez','934567890','Jr. Independencia 789, Trujillo','diego.rodriguez@gmail.com');
@@ -259,7 +263,6 @@ Insert into INGDATA.CLIENTE (DNI,NOMBRES,APELLIDOS,TELEFONO,DIRECCION,CORREO) va
 Insert into INGDATA.CLIENTE (DNI,NOMBRES,APELLIDOS,TELEFONO,DIRECCION,CORREO) values ('30313233','Luis Eduardo','Lara Huaman','929303132','Av. de los Rios 3535, Ica','luis.lara@gmail.com');
 Insert into INGDATA.CLIENTE (DNI,NOMBRES,APELLIDOS,TELEFONO,DIRECCION,CORREO) values ('31323334','Marta Patricia','Gutierrez Castro','930313233','Jr. de los Bosques 3636, Trujillo','marta.gutierrez@gmail.com');
 Insert into INGDATA.CLIENTE (DNI,NOMBRES,APELLIDOS,TELEFONO,DIRECCION,CORREO) values ('32333435','Jose Eduardo','Carrasco Mendoza','931323334','Calle de las Mariposas 3737, Lima','jose.carrasco@gmail.com');
-Insert into INGDATA.CLIENTE (DNI,NOMBRES,APELLIDOS,TELEFONO,DIRECCION,CORREO) values ('12345678','Juan','Perez','51 8913758','av. los cerezos','jdios@ulima.edu.pe');
 REM INSERTING into INGDATA.CLIENTE_MASCOTA
 SET DEFINE OFF;
 Insert into INGDATA.CLIENTE_MASCOTA (ID_CLIENTE,ID_MASCOTA) values ('71234567','1');
@@ -302,7 +305,8 @@ Insert into INGDATA.CLIENTE_MASCOTA (ID_CLIENTE,ID_MASCOTA) values ('29303132','
 Insert into INGDATA.CLIENTE_MASCOTA (ID_CLIENTE,ID_MASCOTA) values ('30313233','38');
 Insert into INGDATA.CLIENTE_MASCOTA (ID_CLIENTE,ID_MASCOTA) values ('31323334','39');
 Insert into INGDATA.CLIENTE_MASCOTA (ID_CLIENTE,ID_MASCOTA) values ('32333435','40');
-Insert into INGDATA.CLIENTE_MASCOTA (ID_CLIENTE,ID_MASCOTA) values ('12345678','71');
+Insert into INGDATA.CLIENTE_MASCOTA (ID_CLIENTE,ID_MASCOTA) values ('75064398','72');
+Insert into INGDATA.CLIENTE_MASCOTA (ID_CLIENTE,ID_MASCOTA) values ('75064350','74');
 REM INSERTING into INGDATA.HISTORIACLINICA
 SET DEFINE OFF;
 Insert into INGDATA.HISTORIACLINICA (ID,FECHAREGISTRO,DIAGNOSTICO,TRATAMIENTO,DNI_CLIENTE,ID_MASCOTA) values ('1',to_date('14/02/20','DD/MM/RR'),'Fiebre y malestar general','Antibi??ticos y reposo','71234567','11');
@@ -324,7 +328,7 @@ Insert into INGDATA.HISTORIACLINICA (ID,FECHAREGISTRO,DIAGNOSTICO,TRATAMIENTO,DN
 Insert into INGDATA.HISTORIACLINICA (ID,FECHAREGISTRO,DIAGNOSTICO,TRATAMIENTO,DNI_CLIENTE,ID_MASCOTA) values ('17',to_date('23/09/20','DD/MM/RR'),'Alergias cut??neas','Medicamentos antial??rgicos y ba??os especiales','88990011','27');
 Insert into INGDATA.HISTORIACLINICA (ID,FECHAREGISTRO,DIAGNOSTICO,TRATAMIENTO,DNI_CLIENTE,ID_MASCOTA) values ('18',to_date('08/11/21','DD/MM/RR'),'Problemas oculares','Gotas para los ojos y revisi??n peri??dica','99001122','28');
 Insert into INGDATA.HISTORIACLINICA (ID,FECHAREGISTRO,DIAGNOSTICO,TRATAMIENTO,DNI_CLIENTE,ID_MASCOTA) values ('19',to_date('19/02/22','DD/MM/RR'),'Fractura en una pata','Inmovilizaci??n y cirug??a','10112233','29');
-Insert into INGDATA.HISTORIACLINICA (ID,FECHAREGISTRO,DIAGNOSTICO,TRATAMIENTO,DNI_CLIENTE,ID_MASCOTA) values ('20',to_date('12/04/23','DD/MM/RR'),'Problemas gastrointestinales','Cambios en la dieta y medicamentos','12131415','30');
+Insert into INGDATA.HISTORIACLINICA (ID,FECHAREGISTRO,DIAGNOSTICO,TRATAMIENTO,DNI_CLIENTE,ID_MASCOTA) values ('20',to_date('12/04/23','DD/MM/RR'),'Problemas gastrointestinales','Cambio dieta','12131415','30');
 REM INSERTING into INGDATA.INSTRUMENTOMEDICO
 SET DEFINE OFF;
 Insert into INGDATA.INSTRUMENTOMEDICO (ID,NOMBRE,DESCRIPCION,PRECIOCOMPRA,ID_PROVEEDOR) values ('1','Estetoscopio','Un instrumento que permite auscultar los sonidos del coraz?n y los pulmones de los animales','150','4');
@@ -349,6 +353,9 @@ Insert into INGDATA.INSTRUMENTOMEDICO (ID,NOMBRE,DESCRIPCION,PRECIOCOMPRA,ID_PRO
 Insert into INGDATA.INSTRUMENTOMEDICO (ID,NOMBRE,DESCRIPCION,PRECIOCOMPRA,ID_PROVEEDOR) values ('20','Autoclave','Un instrumento que sirve para esterilizar los instrumentos m?dicos mediante vapor a alta presi?n','800','7');
 REM INSERTING into INGDATA.MASCOTA
 SET DEFINE OFF;
+Insert into INGDATA.MASCOTA (ID,NOMBRE,RAZA,FECHANACIMIENTO,ESPECIE) values ('74','Karboncito','Beagle',to_date('13/12/23','DD/MM/RR'),'Gato');
+Insert into INGDATA.MASCOTA (ID,NOMBRE,RAZA,FECHANACIMIENTO,ESPECIE) values ('72','Karboncito','Beagle',to_date('13/12/23','DD/MM/RR'),'Perro');
+Insert into INGDATA.MASCOTA (ID,NOMBRE,RAZA,FECHANACIMIENTO,ESPECIE) values ('73','Karboncito','Beagle',to_date('13/12/23','DD/MM/RR'),'Gato');
 Insert into INGDATA.MASCOTA (ID,NOMBRE,RAZA,FECHANACIMIENTO,ESPECIE) values ('1','pepe','Labrador Retriever',to_date('01/05/19','DD/MM/RR'),'Perro');
 Insert into INGDATA.MASCOTA (ID,NOMBRE,RAZA,FECHANACIMIENTO,ESPECIE) values ('2','Buddy','Golden Retriever',to_date('15/10/18','DD/MM/RR'),'Perro');
 Insert into INGDATA.MASCOTA (ID,NOMBRE,RAZA,FECHANACIMIENTO,ESPECIE) values ('3','Luna','Siamese',to_date('28/02/20','DD/MM/RR'),'Gato');
@@ -420,9 +427,10 @@ Insert into INGDATA.MASCOTA (ID,NOMBRE,RAZA,FECHANACIMIENTO,ESPECIE) values ('68
 Insert into INGDATA.MASCOTA (ID,NOMBRE,RAZA,FECHANACIMIENTO,ESPECIE) values ('69','Daisy','Holland Lop',to_date('25/01/20','DD/MM/RR'),'Conejo');
 Insert into INGDATA.MASCOTA (ID,NOMBRE,RAZA,FECHANACIMIENTO,ESPECIE) values ('70','Willyrex','Mini Rex',to_date('15/10/15','DD/MM/RR'),'Conejo');
 Insert into INGDATA.MASCOTA (ID,NOMBRE,RAZA,FECHANACIMIENTO,ESPECIE) values ('71','Carlito','Chihuahua',to_date('03/06/21','DD/MM/RR'),'Perro');
+Insert into INGDATA.MASCOTA (ID,NOMBRE,RAZA,FECHANACIMIENTO,ESPECIE) values ('75','carlito 2','perro',to_date('08/12/21','DD/MM/RR'),'chihuahua');
 REM INSERTING into INGDATA.PRODUCTO
 SET DEFINE OFF;
-Insert into INGDATA.PRODUCTO (ID,NOMBRE,DESCRIPCION,PRECIO,CANTIDADSTOCK,ID_PROVEEDOR,ID_RECEPCIONISTA) values ('1','Cama para perros','Una cama suave y c?moda para que tu perro descanse','50','10','3','1');
+Insert into INGDATA.PRODUCTO (ID,NOMBRE,DESCRIPCION,PRECIO,CANTIDADSTOCK,ID_PROVEEDOR,ID_RECEPCIONISTA) values ('1','Cama para perros','Una cama suave y c?moda para que tu perro descanse','50','9','3','1');
 Insert into INGDATA.PRODUCTO (ID,NOMBRE,DESCRIPCION,PRECIO,CANTIDADSTOCK,ID_PROVEEDOR,ID_RECEPCIONISTA) values ('2','Pechera para perros','Una pechera ajustable y resistente para pasear a tu perro','20','15','5','1');
 Insert into INGDATA.PRODUCTO (ID,NOMBRE,DESCRIPCION,PRECIO,CANTIDADSTOCK,ID_PROVEEDOR,ID_RECEPCIONISTA) values ('3','Pelota para perros','Una pelota de goma que rebota y hace ruido para divertir a tu perro','5','30','7','1');
 Insert into INGDATA.PRODUCTO (ID,NOMBRE,DESCRIPCION,PRECIO,CANTIDADSTOCK,ID_PROVEEDOR,ID_RECEPCIONISTA) values ('4','Collar antipulgas','Un collar que protege a tu perro de las pulgas y garrapatas por 6 meses','25','20','4','1');
@@ -459,7 +467,9 @@ SET DEFINE OFF;
 Insert into INGDATA.RECEPCIONISTA (DNI,NOMBRES,APELLIDOS,TELEFONO,DIRECCION,CORREO) values ('1','Jose','Cardenas','123-456-7890','123 Main St','juanperez@email.com');
 REM INSERTING into INGDATA.TRANSACCION_CLIENTE
 SET DEFINE OFF;
-Insert into INGDATA.TRANSACCION_CLIENTE (ID,MOMENTODIA,MONTO,ID_CLIENTE,ID_PRODUCTO) values ('21',to_timestamp('24/11/23 12:33:56,850000000 AM','DD/MM/RR HH12:MI:SSXFF AM'),'50','12345678','5');
+Insert into INGDATA.TRANSACCION_CLIENTE (ID,MOMENTODIA,MONTO,ID_CLIENTE,ID_PRODUCTO) values ('22',to_timestamp('30/11/23 06:00:02,394000000 PM','DD/MM/RR HH12:MI:SSXFF AM'),'38','71234567','5');
+Insert into INGDATA.TRANSACCION_CLIENTE (ID,MOMENTODIA,MONTO,ID_CLIENTE,ID_PRODUCTO) values ('23',to_timestamp('21/11/23 04:15:00,000000000 PM','DD/MM/RR HH12:MI:SSXFF AM'),'100','78901234','1');
+Insert into INGDATA.TRANSACCION_CLIENTE (ID,MOMENTODIA,MONTO,ID_CLIENTE,ID_PRODUCTO) values ('24',to_timestamp('21/11/23 04:15:00,000000000 PM','DD/MM/RR HH12:MI:SSXFF AM'),'100','78901234','1');
 Insert into INGDATA.TRANSACCION_CLIENTE (ID,MOMENTODIA,MONTO,ID_CLIENTE,ID_PRODUCTO) values ('1',to_timestamp('21/11/23 04:15:00,000000000 PM','DD/MM/RR HH12:MI:SSXFF AM'),'100','78901234','1');
 Insert into INGDATA.TRANSACCION_CLIENTE (ID,MOMENTODIA,MONTO,ID_CLIENTE,ID_PRODUCTO) values ('2',to_timestamp('21/11/23 04:16:00,000000000 PM','DD/MM/RR HH12:MI:SSXFF AM'),'200','89012345','2');
 Insert into INGDATA.TRANSACCION_CLIENTE (ID,MOMENTODIA,MONTO,ID_CLIENTE,ID_PRODUCTO) values ('3',to_timestamp('21/11/23 04:17:00,000000000 PM','DD/MM/RR HH12:MI:SSXFF AM'),'300','11223344','3');
@@ -497,6 +507,51 @@ SET DEFINE OFF;
 Insert into INGDATA.VETERINARIO (DNI,NOMBRES,APELLIDOS,TELEFONO,DIRECCION,CORREO,ESPECIALIDAD) values ('1','Pedro','Garcia','3456789','Calle 123','correo1@gmail.com','Cirug??a');
 Insert into INGDATA.VETERINARIO (DNI,NOMBRES,APELLIDOS,TELEFONO,DIRECCION,CORREO,ESPECIALIDAD) values ('2','Laura','Martinez','2345678','Calle 456','correo2@gmail.com','Dermatolog??a');
 Insert into INGDATA.VETERINARIO (DNI,NOMBRES,APELLIDOS,TELEFONO,DIRECCION,CORREO,ESPECIALIDAD) values ('3','Carlos','Rodriguez','12345678','Calle 789','correo3@gmail.com','Oftalmolog??a');
+--------------------------------------------------------
+--  DDL for Trigger DISMINUIRSTOCKPRODUCTO
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "INGDATA"."DISMINUIRSTOCKPRODUCTO" 
+AFTER INSERT ON Transaccion_Cliente
+FOR EACH ROW
+DECLARE
+  stockActual NUMBER;
+BEGIN
+  SELECT CantidadStock INTO stockActual
+  FROM Producto
+  WHERE ID = :NEW.ID_Producto;
+
+  IF stockActual > 0 THEN
+    UPDATE Producto
+    SET CantidadStock = CantidadStock - 1
+    WHERE ID = :NEW.ID_Producto;
+  ELSE
+    RAISE_APPLICATION_ERROR(-20001, 'Lo sentimos, este producto está agotado');
+  END IF;
+END;
+
+/
+ALTER TRIGGER "INGDATA"."DISMINUIRSTOCKPRODUCTO" ENABLE;
+--------------------------------------------------------
+--  DDL for Procedure AGENDARCITA
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE PROCEDURE "INGDATA"."AGENDARCITA" (
+    v_id IN cita.id%TYPE,
+    v_fecha IN cita.fecharegistro%TYPE,
+    v_razon IN cita.razoncita%TYPE,
+    v_cliente IN cita.id_cliente%TYPE,
+    v_mascota IN cita.id_mascota%TYPE,
+    v_vet IN cita.id_veterinario%TYPE
+) IS
+BEGIN
+    INSERT INTO Cita (ID, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_Veterinario)
+    VALUES (v_id, v_fecha, v_razon, v_cliente, v_mascota, v_vet);
+    DBMS_OUTPUT.PUT_LINE('Cita ' || v_id || ' agendada para el dia ' || v_fecha || ' exitosamente.');
+END;
+
+/
 --------------------------------------------------------
 --  DDL for Procedure CALCFRECUENCIACITAS
 --------------------------------------------------------
@@ -589,8 +644,8 @@ BEGIN
            nombre_proveedor_actual := proveedor_actual.Nombre;
 
            -- Calcular los gastos totales en instrumentos médicos por el proveedor actual
-           SELECT COALESCE(SUM(PrecioCompra), 0) INTO gastos_instrumentos_actual
-           FROM InstrumentoMedico
+           SELECT COALESCE(SUM(MONTO), 0) INTO gastos_instrumentos_actual
+           FROM transaccion_proveedor
            WHERE ID_Proveedor = id_proveedor_actual;
 
            -- Imprimir los gastos en la consola
@@ -601,6 +656,112 @@ BEGIN
        END;
    END LOOP;
 END CalGastosInstrumentosPorProv;
+
+/
+--------------------------------------------------------
+--  DDL for Procedure CONCLUIRCITA
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE PROCEDURE "INGDATA"."CONCLUIRCITA" (
+    v_id IN cita.id%TYPE,
+    v_diagnostico IN historiaclinica.diagnostico%TYPE,
+    v_tratamiento IN historiaclinica.tratamiento%TYPE
+) IS
+    v_fecha CITA.fecharegistro%TYPE;
+    v_cliente CITA.ID_CLIENTE%TYPE;
+    v_mascota CITA.ID_MASCOTA%TYPE;
+BEGIN
+    SELECT FechaRegistro, ID_Cliente, ID_Mascota
+    INTO v_fecha, v_cliente, v_mascota
+    FROM Cita WHERE Cita.id = v_id;
+
+    DELETE FROM CITA WHERE ID = v_id;
+
+    INSERT INTO HISTORIACLINICA (ID, FechaRegistro, Diagnostico, Tratamiento, DNI_Cliente, ID_Mascota)
+    VALUES (v_id, v_fecha, v_diagnostico, v_tratamiento, v_cliente, v_mascota);
+    DBMS_OUTPUT.PUT_LINE('Cita ' || v_id || ' concluida y agregada a la historia clinica.');
+END;
+
+/
+--------------------------------------------------------
+--  DDL for Procedure ELIMINARCLIENTE
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE PROCEDURE "INGDATA"."ELIMINARCLIENTE" (
+    v_dni IN cliente.dni%TYPE
+) IS
+    aux mascota.id%type;
+BEGIN
+    DELETE FROM TRANSACCION_CLIENTE WHERE ID_Cliente = v_dni;
+    DELETE FROM HISTORIACLINICA WHERE DNI_Cliente = v_dni;
+    DELETE FROM CITA WHERE ID_Cliente = v_dni;
+
+    select m.id into aux from mascota m INNER JOIN CLIENTE_MASCOTA cm ON cm.id_mascota = m.id
+        WHERE cm.id_cliente = v_dni;
+
+    DELETE FROM CLIENTE_MASCOTA WHERE ID_CLIENTE = v_dni;
+    DELETE FROM MASCOTA WHERE id = aux;
+
+    DELETE FROM CLIENTE WHERE DNI = v_dni;    
+    DBMS_OUTPUT.PUT_LINE('Cliente ' || v_dni || ' eliminado correctamente.');    
+END;
+
+/
+--------------------------------------------------------
+--  DDL for Procedure INSERTARCLIENTE
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE PROCEDURE "INGDATA"."INSERTARCLIENTE" (
+    v_dni IN cliente.DNI%TYPE,
+    v_nombres IN cliente.nombres%TYPE,
+    v_apellidos IN cliente.apellidos%TYPE,
+    v_telefono IN cliente.telefono%TYPE,
+    v_direccion IN cliente.direccion%TYPE,
+    v_correo IN cliente.correo%TYPE
+) IS
+BEGIN
+    INSERT INTO Cliente (DNI, Nombres, Apellidos, Telefono, Direccion, Correo) 
+    VALUES (v_dni, v_nombres, v_apellidos, v_telefono, v_direccion, v_correo);
+    DBMS_OUTPUT.PUT_LINE('Cliente con dni ' || v_dni || 'fue insertado exitosamente.');
+END;
+
+/
+--------------------------------------------------------
+--  DDL for Procedure INSERTARMASCOTA
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE PROCEDURE "INGDATA"."INSERTARMASCOTA" (
+    v_id IN mascota.id%TYPE,
+    v_nombre IN mascota.nombre%TYPE,
+    v_raza IN mascota.raza%TYPE,
+    v_fecha IN mascota.fechanacimiento%TYPE,
+    v_especie IN mascota.especie%TYPE
+) IS
+BEGIN
+    INSERT INTO Mascota (ID, Nombre, Raza, FechaNacimiento, Especie)
+    VALUES (v_id,v_nombre, v_raza, v_fecha, v_especie);
+    DBMS_OUTPUT.PUT_LINE('Mascota con id ' || v_id || ' fue insertada exitosamente.');
+END;
+
+/
+--------------------------------------------------------
+--  DDL for Procedure VINCULARCLIENTEMASCOTA
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE PROCEDURE "INGDATA"."VINCULARCLIENTEMASCOTA" (
+    v_dni IN cliente.dni%TYPE,
+    v_idmascota IN mascota.id%TYPE
+) IS
+BEGIN
+    INSERT INTO Cliente_Mascota (id_cliente, id_mascota)
+    VALUES (v_dni, v_idmascota);
+    DBMS_OUTPUT.PUT_LINE('Vinculo entre cliente ' || v_dni || ' y ' || v_idmascota || ' fue realizado exitosamente.');
+END;
 
 /
 --------------------------------------------------------

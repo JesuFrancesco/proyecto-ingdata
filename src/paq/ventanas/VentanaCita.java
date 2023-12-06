@@ -8,6 +8,7 @@ package paq.ventanas;
 import java.sql.*;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import paq.clases.SentenciaPLSQL;
 
 /**
  *
@@ -204,8 +205,8 @@ public class VentanaCita extends javax.swing.JFrame {
             int nuevaID = maxId + 1;
 
             // Insertar fila de cita
-            String citaQuery = "INSERT INTO CITA(ID, FechaRegistro, RazonCita, ID_CLIENTE, ID_MASCOTA, ID_VETERINARIO) VALUES(?, ?, ?, ?, ?, ?)";
-            preparedStatement = conexionSQL.prepareStatement(citaQuery);
+//            String citaQuery = "INSERT INTO CITA(ID, FechaRegistro, RazonCita, ID_CLIENTE, ID_MASCOTA, ID_VETERINARIO) VALUES(?, ?, ?, ?, ?, ?)";
+            preparedStatement = conexionSQL.prepareStatement(SentenciaPLSQL.CitaProcedure);
             preparedStatement.setInt(1, nuevaID);
             preparedStatement.setTimestamp(2, new Timestamp(campoCalendario.getDate().getTime()));
             preparedStatement.setString(3, campoRazonCita.getText());
@@ -230,7 +231,7 @@ public class VentanaCita extends javax.swing.JFrame {
     private void campoDNIKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoDNIKeyReleased
         try {
             String dni = campoDNI.getText();
-            if (dni.length() < 7) return;
+            if (dni.length() != 8) return;
             Statement statement = conexionSQL.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM CLIENTE_MASCOTA INNER JOIN MASCOTA ON CLIENTE_MASCOTA.ID_MASCOTA = MASCOTA.ID WHERE ID_CLIENTE = " + dni); // Llamada de query
             String[] mascotas = new String[resultSet.getFetchSize()];

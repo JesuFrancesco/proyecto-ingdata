@@ -13,9 +13,14 @@ CREATE TABLE Cliente (
   Telefono VARCHAR2(20),
   Direccion VARCHAR2(255),
   Correo VARCHAR2(255),
-  ID_Mascota NUMBER,
-  CONSTRAINT fk_MascotaCliente FOREIGN KEY (ID_Mascota) REFERENCES Mascota(ID_Mascota)
 );
+
+CREATE TABLE CLIENTE_MASCOTA (
+  ID_CLIENTE NUMBER, 
+	ID_MASCOTA NUMBER,
+  CONSTRAINT fk_CM_Cliente FOREIGN KEY (ID_Cliente) REFERENCES Cliente(DNI_Cliente),
+  CONSTRAINT fk_CM_Mascota FOREIGN KEY (ID_Mascota) REFERENCES Mascota(ID_Mascota)
+)
 
 CREATE TABLE Veterinario (
   DNI NUMBER PRIMARY KEY,

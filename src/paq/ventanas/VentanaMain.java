@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
+import paq.clases.SentenciaDML;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -22,10 +23,7 @@ import javax.swing.event.HyperlinkListener;
  * @author SEBASTIAN
  */
 public class VentanaMain extends javax.swing.JFrame {
-    
-    /**
-     * Creates new form Ventana2
-     */
+
     private final Connection conexionSQL;
     private String query = null;
     
@@ -98,6 +96,7 @@ public class VentanaMain extends javax.swing.JFrame {
         botonAgendarCita = new javax.swing.JButton();
         campoPerrito = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Proyecto Integrador | 2023-II");
@@ -239,7 +238,7 @@ public class VentanaMain extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(20, 20, 20)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
@@ -270,19 +269,31 @@ public class VentanaMain extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jButton2.setBackground(new java.awt.Color(204, 0, 0));
+        jButton2.setText("Eliminar cliente");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addGap(69, 69, 69)
+                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(37, 37, 37))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -346,13 +357,59 @@ public class VentanaMain extends javax.swing.JFrame {
             modelo.setRowCount(0);    // Elimina todas las filas existentes
             actualizarTabla();
         } catch (SQLException ex) {
-            Logger.getLogger(VentanaMain.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Seleccione una tabla", "Error en query", JOptionPane.WARNING_MESSAGE);
+//            Logger.getLogger(VentanaMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_botonActualizarActionPerformed
 
     private void comboBoxTablasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxTablasActionPerformed
         
-        if(comboBoxTablas.getSelectedItem().toString().equalsIgnoreCase("-")) return;
+        String tablaSeleccionada = comboBoxTablas.getSelectedItem().toString();
+        
+        if(tablaSeleccionada.equalsIgnoreCase("-")) return;
+        
+        switch (tablaSeleccionada) {
+            case "Cita":
+                tablaSeleccionada = "Cita";
+                break;
+            case "Cliente":
+                tablaSeleccionada = "Cliente";
+                break;
+            case "Cliente_Mascota":
+                tablaSeleccionada = "Cliente_Mascota";
+                break;
+            case "Historia":
+                tablaSeleccionada = "HistoriaClinica";
+                break;
+            case "Instrumento":
+                tablaSeleccionada = "InstrumentoMedico";
+                break;
+            case "Mascota":
+                tablaSeleccionada = "Mascota";
+                break;
+            case "Producto":
+                tablaSeleccionada = "Producto";
+                break;
+            case "Proveedor":
+                tablaSeleccionada = "Proveedor";
+                break;
+            case "Recepcionista":
+                tablaSeleccionada = "Recepcionista";
+                break;
+            case "Trans_Cliente":
+                tablaSeleccionada = "Transaccion_Cliente";
+                break;
+            case "Trans_Proveedor":
+                tablaSeleccionada = "Transaccion_Proveedor";
+                break;
+            case "Veterinario":
+                tablaSeleccionada = "Veterinario";
+                break;
+            default:
+                tablaSeleccionada = null;
+                break;
+        }
+        setQuery(SentenciaDML.SELECT_TODO_TABLA + tablaSeleccionada);
         try {
             // Lógica para el botón "Actualizar"
             DefaultTableModel modelo = (DefaultTableModel) tablaDatos.getModel();
@@ -398,9 +455,7 @@ public class VentanaMain extends javax.swing.JFrame {
             if (e.getEventType().equals(HyperlinkEvent.EventType.ACTIVATED)) {
                 try {
                     Desktop.getDesktop().browse(e.getURL().toURI());
-                } catch (URISyntaxException ex) {
-                    Logger.getLogger(VentanaMain.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
+                } catch (URISyntaxException | IOException ex) {
                     Logger.getLogger(VentanaMain.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
@@ -426,7 +481,9 @@ public class VentanaMain extends javax.swing.JFrame {
             String[] atributos = null;
             // Poner encabezado
             Statement statement = conexionSQL.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM CLIENTE c INNER JOIN CLIENTE_MASCOTA cm ON c.DNI = cm.id_cliente INNER JOIN MASCOTA m ON cm.id_mascota = m.id");
+            setQuery("SELECT c.DNI, c.nombres, c.apellidos, c.telefono, c.direccion, c.correo, m.nombre, m.especie, m.raza, m.fechanacimiento"
+                    + " FROM CLIENTE c INNER JOIN CLIENTE_MASCOTA cm ON c.DNI = cm.id_cliente INNER JOIN MASCOTA m ON cm.id_mascota = m.id");
+            ResultSet resultSet = statement.executeQuery(getQuery());
             
             ResultSetMetaData metaData = resultSet.getMetaData();
             int numColumnas = metaData.getColumnCount();
@@ -457,63 +514,31 @@ public class VentanaMain extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            String s_dni = JOptionPane.showInputDialog(null, "Ingrese el DNI del cliente a eliminar.", "Eliminación de usuario", JOptionPane.INFORMATION_MESSAGE);
+            if(s_dni==null) return;
+            PreparedStatement llamada = conexionSQL.prepareCall("begin eliminarcliente(?); end;");
+            llamada.setInt(1, Integer.parseInt(s_dni));
+            int numFilas = llamada.executeUpdate();
+            System.out.println("Numero de clientes: " + numFilas);
+            JOptionPane.showMessageDialog(null, "Eliminación realizada correctamente", "éxito", JOptionPane.PLAIN_MESSAGE);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "DNI no válido", "Error en query", JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Algo salio mal.\n"+ex.getLocalizedMessage(), "Error en query", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     
     private void actualizarTabla() throws SQLException {
         // Lógica para actualizar la tabla según la opción seleccionada
-        String tablaSeleccionada = (String) comboBoxTablas.getSelectedItem();
         DefaultTableModel modelo = new DefaultTableModel();
 
-        String[] atributos = null;
-        if (null != tablaSeleccionada) 
-            
-            switch (tablaSeleccionada) {
-            case "Cita":
-                tablaSeleccionada = "Cita";
-                break;
-            case "Cliente":
-                tablaSeleccionada = "Cliente";
-                break;
-            case "Cliente_Mascota":
-                tablaSeleccionada = "Cliente_Mascota";
-                break;
-            case "Historia":
-                tablaSeleccionada = "HistoriaClinica";
-                break;
-            case "Instrumento":
-                tablaSeleccionada = "InstrumentoMedico";
-                break;
-            case "Mascota":
-                tablaSeleccionada = "Mascota";
-                break;
-            case "Producto":
-                tablaSeleccionada = "Producto";
-                break;
-            case "Proveedor":
-                tablaSeleccionada = "Proveedor";
-                break;
-            case "Recepcionista":
-                tablaSeleccionada = "Recepcionista";
-                break;
-            case "Trans_Cliente":
-                tablaSeleccionada = "Transaccion_Cliente";
-                break;
-            case "Trans_Proveedor":
-                tablaSeleccionada = "Transaccion_Proveedor";
-                break;
-            case "Veterinario":
-                tablaSeleccionada = "Veterinario";
-                break;
-            default:
-                tablaSeleccionada = null;
-                break;
-        } else {
-            JOptionPane.showMessageDialog(null, "ERROR EN TABLA: " + tablaSeleccionada);
-            return;
-        }
-        
         // Poner encabezado
+        String[] atributos = null;
         Statement statement = conexionSQL.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM " + tablaSeleccionada);
+        ResultSet resultSet = statement.executeQuery(getQuery());
         
         ResultSetMetaData metaData = resultSet.getMetaData();
         int numColumnas = metaData.getColumnCount();
@@ -562,6 +587,7 @@ public class VentanaMain extends javax.swing.JFrame {
     private javax.swing.JLabel campoSentenciaSQL;
     private javax.swing.JComboBox comboBoxTablas;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
