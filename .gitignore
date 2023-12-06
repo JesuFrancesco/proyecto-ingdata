@@ -30,6 +30,13 @@ replay_pid*
 *.db-journal
 *.db
 *.sqbpro
-nbproject/private/
-/dist/
-build/built-jar.properties
+
+# netbeans ide
+**/nbproject/private/
+**/nbproject/Makefile-*.mk
+**/nbproject/Package-*.bash
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
