@@ -105,3 +105,82 @@ END CalGastosInstrumentosPorProv;
 --    CalGastosInstrumentosPorProv;
 -- END;
 -- /
+
+CREATE OR REPLACE PROCEDURE insertarCliente(
+    v_dni IN cliente.DNI%TYPE,
+    v_nombres IN cliente.nombres%TYPE,
+    v_apellidos IN cliente.apellidos%TYPE,
+    v_telefono IN cliente.telefono%TYPE,
+    v_direccion IN cliente.direccion%TYPE,
+    v_correo IN cliente.correo%TYPE
+) IS
+BEGIN
+    INSERT INTO Cliente (DNI, Nombres, Apellidos, Telefono, Direccion, Correo) 
+    VALUES (v_dni, v_nombres, v_apellidos, v_telefono, v_direccion, v_correo);
+    DBMS_OUTPUT.PUT_LINE('Cliente con dni ' || v_dni || 'fue insertado exitosamente.');
+END;
+
+/
+
+CREATE OR REPLACE PROCEDURE insertarMascota(
+    v_id IN mascota.id%TYPE,
+    v_nombre IN mascota.nombre%TYPE,
+    v_raza IN mascota.raza%TYPE,
+    v_fecha IN mascota.fechanacimiento%TYPE,
+    v_especie IN mascota.especie%TYPE
+) IS
+BEGIN
+    INSERT INTO Mascota (ID, Nombre, Raza, FechaNacimiento, Especie)
+    VALUES (v_id,v_nombre, v_raza, v_fecha, v_especie);
+    DBMS_OUTPUT.PUT_LINE('Mascota con id ' || v_id || ' fue insertada exitosamente.');
+END;
+
+/
+
+CREATE OR REPLACE PROCEDURE VincularClienteMascota(
+    v_dni IN cliente.dni%TYPE,
+    v_idmascota IN mascota.id%TYPE
+) IS
+BEGIN
+    INSERT INTO Cliente_Mascota (id_cliente, id_mascota)
+    VALUES (v_dni, v_idmascota);
+    DBMS_OUTPUT.PUT_LINE('Vinculo entre cliente ' || v_dni || ' y ' || v_idmascota || ' fue realizado exitosamente.');
+END;
+
+/
+
+CREATE OR REPLACE PROCEDURE AgendarCita(
+    v_id IN cita.id%TYPE,
+    v_fecha IN cita.fecharegistro%TYPE,
+    v_razon IN cita.razoncita%TYPE,
+    v_cliente IN cita.id_cliente%TYPE,
+    v_mascota IN cita.id_mascota%TYPE,
+    v_vet IN cita.id_veterinario%TYPE
+) IS
+BEGIN
+    INSERT INTO Cita (ID, FechaRegistro, RazonCita, ID_Cliente, ID_Mascota, ID_Veterinario)
+    VALUES (v_id, v_fecha, v_razon, v_cliente, v_mascota, v_vet);
+    DBMS_OUTPUT.PUT_LINE('Cita ' || v_id || ' agendada para el dia ' || v_fecha || ' exitosamente.');
+END;
+
+/
+
+CREATE OR REPLACE PROCEDURE ConcluirCita(
+    v_id IN cita.id%TYPE,
+    v_diagnostico IN historiaclinica.diagnostico%TYPE,
+    v_tratamiento IN historiaclinica.tratamiento%TYPE
+) IS
+    v_fecha CITA.fecharegistro%TYPE;
+    v_cliente CITA.ID_CLIENTE%TYPE;
+    v_mascota CITA.ID_MASCOTA%TYPE;
+BEGIN
+    SELECT FechaRegistro, ID_Cliente, ID_Mascota
+    INTO v_fecha, v_cliente, v_mascota
+    FROM Cita WHERE Cita.id = v_id;
+    
+    DELETE FROM CITA WHERE ID = v_id;
+    
+    INSERT INTO HISTORIACLINICA (ID, FechaRegistro, Diagnostico, Tratamiento, DNI_Cliente, ID_Mascota)
+    VALUES (v_id, v_fecha, v_diagnostico, v_tratamiento, v_cliente, v_mascota);
+    DBMS_OUTPUT.PUT_LINE('Cita ' || v_id || ' concluida y agregada a la historia clinica.');
+END;
